@@ -1,6 +1,15 @@
 # Muscle Metrics
 Welcome to Muscle Metrics, designed with a user-centric philosophy to empower your strength training journey. Our platform offers a personalized dashboard that allows you to track and celebrate weightlifting milestones, visualize progress with intuitive charts, and manage workout sessions with detailed logs. Emphasizing control and privacy, our account management ensures secure access to your data. With a responsive, mobile-friendly interface, our platform keeps you engaged with your fitness goals anytime, anywhere. Along with motivational insights like displaying achievements, we provide an interactive, rewarding experience that acknowledges your hard work. As we look towards the future, anticipate advanced analytics, social integration, and personalization features that will revolutionize the way you train, track, and achieve your fitness aspirations. Whether you're a beginner or a seasoned athlete, our platform is designed to be your trusted partner in your quest for peak physical fitness.
 ***
+**Contents**
+- [User Stories](#user-stories)
+    - [New User](#as-a-new-user)
+    - [Returning User](#as-a-returning-user)
+    - [Returning User - Future Functionality](#as-a-returning-user---future-functionality)
+- [Features](#features)
+    - [Existing Features](#existing-features)
+    - [Future Features](#future-features)
+***
 ## User Stories
 #### As A New User:
 1. I would like to be able to easily record my weightlifting achievements, so that I can see a comprehensive display of my personal records and feel a sense of progress and accomplishment.
