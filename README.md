@@ -24,3 +24,47 @@ Welcome to Muscle Metrics, designed with a user-centric philosophy to empower yo
 5. I would like to sync my wearable devices with the app to track my heart rate and calories burned for a comprehensive view of my health.
 6. I would like to operate the fitness app hands-free while working out, so I can log my exercises and navigate the app without interruption.
 7. I would like to log my meals and track my macro intake according to my workout goals, so I can better align my nutrition with my fitness objectives.
+***
+## Features
+This project is designed to provide an informative and useful resource to weight lifters and gym goers.
+### Existing Features:
+#### User-Centric Dashboard
+##### Personal Best Tracker
+- Record and celebrate your weightlifting milestones with a comprehensive display of your personal records.
+##### Progress Chart Visualization
+- Monitor your strength journey with intuitive charts that reflect your workout history and progression over time.
+#### Workout Session Management
+##### Detailed Workout Logs
+- Input the data of every workout: exercises, weights, sets, and reps in an organized and efficient manner.
+##### Exercise Record
+- Full control over your fitness data through Create, Read, Update, and Delete (CRUD) functionalities for your exercise records.
+#### Account Management
+##### Secure Login System
+- Access your personal dashboard securely with a dedicated login page, ensuring your fitness data is personal and private.
+#### Responsive Design
+##### Mobile-Friendly Interface
+- Stay connected to your goals with a design that adapts to your mobile, tablet, or desktop devices for logging workouts on-the-go.
+#### Motivational Insights
+##### Achievement Notifications
+- Get instant gratification with alerts and badges when you hit new achievements or surpass your personal bests.
+### Future Features:
+#### Advanced Analytics
+##### Predictive Performance Trends
+- Leverage machine learning algorithms to predict future performance and plateaus based on past workout data.
+##### Muscle Group Analytics
+- Detailed reports on muscle group engagement and recommended workouts to optimize muscle symmetry and performance.
+#### Social Integration
+##### Community Challenges
+- Engage with the Muscle Metrics community through challenges, leader boards, and social sharing features.
+##### Workout Partner Matching
+- Connect with workout partners who have similar goals and workout schedules to stay motivated.
+#### Personalization
+##### Customizable Workout Plans
+- Introduce AI-driven customizable workout plans that adapt to user's progress and feedback.
+##### Virtual Personal Trainer
+- A virtual coach feature providing form tips, workout suggestions, and real-time feedback.
+#### Health Ecosystem Integration
+##### Wearable Device Syncing
+- Sync with various wearable devices to include heart rate, calories burned, and activity levels for a holistic health view.
+##### Health App Data Import
+- Import data from other health applications to centralize all fitness and health information on one platform.
