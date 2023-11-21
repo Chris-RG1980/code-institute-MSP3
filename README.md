@@ -3,12 +3,26 @@ Welcome to Muscle Metrics, designed with a user-centric philosophy to empower yo
 ***
 **Contents**
 - [User Stories](#user-stories)
-    - [New User](#as-a-new-user)
-    - [Returning User](#as-a-returning-user)
-    - [Returning User - Future Functionality](#as-a-returning-user---future-functionality)
+  - [New User](#as-a-new-user)
+  - [Returning User](#as-a-returning-user)
+  - [Returning User - Future Functionality](#as-a-returning-user---future-functionality)
 - [Features](#features)
-    - [Existing Features](#existing-features)
-    - [Future Features](#future-features)
+  - [Existing Features](#existing-features)
+  - [Future Features](#future-features)
+- [Wire-frames](#wire-frames)
+- [Design](#design)
+  - [Overview](#overview)
+  - [Typography](#typography)
+  - [Color Palette](#color-palette)
+  - [Framework](#framework)
+  - [Features and Design Correspondence](#features-and-design-correspondence)
+  - [Usage of Design Elements](#usage-of-design-elements)
+  - [Accessibility](#accessibility)
+  - [Conclusion](#conclusion)
+
+
+
+
 ***
 ## User Stories
 #### As A New User:
@@ -77,3 +91,39 @@ This project is designed to provide an informative and useful resource to weight
 - Sync with various wearable devices to include heart rate, calories burned, and activity levels for a holistic health view.
 ##### Health App Data Import
 - Import data from other health applications to centralize all fitness and health information on one platform.
+***
+## Wireframes
+
+***
+## Design
+### Overview
+Muscle Metrics offers a sleek, user-focused interface designed for fitness enthusiasts to track their workout progress. The design combines aesthetics with functionality, ensuring an engaging and effective user experience.     
+### Typography
+- **Headings**: Oswald, sourced from Google Fonts, gives a modern and strong character to headings, capturing the user's attention and guiding them through different sections.
+- **Text**: Roboto, with sans-serif as the fallback, provides excellent readability for detailed information, ensuring that text is legible across devices and resolutions.       
+### Color Palette
+- **Primary Background**: `#0F0F0F` - A deep black for a powerful and elegant backdrop that highlights content.
+- **Secondary Background**: `#C0C0C0` - A light grey for card backgrounds or secondary elements, providing a soft contrast.
+- **Accent Color**: `#B11419` - A strong red to call attention to critical elements like alerts or buttons.
+- **Text Color**: `#FFFFFF` - Pure white for primary content, offering maximum contrast for readability.
+- **Highlight Color**: `#14B3AE` - A vibrant teal for interactive elements, invoking a sense of activity and progress.
+![Image](resources/colour-palette.png)
+### Framework
+- **Materialize**: A modern responsive front-end framework based on Material Design principles, enabling me to create a coherent visual and interactive experience.
+### Features and Design Correspondence
+- **User-Centric Dashboard**: A dark-themed dashboard with cards outlined in `#14B3AE` to categorize different sections like Personal Bests and Progress Charts.
+- **Personal Best Tracker**: Highlighted with the accent red `#B11419` to symbolize personal records and achievements.
+- **Progress Chart Visualization**: Interactive charts with a blend of accent colors to differentiate between workout metrics visually.
+- **Workout Session Management**: Neatly organized input forms with Roboto font for clear text entry and Oswald for section headings.
+- **Exercise Record**: CRUD functionalities are represented by intuitive icons and buttons, coloured with `#14B3AE` for recognition and ease of use.
+- **Account Management**: A secure login system with input fields and buttons that stand out against the dark background for a focus on security.
+- **Responsive Design**: Adaptable layouts that look and function seamlessly on mobile, tablet, or desktop, ensuring accessibility anywhere.
+### Usage of Design Elements
+1. **Navigation Bar**: Oswald for the logo and main navigation links, with a hover effect in `#14B3AE`.
+2. **Buttons**: Materialize-styled buttons with shadows and `#B11419` for primary actions.
+3. **Cards**: For sections like Workout Logs, cards with `#C0C0C0` backgrounds to segment the information cleanly.
+4. **Forms**: Input fields with subtle `#C0C0C0` outlines against the `#0F0F0F` background, with placeholder text in Roboto for uniformity.
+### Accessibility
+Careful consideration has been given to ensure that the design is not only visually appealing but also accessible to users with different needs, with high contrast and legible font choices.
+### Conclusion
+The design strategy prioritizes user experience with a focus on functionality, aesthetics, and accessibility, creating an environment that motivates and supports the fitness journey of our users.
