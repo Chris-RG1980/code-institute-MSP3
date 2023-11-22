@@ -1,12 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Muscle Metrics</title>
-</head>
-<body>
-  {% block content %}
-  {% endblock %}
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}" type="text/css">
+    {% block styles %}
+    {% endblock %}
+    <title>Muscle Metrics</title>
+  </head>
+  <body>
+    <header>
+      <!-- Navbar-->
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#!" class="brand-logo logo-text center">Muscle Metrics</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-solid fa-bars" ></i></a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="">Home</a></li>
+            <li><a href="">Login</a></li>
+            <li><a href="">Logout</a></li>
+            <li><a href="">Register</a></li>
+            <li><a href="">Log Exercises</a></li>
+            <li><a href="">Dashboard</a></li>
+          </ul>
+        </div>
+      </nav>
+      <!--Mobile Navbar-->
+      <ul class="sidenav" id="mobile-demo">
+        <li><a href="">Home</a></li>
+        <li><a href="">Login</a></li>
+        <li><a href="">Logout</a></li>
+        <li><a href="">Register</a></li>
+        <li><a href="">Log Exercises</a></li>
+        <li><a href="">Dashboard</a></li>
+      </ul>
+    </header>
+    <main>
+      {% block content %}
+      {% endblock %}
+      <!-- Footer-->
+      <footer class="page-footer footer-color">
+        <div class="container">
+          <div class="row">
+            <div class="col l6 s12">
+              <h4 class="white-text logo-text">Muscle Metrics</h4>
+              <figure class="grey-text text-lighten-4">
+                <blockquote>
+                  <p>The pain you feel today is the strength you feel tomorrow.</p>
+                </blockquote>
+                <figcaption>
+                  Stephen Richards
+                </figcaption>
+              </figure>
+            </div>
+            <div class="col l4 offset-l2 s12">
+              <h5 class="white-text">Links</h5>
+              <ul>
+                <li><a class="white-text" href="">Home</a></li>
+                <li><a class="white-text" href="">Login</a></li>
+                <li><a class="white-text" href="">Logout</a></li>
+                <li><a class="white-text" href="">Register</a></li>
+                <li><a class="white-text" href="">Log Exercises</a></li>
+                <li><a class="white-text" href="">Dashboard</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js')}}"></script>
+    {% block scripts %}
+    {% endblock %}
+  </body>
 </html>
