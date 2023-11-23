@@ -1,8 +1,13 @@
+/* Colours */
+.bg-color-black {
+  background-color: #010101;
+}
+
+/* base.html */
 body {
   display: flex;
-  min-height: 100vh;
+  min-height: 100dvh;
   flex-direction: column;
-  background-color: #0f0f0f;
   font-family: roboto, sans-serif;
 }
 
@@ -15,6 +20,10 @@ main {
 /* Navbar */
 nav {
   background-color: #B11419;
+}
+
+nav .brand-logo {
+  padding-left: 10px;
 }
 
 .logo-text {
@@ -32,4 +41,81 @@ footer {
 
 blockquote {
   border-left: 5px solid #0f0f0f;
+}
+
+/* index.html */
+.bg-image {
+  background-image: url(/static/images/background-image.webp);
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100dvh;
+  width: 100%;
+}
+
+.height-adjust {
+  margin-top: 10%;
+}
+
+.heading {
+  color: #ffffff;
+  font-size: 4rem;
+}
+
+.heading h2 {
+  font-size: 8rem;
+}
+
+.no-margin {
+  margin-bottom: 0;
+}
+
+.card-container {
+  display: flex;
+  gap: 10px;
+}
+
+.card-container .card {
+  flex: 1;
+}
+
+.card-image img {
+  height: 300px;
+}
+
+.text-red {
+  color: #B11419;
+}
+
+.btn-large {
+  background-color: #B11419;
+}
+
+.h-full {
+  height: 100vh;
+}
+
+/* Media Queries */
+@media screen and (max-width: 1050px) {
+  .heading h2 {
+    font-size: 8rem;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .heading h2 {
+    font-size: 6rem;
+  }
+
+  .heading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 15%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .heading {
+    margin-left: 0;
+  }
 }

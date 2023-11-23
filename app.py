@@ -16,6 +16,10 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
+def home():
+    return render_template("index.html")
+
+
 @app.route("/get_muscle_groups")
 def get_muscle_groups():
     muscles = mongo.db.muscle_groups.find()
