@@ -1,6 +1,14 @@
 /* Colours */
-.bg-color-black {
-  background-color: #010101;
+:root {
+  --black: #010101;
+}
+
+.color-blue {
+  color: rgb(83, 103, 103);
+}
+
+.text-red {
+  color: #B11419;
 }
 
 /* base.html */
@@ -15,6 +23,11 @@ main {
   flex: 1 0 auto;
   display: flex;
   flex-direction: column;
+  background: var(--black);
+}
+
+main > .container {
+  flex: 1;
 }
 
 /* Navbar */
@@ -31,9 +44,6 @@ nav .brand-logo {
 }
 
 /* Footer */
-footer {
-  margin-top: auto;
-}
 
 .footer-color {
   background-color: #B11419;
@@ -41,6 +51,15 @@ footer {
 
 blockquote {
   border-left: 5px solid #0f0f0f;
+}
+
+/* Utility */
+.bg-white {
+  background: white;
+}
+
+.card-border {
+  border: 5px solid rgb(83, 103, 103);
 }
 
 /* index.html */
@@ -82,10 +101,6 @@ blockquote {
   height: 300px;
 }
 
-.text-red {
-  color: #B11419;
-}
-
 .btn-large {
   background-color: #B11419;
 }
@@ -101,12 +116,6 @@ blockquote {
 @media screen and (max-width: 1050px) {
   .heading h2 {
     font-size: 8rem;
-  }
-  .card-container {
-    flex-direction: column;
-    max-width: 75%;
-    margin: 10px auto;
-    gap: 0;
   }
 }
 

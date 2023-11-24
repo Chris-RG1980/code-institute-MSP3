@@ -43,36 +43,36 @@
     <main>
       {% block content %}
       {% endblock %}
-      <!-- Footer-->
-      <footer class="page-footer footer-color">
-        <div class="container">
-          <div class="row">
-            <div class="col l6 s12">
-              <h4 class="white-text logo-text">Muscle Metrics</h4>
-              <figure class="grey-text text-lighten-4">
-                <blockquote>
-                  <p>The pain you feel today is the strength you feel tomorrow.</p>
-                </blockquote>
-                <figcaption>
-                  Stephen Richards
-                </figcaption>
-              </figure>
-            </div>
-            <div class="col l4 offset-l2 s12">
-              <h5 class="white-text">Links</h5>
-              <ul>
-                <li><a class="white-text" href="{{ url_for('home') }}">Home</a></li>
-                <li><a class="white-text" href="">Login</a></li>
-                <li><a class="white-text" href="">Logout</a></li>
-                <li><a class="white-text" href="{{ url_for('register') }}">Register</a></li>
-                <li><a class="white-text" href="">Log Exercises</a></li>
-                <li><a class="white-text" href="">Dashboard</a></li>
-              </ul>
-            </div>
+    </main>
+    <!-- Footer-->
+    <footer class="page-footer footer-color">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h4 class="white-text logo-text">Muscle Metrics</h4>
+            <figure class="grey-text text-lighten-4">
+              <blockquote>
+                <p>The pain you feel today is the strength you feel tomorrow.</p>
+              </blockquote>
+              <figcaption>
+                Stephen Richards
+              </figcaption>
+            </figure>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Links</h5>
+            <ul>
+              <li><a class="white-text" href="{{ url_for('home') }}">Home</a></li>
+              <li><a class="white-text" href="">Login</a></li>
+              <li><a class="white-text" href="">Logout</a></li>
+              <li><a class="white-text" href="{{ url_for('register') }}">Register</a></li>
+              <li><a class="white-text" href="">Log Exercises</a></li>
+              <li><a class="white-text" href="">Dashboard</a></li>
+            </ul>
           </div>
         </div>
-      </footer>
-    </main>
+      </div>
+    </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="{{ url_for('static', filename='js/script.js')}}"></script>
