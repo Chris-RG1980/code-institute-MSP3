@@ -99,13 +99,19 @@ blockquote {
   .heading h2 {
     font-size: 8rem;
   }
+  .card-container {
+    flex-direction: column;
+    max-width: 75%;
+    margin: 10px auto;
+    gap: 0;
+  }
 }
+
 
 @media screen and (max-width: 992px) {
   .heading h2 {
     font-size: 6rem;
   }
-
   .heading {
     display: flex;
     flex-direction: column;
@@ -117,5 +123,8 @@ blockquote {
 @media screen and (max-width: 600px) {
   .heading {
     margin-left: 0;
+  }
+  .card-container {
+    max-width: 100%;
   }
 }
