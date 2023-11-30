@@ -22,7 +22,7 @@
           <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-solid fa-bars" ></i></a>
           <ul class="right hide-on-med-and-down">
             <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="">Login</a></li>
+            <li><a href="{{ url_for('login') }}">Login</a></li>
             <li><a href="">Logout</a></li>
             <li><a href="{{ url_for('register') }}">Register</a></li>
             <li><a href="">Log Exercises</a></li>
@@ -33,7 +33,7 @@
       <!--Mobile Navbar-->
       <ul class="sidenav" id="mobile-demo">
         <li><a href="{{ url_for('home') }}">Home</a></li>
-        <li><a href="">Login</a></li>
+        <li><a href="{{ url_for('login') }}">Login</a></li>
         <li><a href="">Logout</a></li>
         <li><a href="{{ url_for('register') }}">Register</a></li>
         <li><a href="">Log Exercises</a></li>
@@ -63,7 +63,7 @@
             <h5 class="white-text">Links</h5>
             <ul>
               <li><a class="white-text" href="{{ url_for('home') }}">Home</a></li>
-              <li><a class="white-text" href="">Login</a></li>
+              <li><a class="white-text" href="{{ url_for('login') }}">Login</a></li>
               <li><a class="white-text" href="">Logout</a></li>
               <li><a class="white-text" href="{{ url_for('register') }}">Register</a></li>
               <li><a class="white-text" href="">Log Exercises</a></li>
