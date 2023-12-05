@@ -3,6 +3,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from flask_bcrypt import Bcrypt
 
 if os.path.exists("env.py"):
     import env
@@ -16,6 +17,10 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 
 db = SQLAlchemy(app)
 mongo = PyMongo(app)
-
+bcrypt = Bcrypt(app)
 
 from muscle_metrics import routes
+from .models import *
+
+with app.app_context():
+    db.create_all()
