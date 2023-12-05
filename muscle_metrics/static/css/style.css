@@ -110,7 +110,9 @@ blockquote {
 }
 
 /* register.html  */
-
+.card-content h2 {
+  margin-top: 0;
+}
 
 /* Media Queries */
 @media screen and (max-width: 1050px) {
