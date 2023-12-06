@@ -43,6 +43,20 @@ nav .brand-logo {
   font-family: Oswald, sans-serif;
 }
 
+/* Flash Messages */
+.flash-bg {
+  background-color: var(--black);
+}
+
+.message {
+  background-color: #B11419;
+  font-family: roboto, sans-serif;
+  font-size: 2rem;
+  padding: 5px;
+  border-radius: 5px;
+
+}
+
 /* Footer */
 
 .footer-color {
@@ -60,6 +74,27 @@ blockquote {
 
 .card-border {
   border: 5px solid rgb(83, 103, 103);
+}
+
+.text-alert {
+  padding: 10px 15px;
+  margin: 5px 0 10px 0;
+  border-radius: 5px;
+}
+
+.text-alert ul {
+  padding-left: 15px;
+  margin: 0;
+}
+
+.text-alert.error {
+  background: #e53935;
+  color: white;
+}
+
+.text-alert.success {
+  background: #8bc34a;
+  color: black;
 }
 
 /* index.html */
