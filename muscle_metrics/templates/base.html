@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% from "macros/alert.html" import alert %}
 <html lang="en">
   <head>
     <meta charset="UTF-8">
@@ -40,6 +41,16 @@
         <li><a href="">Dashboard</a></li>
       </ul>
     </header>
+    <section class="flash-bg">
+      <!--Flash Messages-->
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            {{ alert(category, message) }}
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+    </section>
     <main>
       {% block content %}
       {% endblock %}

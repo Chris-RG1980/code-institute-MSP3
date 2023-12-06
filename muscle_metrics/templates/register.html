@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from "macros/validationError.html" import validationError %}
 {% block content %}
 <div class="container">
   <div class="row">
@@ -14,10 +15,21 @@
             {{ form.last_name() }}
             {{ form.email.label }}
             {{ form.email() }}
+            {% if form.email.errors %}
+              {{ validationError(form.password.errors) }}
+            {% endif %}
+            {% with errors = get_flashed_messages(category_filter=["email_error"]) %}
+              {% if errors %}
+                {{ validationError(errors) }}
+              {% endif %}
+            {% endwith %}
             {{ form.password.label }}
             {{ form.password() }}
             {{ form.confirm.label }}
             {{ form.confirm() }}
+            {% if form.password.errors %}
+              {{ validationError(form.password.errors) }}
+            {% endif %}
             <div class="center-align">
               <button type="submit" name="submit" class="waves-effect waves-light btn-large">Register</button>
             </div>
