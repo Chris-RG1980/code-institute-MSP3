@@ -3,44 +3,56 @@
 {% block content %}
 <div class="container">
   <div class="row">
-    <form method="POST" action="{{ url_for('register') }}">
-      <div class="col s12 m12 l6 offset-l3">
-        <div class="card card-border">
-          <div class="card-content">
-            <h2 class="card-title text-red"><strong>Register</strong></h2>
+    <div class="col s12 m12 l6 offset-l3">
+      <div class="card card-border">
+        <div class="card-content">
+          <h2 class="form-title text-red"><strong>Register</strong></h2>
+          <form method="POST" action="{{ url_for('register') }}">
             {{ form.hidden_tag() }}
-            {{ form.first_name.label }}
-            {{ form.first_name() }}
-            {{ form.last_name.label }}
-            {{ form.last_name() }}
-            {{ form.email.label }}
-            {{ form.email() }}
-            {% if form.email.errors %}
-              {{ validationError(form.password.errors) }}
-            {% endif %}
-            {% with errors = get_flashed_messages(category_filter=["email_error"]) %}
-              {% if errors %}
-                {{ validationError(errors) }}
+            <div class="form-divider">
+              {{ form.first_name.label (class="custom-label") }}
+              {{ form.first_name() }}
+              <p class="form-description">{{ form.first_name.description }}</p>
+            </div>
+            <div class="form-divider">
+              {{ form.last_name.label (class="custom-label") }}
+              {{ form.last_name() }}
+              <p class="form-description">{{ form.last_name.description }}</p>
+            </div>
+            <div class="form-divider">
+              {{ form.email.label (class="custom-label") }}
+              {{ form.email() }}
+              {% if form.email.errors %}
+                {{ validationError(form.email.errors) }}
               {% endif %}
-            {% endwith %}
-            {{ form.password.label }}
-            {{ form.password() }}
-            {{ form.confirm.label }}
-            {{ form.confirm() }}
-            {% if form.password.errors %}
-              {{ validationError(form.password.errors) }}
-            {% endif %}
+              {% with errors = get_flashed_messages(category_filter=["email_error"]) %}
+                {% if errors %}
+                  {{ validationError(errors) }}
+                {% endif %}
+              {% endwith %}
+            </div>
+            <div class="form-divider">
+              {{ form.password.label (class="custom-label") }}
+              {{ form.password() }}
+            </div>
+            <div class="form-divider">
+              {{ form.confirm.label (class="custom-label") }}
+              {{ form.confirm() }}
+              {% if form.password.errors %}
+                {{ validationError(form.password.errors) }}
+              {% endif %}
+            </div>
             <div class="center-align">
               <button type="submit" name="submit" class="waves-effect waves-light btn-large">Register</button>
             </div>
-          </div>
-          <div class="card-action center-align">
-            <p>Already Registered?</p>
-            <a href="{{ url_for('home') }}" class="waves-effect waves-light btn-large">Login</a>
-          </div>
+          </form>
+        </div>
+        <div class="card-action center-align">
+          <p>Already Registered?</p>
+          <a href="{{ url_for('home') }}" class="waves-effect waves-light btn-large">Login</a>
         </div>
       </div>
-    </form>
+    </div>
   </div>
 </div>
 {% endblock %}

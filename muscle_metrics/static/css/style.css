@@ -145,8 +145,28 @@ blockquote {
 }
 
 /* register.html  */
+
 .card-content h2 {
   margin-top: 0;
+}
+
+/* Forms */
+.form-title {
+  font-size: 2.75rem;
+  text-align: center;
+}
+.form-divider {
+  margin-top: 8px;
+}
+
+.custom-label {
+  color: var(--black);
+  font-size: 1.5rem;
+}
+
+.form-description {
+  color: gray;
+  font-size: 0.75rem;
 }
 
 /* Media Queries */
