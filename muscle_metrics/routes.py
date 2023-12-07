@@ -11,20 +11,43 @@ import bcrypt
 
 # Create registration form
 class RegistrationForm(FlaskForm):
-    first_name = StringField("First Name", [InputRequired(), Length(min=1, max=50)])
+    first_name = StringField(
+        "First Name",
+        [
+            InputRequired(),
+            Length(
+                min=2,
+                max=50,
+            ),
+        ],
+        description="Maximum 50 characters",
+    )
+
     last_name = StringField(
         "Last Name",
         [
             InputRequired(),
-            Length(min=1, max=50, message="Maximum of 1 to 50 characters"),
+            Length(
+                min=2,
+                max=50,
+            ),
         ],
+        description="Maximum 50 characters",
     )
     email = EmailField(
-        "Email Address", [Email(message="Email format invalid"), InputRequired()]
+        "Email Address",
+        [
+            Email(),
+            InputRequired(),
+        ],
+        render_kw={"placeholder": "email@address.com"},
     )
     password = PasswordField(
         "Password",
-        [InputRequired(), EqualTo("confirm", message="Passwords must match")],
+        [
+            InputRequired(),
+            EqualTo("confirm", message="Passwords must match"),
+        ],
     )
     confirm = PasswordField("Confirm Password", [InputRequired()])
     submit = SubmitField("Register")
