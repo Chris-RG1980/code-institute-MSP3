@@ -28,9 +28,9 @@
           <ul class="right hide-on-med-and-down">
             <li><a href="{{ url_for('home') }}">Home</a></li>
             <li><a href="{{ url_for('login') }}">Login</a></li>
-            <li><a href="">Logout</a></li>
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
             <li><a href="{{ url_for('register') }}">Register</a></li>
-            <li><a href="">Log Exercises</a></li>
+            <li><a href="{{ url_for('get_muscle_groups')}}">Log Exercises</a></li>
             <li><a href="">Dashboard</a></li>
           </ul>
         </div>
@@ -39,9 +39,9 @@
       <ul class="sidenav" id="mobile-demo">
         <li><a href="{{ url_for('home') }}">Home</a></li>
         <li><a href="{{ url_for('login') }}">Login</a></li>
-        <li><a href="">Logout</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
         <li><a href="{{ url_for('register') }}">Register</a></li>
-        <li><a href="">Log Exercises</a></li>
+        <li><a href="{{ url_for('get_muscle_groups')}}">Log Exercises</a></li>
         <li><a href="">Dashboard</a></li>
       </ul>
     </header>
@@ -79,9 +79,9 @@
             <ul>
               <li><a class="white-text" href="{{ url_for('home') }}">Home</a></li>
               <li><a class="white-text" href="{{ url_for('login') }}">Login</a></li>
-              <li><a class="white-text" href="">Logout</a></li>
+              <li><a class="white-text" href="{{ url_for('logout') }}">Logout</a></li>
               <li><a class="white-text" href="{{ url_for('register') }}">Register</a></li>
-              <li><a class="white-text" href="">Log Exercises</a></li>
+              <li><a class="white-text" href="{{ url_for('get_muscle_groups')}}">Log Exercises</a></li>
               <li><a class="white-text" href="">Dashboard</a></li>
             </ul>
           </div>

@@ -3,9 +3,10 @@ from sqlalchemy import Boolean, Column, String
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.sql import func
 from muscle_metrics import db
+from flask_login import UserMixin
 
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     __tablename__ = "users"
     id = db.Column(UUID(as_uuid=True), default=uuid.uuid4, primary_key=True)
     first_name = db.Column(db.String(50), nullable=False)
