@@ -1,5 +1,6 @@
 {% macro alert(type, message) %}
   <div class="text-alert {{ type }}">
     {{ message }}
+    <button><i class="fas fa-solid fa-xmark"></i></button>
   </div>
 {% endmacro %}
