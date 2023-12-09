@@ -155,3 +155,22 @@ def logout():
 def get_muscle_groups():
     muscles = mongo.db.muscle_groups.find()
     return render_template("exercises.html", muscles=muscles)
+
+
+# Error Pages
+# Invalid URL
+@app.errorhandler(404)
+def page_not_found():
+    return render_template("404.html"), 404
+
+
+# Unauthorised Access
+@app.errorhandler(401)
+def unauthorised_access():
+    return render_template("401.html"), 401
+
+
+# Internal Server Error
+@app.errorhandler(500)
+def internal_server_error():
+    return render_template("500.html"), 500
