@@ -160,17 +160,17 @@ def get_muscle_groups():
 # Error Pages
 # Invalid URL
 @app.errorhandler(404)
-def page_not_found():
+def page_not_found(e):
     return render_template("404.html"), 404
 
 
 # Unauthorised Access
 @app.errorhandler(401)
-def unauthorised_access():
+def unauthorised_access(e):
     return render_template("401.html"), 401
 
 
 # Internal Server Error
 @app.errorhandler(500)
-def internal_server_error():
+def internal_server_error(e):
     return render_template("500.html"), 500
