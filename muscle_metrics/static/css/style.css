@@ -1,6 +1,7 @@
 /* Colours */
 :root {
   --black: #010101;
+  --grey: #cccccc;
 }
 
 .color-blue {
@@ -43,6 +44,11 @@ nav .brand-logo {
   font-family: Oswald, sans-serif;
 }
 
+nav .nav-wrapper {
+  overflow: hidden;
+}
+
+
 /* Flash Messages */
 .flash-bg {
   background-color: var(--black);
@@ -78,7 +84,7 @@ blockquote {
 
 .text-alert {
   padding: 10px 15px;
-  margin: 5px 0 10px 0;
+  margin: 5px 10px 10px 10px;
   border-radius: 5px;
   display: flex;
 }
@@ -107,6 +113,29 @@ blockquote {
   font-size: 1.2em;
 }
 
+/* Profile form */
+.display-item {
+  display: flex;
+  align-items: center;
+}
+
+.margin-left {
+  margin-left: auto;
+}
+
+.remove-btn-style {
+  background-color: #ffffff;
+  box-shadow: none;
+}
+
+.fa-pencil {
+  color: grey;
+}
+
+.cancel-btn {
+  background-color: var(--grey);
+  margin-right: 10px !important;
+}
 
 
 /* index.html */
@@ -148,7 +177,11 @@ blockquote {
   height: 300px;
 }
 
-.btn-large {
+.btn-red {
+  background-color: #B11419;
+}
+
+.btn-small {
   background-color: #B11419;
 }
 

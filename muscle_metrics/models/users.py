@@ -13,7 +13,8 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(72), nullable=False)
-    created_date_time = db.Column(
+    created_date_time = db.Column(db.DateTime(timezone=True), nullable=False)
+    last_modified_date_time = db.Column(
         db.DateTime(timezone=True), onupdate=func.now(), nullable=False
     )
     is_deleted = db.Column(Boolean, default=False, nullable=False)
@@ -27,4 +28,5 @@ class User(db.Model, UserMixin):
             self.password,
             self.created_date_time,
             self.is_deleted,
+            self.last_modified_date_time,
         )

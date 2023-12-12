@@ -1,0 +1,19 @@
+  <!--  First Name Modal -->
+  <div id="fname-modal" class="modal">
+    <div class="modal-content">
+      <h2 class="form-title text-red"><strong>Edit Profile</strong></h2>
+      <form method="POST" action="{{ url_for('edit_profile_fname', id=current_user.id) }}">
+        {{ form.hidden_tag() }}
+        <div class="form-divider">
+          {{ form.first_name.label (class="custom-label") }}
+          {{ form.first_name() }}
+          <sub>{{ form.first_name.description }}</sub>
+        </div>
+        <div class="modal-footer">
+          <div class="center-align">
+            <button type="submit" class="waves-effect waves-light btn-large btn-red">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>

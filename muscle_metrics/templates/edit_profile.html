@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col s12 m12 l6 offset-l3">
+      <div class="card card-border">
+        <div class="card-content">
+          <h2 class="form-title text-red"><strong>Profile</strong></h2>
+          <div class="collection with-header">
+            <div class="collection-header"><h6>First Name:</h6></div>
+            <div class="collection-item display-item">
+              {{ current_user.first_name }}
+              <a href="#fname-modal" class="btn modal-trigger remove-btn-style margin-left"><i class="fas fa-thin fa-pencil"></i></a>
+            </div>
+          </div>
+          {% include 'modals/update_fname.html' %}
+          <div class="collection with-header">
+            <div class="collection-header"><h6>Last Name:</h6></div>
+            <div class="collection-item display-item">
+              {{ current_user.last_name }}
+              <a href="#lname-modal" class="btn modal-trigger remove-btn-style margin-left"><i class="fas fa-thin fa-pencil"></i></a>
+            </div>
+          </div>
+          {% include 'modals/update_lname.html' %}
+          <div class="collection with-header">
+            <div class="collection-header"><h6>Email:</h6></div>
+            <div class="collection-item display-item">
+              {{ current_user.email }}
+              <a href="#email-modal" class="btn modal-trigger remove-btn-style margin-left"><i class="fas fa-thin fa-pencil"></i></a>
+            </div>
+          </div>
+          {% include 'modals/update_email.html' %}
+          <div class="collection with-header">
+            <div class="collection-header">
+              <h6 class="display-item">Change Password
+                <a href="#password-modal" class="btn modal-trigger remove-btn-style margin-left">
+                  <i class="fas fa-thin fa-arrow-right grey-text "></i>
+                </a>
+              </h6>
+            </div>
+          </div>
+          {% include 'modals/change_password.html' %}
+          <div class="collection with-header">
+            <div class="collection-header"><h6>Date Joined:</h6></div>
+            <div class="collection-item">
+              {{ current_user.created_date_time.strftime('%d %B %Y') }}
+            </div>
+          </div>
+          <div class="center-align">
+            <button class="waves-effect waves-light btn-large btn-red"><a class="white-text" href="{{ url_for('logout') }}">Logout</a></button>
+          </div>
+          <div class="center-align height-adjust">
+            <a href="#delete-modal" class="modal-trigger waves-effect waves-light btn-small white-text">Delete Account</a>
+          </div>
+          {% include 'modals/delete_user.html' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
