@@ -175,6 +175,10 @@ blockquote {
   background-color: #B11419;
 }
 
+.btn-small {
+  background-color: #B11419;
+}
+
 .h-full {
   height: 100vh;
 }
