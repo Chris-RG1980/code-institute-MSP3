@@ -129,6 +129,7 @@ def register():
             email=email,
             password=hashed_password,
             created_date_time=datetime.now(),
+            last_modified_date_time=datetime.now(),
         )
         db.session.add(user)
         db.session.commit()
