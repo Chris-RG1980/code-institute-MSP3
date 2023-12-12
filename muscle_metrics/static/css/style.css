@@ -1,6 +1,7 @@
 /* Colours */
 :root {
   --black: #010101;
+  --grey: #cccccc;
 }
 
 .color-blue {
@@ -131,6 +132,11 @@ blockquote {
   color: grey;
 }
 
+.cancel-btn {
+  background-color: var(--grey);
+  margin-right: 10px !important;
+}
+
 
 /* index.html */
 .bg-image {
@@ -171,7 +177,7 @@ blockquote {
   height: 300px;
 }
 
-.btn-large {
+.btn-red {
   background-color: #B11419;
 }
 

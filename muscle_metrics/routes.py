@@ -14,7 +14,6 @@ from flask_login import (
     logout_user,
     current_user,
 )
-import sys
 
 
 # Create login form
@@ -144,6 +143,7 @@ def load_user(user_id):
     return db.session.query(User).get(user_id)
 
 
+# User Profile Page
 @app.route("/profile/<id>", methods=["GET"])
 def edit_profile(id):
     form = RegistrationForm()
@@ -158,6 +158,7 @@ def edit_profile(id):
     )
 
 
+# Edit User First Name
 @app.route("/profile/<id>/fname", methods=["POST"])
 def edit_profile_fname(id):
     form = FirstNameForm()
@@ -170,6 +171,7 @@ def edit_profile_fname(id):
     return redirect(url_for("edit_profile", id=user.id))
 
 
+# Edit User Last Name
 @app.route("/profile/<id>/lname", methods=["POST"])
 def edit_profile_lname(id):
     form = LastNameForm()
@@ -182,6 +184,7 @@ def edit_profile_lname(id):
     return redirect(url_for("edit_profile", id=user.id))
 
 
+# Edit User Email
 @app.route("/profile/<id>/email", methods=["POST"])
 def edit_profile_email(id):
     form = EmailForm()
@@ -194,6 +197,16 @@ def edit_profile_email(id):
     return redirect(url_for("edit_profile", id=user.id))
 
 
+# Update User function used in Edit first name, edit last name & edit email
+def updateUser():
+    try:
+        db.session.commit()
+        flash("Updated successfully", "success")
+    except:
+        flash("Error! Looks like there was a problem...Try again", "error")
+
+
+# Change User Password
 @app.route("/profile/<id>/password", methods=["POST"])
 def edit_profile_password(id):
     form = PasswordForm()
@@ -228,14 +241,27 @@ def edit_profile_password(id):
     return redirect(url_for("edit_profile", id=user.id))
 
 
-def updateUser():
-    try:
-        db.session.commit()
-        flash("Updated successfully", "success")
-    except:
-        flash("Error! Looks like there was a problem...Try again", "error")
+# Delete User Account
+@app.route("/profile/<id>/delete", methods=["GET"])
+@login_required
+def delete_user(id):
+    if id == str(current_user.id):
+        user = User.query.get_or_404(id)
+
+        try:
+            db.session.delete(user)
+            db.session.commit()
+            flash("User Deleted Successfully!", "success")
+            return redirect(url_for("home"))
+        except:
+            flash("There was a problem deleting user, try again..", "error")
+    else:
+        flash("Sorry, you can't delete that user!", "error")
+
+    return redirect(url_for("edit_profile", id=current_user.id))
 
 
+# Login
 @app.route("/login", methods=["GET", "POST"])
 def login():
     form = LoginForm()
