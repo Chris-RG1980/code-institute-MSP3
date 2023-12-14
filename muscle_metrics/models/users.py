@@ -1,9 +1,11 @@
 import uuid
-from sqlalchemy import Boolean, Column, String
+
+from flask_login import UserMixin
+from sqlalchemy import Boolean
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.sql import func
+
 from muscle_metrics import db
-from flask_login import UserMixin
 
 
 class User(db.Model, UserMixin):
