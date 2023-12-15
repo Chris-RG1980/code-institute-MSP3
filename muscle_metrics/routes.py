@@ -2,7 +2,7 @@ from flask import flash, redirect, render_template, url_for
 from flask_login import login_required, logout_user
 
 from muscle_metrics import app, db, login_manager, mongo
-from muscle_metrics.models.users import User
+from muscle_metrics.models import Exercises, MuscleGroups, Progress, User
 
 from .home import routes
 from .login import routes
