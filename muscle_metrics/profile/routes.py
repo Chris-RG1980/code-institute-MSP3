@@ -56,8 +56,18 @@ def edit_profile_email(id):
     user: User = User.query.get_or_404(id)
 
     if form.validate_on_submit():
-        user.email = request.form["email"]
-        updateUser()
+        new_email = request.form["email"].lower()
+
+        if user.email != new_email:
+            existing_user = db.session.query(User).filter_by(email=new_email).first()
+
+            if existing_user:
+                flash("Email already exists", "error")
+            else:
+                user.email = new_email
+                updateUser()
+        else:
+            flash("Email must be different from your current email", "error")
 
     return redirect(url_for("edit_profile", id=user.id))
 

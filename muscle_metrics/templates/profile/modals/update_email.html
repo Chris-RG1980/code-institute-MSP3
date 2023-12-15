@@ -7,14 +7,6 @@
         <div class="form-divider">
           {{ form.email.label (class="custom-label") }}
           {{ form.email() }}
-          {% if form.email.errors %}
-            {{ validationError(form.email.errors) }}
-          {% endif %}
-          {% with errors = get_flashed_messages(category_filter=["email_error"]) %}
-            {% if errors %}
-              {{ validationError(errors) }}
-            {% endif %}
-          {% endwith %}
         </div>
         <div class="modal-footer">
           <div class="center-align">
