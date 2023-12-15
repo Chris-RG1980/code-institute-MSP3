@@ -1,3 +1,6 @@
+import uuid
+
+from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.sql import func
 
 from muscle_metrics import db
@@ -7,7 +10,10 @@ class Progress(db.Model):
     __tablename__ = "progress"
     id = db.Column(db.Integer(), autoincrement=True, primary_key=True)
     user_id = db.Column(
-        db.Integer(), db.ForeignKey("users.id", ondelete="CASCADE"), nullable=False
+        UUID(as_uuid=True),
+        db.ForeignKey("users.id", ondelete="CASCADE"),
+        default=uuid.uuid4,
+        nullable=False,
     )
     exercise_id = db.Column(
         db.Integer(), db.ForeignKey("exercises.id", ondelete="CASCADE"), nullable=False
