@@ -1,3 +1,5 @@
+import json
+
 from muscle_metrics import db
 
 
@@ -13,17 +15,27 @@ class MuscleGroups(db.Model):
         return (self.id, self.name, self.exercises)
 
 
-muscle_group_1 = MuscleGroups(name="Arms")
-muscle_group_2 = MuscleGroups(name="Back")
-muscle_group_3 = MuscleGroups(name="Chest")
-muscle_group_4 = MuscleGroups(name="Core")
-muscle_group_5 = MuscleGroups(name="Legs")
-muscle_group_6 = MuscleGroups(name="Shoulders")
+def add_muscle_group(name):
+    existing_group = MuscleGroups.query.filter_by(name=name).first()
+    if existing_group:
+        return existing_group
 
-db.session.add(muscle_group_1)
-db.session.add(muscle_group_2)
-db.session.add(muscle_group_3)
-db.session.add(muscle_group_4)
-db.session.add(muscle_group_5)
-db.session.add(muscle_group_6)
-db.session.commit()
+    new_group = MuscleGroups(name=name)
+    db.session.add(new_group)
+    return new_group
+
+
+def populate_from_json(file_path):
+    with open(file_path, "r") as file:
+        muscle_groups_data = json.load(file)
+
+        for group_data in muscle_groups_data:
+            name = group_data.get("name")
+            if name:
+                add_muscle_group(name)
+
+        db.session.commit()
+
+
+json_file_path = "muscle_metrics/static/json/muscle_groups.json"
+populate_from_json(json_file_path)
