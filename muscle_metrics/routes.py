@@ -25,11 +25,11 @@ def logout():
     return redirect(url_for("home"))
 
 
-@app.route("/get_muscle_groups")
+@app.route("/get_muscle_groups", methods=["GET"])
 @login_required
 def get_muscle_groups():
-    muscles = mongo.db.muscle_groups.find()
-    return render_template("exercise/exercises.html", muscles=muscles)
+    muscle_groups = MuscleGroups.query.all()
+    return render_template("exercise/exercises.html", muscle_groups=muscle_groups)
 
 
 # Error Pages
