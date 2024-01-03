@@ -1,0 +1,146 @@
+[
+  {
+    "name": "Bicep Curl",
+    "muscle_group_id": 1
+  },
+  {
+    "name": "Cable Kickback",
+    "muscle_group_id": 1
+  },
+  {
+    "name": "Incline Curl",
+    "muscle_group_id": 1
+  },
+  {
+    "name": "Preacher Curl",
+    "muscle_group_id": 1
+  },
+  {
+    "name": "Scull Crusher",
+    "muscle_group_id": 1
+  },
+  {
+    "name": "Tricep Dip",
+    "muscle_group_id": 1
+  },
+  {
+    "name": "Dead Lift",
+    "muscle_group_id": 2
+  },
+  {
+    "name": "Back Extension",
+    "muscle_group_id": 2
+  },
+  {
+    "name": "Bent Over Row",
+    "muscle_group_id": 2
+  },
+  {
+    "name": "Chin Up",
+    "muscle_group_id": 2
+  },
+  {
+    "name": "Incline Row",
+    "muscle_group_id": 2
+  },
+  {
+    "name": "Lat Pull Down",
+    "muscle_group_id": 2
+  },
+  {
+    "name": "Bench Press",
+    "muscle_group_id": 3
+  },
+  {
+    "name": "Chest Fly",
+    "muscle_group_id": 3
+  },
+  {
+    "name": "Chest Dip",
+    "muscle_group_id": 3
+  },
+  {
+    "name": "Chest Press",
+    "muscle_group_id": 3
+  },
+  {
+    "name": "Pec Deck",
+    "muscle_group_id": 3
+  },
+  {
+    "name": "Push Up",
+    "muscle_group_id": 3
+  },
+  {
+    "name": "Cable Crunch",
+    "muscle_group_id": 4
+  },
+  {
+    "name": "Cable Twist",
+    "muscle_group_id": 4
+  },
+  {
+    "name": "Side Plank",
+    "muscle_group_id": 4
+  },
+  {
+    "name": "Sit Up",
+    "muscle_group_id": 4
+  },
+  {
+    "name": "Russian Twist",
+    "muscle_group_id": 4
+  },
+  {
+    "name": "Plank",
+    "muscle_group_id": 4
+  },
+  {
+    "name": "Leg Press",
+    "muscle_group_id": 5
+  },
+  {
+    "name": "Squat",
+    "muscle_group_id": 5
+  },
+  {
+    "name": "Leg Extension",
+    "muscle_group_id": 5
+  },
+  {
+    "name": "Hack Squat",
+    "muscle_group_id": 5
+  },
+  {
+    "name": "Leg Curl",
+    "muscle_group_id": 5
+  },
+  {
+    "name": "Box Jump",
+    "muscle_group_id": 5
+  },
+  {
+    "name": "Face Pull",
+    "muscle_group_id": 6
+  },
+  {
+    "name": "Front Raise",
+    "muscle_group_id": 6
+  },
+  {
+    "name": "Lat Raise",
+    "muscle_group_id": 6
+  },
+  {
+    "name": "Overhead Press",
+    "muscle_group_id": 6
+  },
+  {
+    "name": "Upright Row",
+    "muscle_group_id": 6
+  },
+  {
+    "name": "Shoulder Press",
+    "muscle_group_id": 6
+  }
+]
