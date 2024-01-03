@@ -29,3 +29,4 @@ from muscle_metrics import routes
 
 with app.app_context():
     db.create_all()
+    from . import seed_data
