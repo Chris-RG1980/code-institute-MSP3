@@ -31,6 +31,11 @@
               <sub>{{ form.sets.description }}</sub>
             </div>
             <div class="form-divider">
+              {{ form.reps.label (class="custom-label") }}
+              {{ form.reps() }}
+              <sub>{{ form.reps.description }}</sub>
+            </div>
+            <div class="form-divider">
               <div class="center-align">
                 <button type="submit" name="submit" class="waves-effect waves-light btn-large btn-red">Add Exercise</button>
               </div>
