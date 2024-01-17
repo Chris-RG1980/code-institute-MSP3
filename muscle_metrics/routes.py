@@ -1,4 +1,7 @@
-from flask import flash, redirect, render_template, request, url_for
+import sys
+from datetime import datetime
+
+from flask import flash, jsonify, redirect, render_template, request, url_for
 from flask_login import login_required, logout_user
 from flask_wtf import FlaskForm
 from wtforms import (
@@ -15,6 +18,7 @@ from muscle_metrics import app, db, login_manager, mongo
 from muscle_metrics.models import (
     Exercises,
     MuscleGroups,
+    Progress,
     User,
     exercises,
     muscle_groups,
@@ -60,10 +64,28 @@ def logout():
     return redirect(url_for("home"))
 
 
-@app.route("/get_muscle_groups", methods=["GET"])
+@app.route("/log", methods=["GET", "POST"])
 @login_required
-def get_muscle_groups():
+def log():
     form = ExerciseLogForm()
+
+    if form.validate_on_submit():
+        print(request.form, file=sys.stderr)
+
+        progress = Progress(
+            exercise_id=request.form.get("exercise"),
+            weight=form.weight.data,
+            reps=form.reps.data,
+            sets=form.sets.data,
+            notes=form.notes.data,
+            date_added=datetime.now(),
+        )
+
+        db.session.add(progress)
+        db.session.commit()
+
+        flash("Exercise added successfully!", "success")
+
     muscle_groups = MuscleGroups.query.all()
     exercises = Exercises.query.all()
 
@@ -73,6 +95,14 @@ def get_muscle_groups():
         muscle_groups=muscle_groups,
         exercises=exercises,
     )
+
+
+@app.route("/get_exercises", methods=["GET"])
+@login_required
+def get_exercises():
+    muscle_group_id = request.args.get("muscle_group_id")
+    muscle_group = MuscleGroups.query.get(muscle_group_id)
+    return jsonify(muscle_group.exercises)
 
 
 # Error Pages

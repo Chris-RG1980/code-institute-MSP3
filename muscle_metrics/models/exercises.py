@@ -1,13 +1,22 @@
 import json
+from dataclasses import dataclass
+
+from sqlalchemy.orm import relationship
 
 from muscle_metrics import db
 
 
+@dataclass
 class Exercises(db.Model):
+    id: int
+    name: str
+
     __tablename__ = "exercises"
     id = db.Column(db.Integer(), autoincrement=True, primary_key=True)
     name = db.Column(db.String(), nullable=False)
     muscle_group_id = db.Column(db.Integer(), db.ForeignKey("muscle_groups.id"))
+
+    progress = relationship("Progress", back_populates="exercise")
 
     def __repr__(self):
         return (self.id, self.name, self.muscle_group_id)

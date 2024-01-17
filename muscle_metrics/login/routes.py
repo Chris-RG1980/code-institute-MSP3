@@ -19,7 +19,7 @@ def login():
             if bcrypt.check_password_hash(user.password, form.password.data):
                 login_user(user)
                 flash("Login successful", "success")
-                return redirect(url_for("get_muscle_groups"))
+                return redirect(url_for("log"))
             else:
                 flash("Incorrect email or password. Please try again!", "error")
         else:

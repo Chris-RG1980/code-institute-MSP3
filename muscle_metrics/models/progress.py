@@ -1,9 +1,11 @@
 import uuid
 
 from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 
 from muscle_metrics import db
+from muscle_metrics.models import exercises
 
 
 class Progress(db.Model):
@@ -16,13 +18,15 @@ class Progress(db.Model):
     #     nullable=False,
     # )
     exercise_id = db.Column(db.Integer(), db.ForeignKey("exercises.id"), nullable=False)
-    weight = db.Column(db.Integer(), nullable=False)
+    weight = db.Column(db.Float(), nullable=False)
     reps = db.Column(db.Integer(), nullable=False)
     sets = db.Column(db.Integer(), nullable=False)
     notes = db.Column(db.String(), nullable=True)
     date_added = db.Column(
         db.DateTime(timezone=True), onupdate=func.now(), nullable=False
     )
+
+    exercise = relationship("Exercises", back_populates="progress")
 
     def __repr__(self):
         return (

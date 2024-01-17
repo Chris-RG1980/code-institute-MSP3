@@ -7,18 +7,22 @@
       <div class="card card-border">
         <div class="card-content">
           <h2 class="form-title text-red"><strong>Exercise Log</strong></h2>
-          <form method="POST" action="{{ url_for('get_muscle_groups') }}">
+          <form method="POST" action="{{ url_for('log') }}">
             {{ form.hidden_tag() }}
             <div class="form-divider">
-              <label>Select an exercise from the muscle groups below. </label>
-              {% for muscle_group in muscle_groups %}
-                <select class="browser-default" name="{{ muscle_group.name }}">
-                  <option value="{{ muscle_group.name }}" disabled selected>{{ muscle_group.name }}</option>
-                  {% for exercise in muscle_group.exercises %}
-                    <option value="{{ exercise.id }}">{{ exercise.name }}</option>
-                  {% endfor %}
-                </select>
-              {% endfor %}
+              <label>Select a muscle group</label>
+              <select class="browser-default" id="muscleGroups" name="muscle_group">
+                <option value="" disabled selected>Select a muscle group</option>
+                {% for muscle_group in muscle_groups %}
+                  <option value="{{ muscle_group.id }}">{{ muscle_group.name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="form-divider">
+              <label>Select an exercise</label>
+              <select class="browser-default" id="exercises" name="exercise" disabled>
+                <option value="" disabled selected>Select an exercise</option>
+              </select>
             </div>
             <div class="form-divider">
               {{ form.weight.label (class="custom-label") }}
