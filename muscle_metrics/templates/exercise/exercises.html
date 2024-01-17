@@ -21,6 +21,11 @@
               {% endfor %}
             </div>
             <div class="form-divider">
+              {{ form.weight.label (class="custom-label") }}
+              {{ form.weight() }}
+              <sub>{{ form.weight.description }}</sub>
+            </div>
+            <div class="form-divider">
               <div class="center-align">
                 <button type="submit" name="submit" class="waves-effect waves-light btn-large btn-red">Add Exercise</button>
               </div>
