@@ -1,7 +1,14 @@
 from flask import flash, redirect, render_template, request, url_for
 from flask_login import login_required, logout_user
 from flask_wtf import FlaskForm
-from wtforms import DateField, DecimalField, IntegerField, StringField, SubmitField
+from wtforms import (
+    DateField,
+    DecimalField,
+    IntegerField,
+    StringField,
+    SubmitField,
+    TextAreaField,
+)
 from wtforms.validators import InputRequired
 
 from muscle_metrics import app, db, login_manager, mongo
@@ -35,7 +42,7 @@ class ExerciseLogForm(FlaskForm):
         [InputRequired()],
         description="Enter the number of reps per set completed",
     )
-    notes = StringField("Notes", render_kw={"placeholder": "Enter your notes here!"})
+    notes = TextAreaField("Notes", render_kw={"placeholder": "Enter your notes here!"})
     submit = SubmitField("Add Exercise")
 
 
