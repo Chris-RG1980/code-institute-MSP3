@@ -19,9 +19,9 @@ class User(db.Model, UserMixin):
     last_modified_date_time = db.Column(
         db.DateTime(timezone=True), onupdate=func.now(), nullable=False
     )
-    # progress = db.relationship(
-    #     "Progress", backref="users", cascade="all, delete", lazy=True
-    # )
+    progress = db.relationship(
+        "Progress", backref="user", cascade="all, delete", lazy=True
+    )
 
     def __repr__(self):
         return (

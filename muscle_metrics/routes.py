@@ -1,13 +1,24 @@
-from flask import flash, redirect, render_template, request, url_for
-from flask_login import login_required, logout_user
+import sys
+from datetime import datetime
+
+from flask import flash, jsonify, redirect, render_template, request, url_for
+from flask_login import current_user, login_required, logout_user
 from flask_wtf import FlaskForm
-from wtforms import DateField, DecimalField, IntegerField, SubmitField
+from wtforms import (
+    DateField,
+    DecimalField,
+    IntegerField,
+    StringField,
+    SubmitField,
+    TextAreaField,
+)
 from wtforms.validators import InputRequired
 
 from muscle_metrics import app, db, login_manager, mongo
 from muscle_metrics.models import (
     Exercises,
     MuscleGroups,
+    Progress,
     User,
     exercises,
     muscle_groups,
@@ -20,9 +31,22 @@ from .register import routes
 
 
 class ExerciseLogForm(FlaskForm):
-    weight = DecimalField([InputRequired()], places=2, rounding=None)
-    sets = IntegerField([InputRequired()])
-    reps = IntegerField([InputRequired()])
+    weight = DecimalField(
+        "Weight",
+        [InputRequired()],
+        places=2,
+        rounding=None,
+        description="Enter weight in kilograms",
+    )
+    sets = IntegerField(
+        "Sets", [InputRequired()], description="Enter the number of sets completed"
+    )
+    reps = IntegerField(
+        "Reps",
+        [InputRequired()],
+        description="Enter the number of reps per set completed",
+    )
+    notes = TextAreaField("Notes", render_kw={"placeholder": "Enter your notes here!"})
     submit = SubmitField("Add Exercise")
 
 
@@ -40,10 +64,28 @@ def logout():
     return redirect(url_for("home"))
 
 
-@app.route("/get_muscle_groups", methods=["GET"])
+@app.route("/log", methods=["GET", "POST"])
 @login_required
-def get_muscle_groups():
+def log():
     form = ExerciseLogForm()
+
+    if form.validate_on_submit():
+        progress = Progress(
+            user_id=current_user.id,
+            exercise_id=request.form.get("exercise"),
+            weight=form.weight.data,
+            reps=form.reps.data,
+            sets=form.sets.data,
+            notes=form.notes.data,
+            date_added=datetime.now(),
+        )
+
+        db.session.add(progress)
+        db.session.commit()
+
+        flash("Exercise added successfully!", "success")
+        return redirect(url_for("log"))
+
     muscle_groups = MuscleGroups.query.all()
     exercises = Exercises.query.all()
 
@@ -53,6 +95,14 @@ def get_muscle_groups():
         muscle_groups=muscle_groups,
         exercises=exercises,
     )
+
+
+@app.route("/get_exercises", methods=["GET"])
+@login_required
+def get_exercises():
+    muscle_group_id = request.args.get("muscle_group_id")
+    muscle_group = MuscleGroups.query.get(muscle_group_id)
+    return jsonify(muscle_group.exercises)
 
 
 # Error Pages

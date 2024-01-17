@@ -28,7 +28,7 @@
           <ul class="right hide-on-med-and-down">
             <li><a href="{{ url_for('home') }}">Home</a></li>
             {% if current_user.is_authenticated %}
-              <li><a class="white-text" href="{{ url_for('get_muscle_groups')}}">Log Exercises</a></li>
+              <li><a class="white-text" href="{{ url_for('log')}}">Log Exercises</a></li>
               <li><a class="white-text" href="">Dashboard</a></li>
               <li><a href="{{ url_for('edit_profile', id=current_user.id) }}"><i class="fas fa-solid fa-user"></i></a></li>
             {% else %}
@@ -41,7 +41,7 @@
       <ul class="sidenav" id="mobile-demo">
         <li><a href="{{ url_for('home') }}">Home</a></li>
         {% if current_user.is_authenticated %}
-          <li><a href="{{ url_for('get_muscle_groups')}}">Log Exercises</a></li>
+          <li><a href="{{ url_for('log')}}">Log Exercises</a></li>
           <li><a href="">Dashboard</a></li>
           <li><a href="{{ url_for('edit_profile', id=current_user.id) }}"><i class="fas fa-solid fa-user"></i></a></li>
         {% else %}
@@ -83,7 +83,7 @@
             <ul>
               <li><a class="white-text" href="{{ url_for('home') }}">Home</a></li>
               {% if current_user.is_authenticated %}
-                <li><a class="white-text" href="{{ url_for('get_muscle_groups')}}">Log Exercises</a></li>
+                <li><a class="white-text" href="{{ url_for('log')}}">Log Exercises</a></li>
                 <li><a class="white-text" href="">Dashboard</a></li>
               {% else %}
                 <li><a class="white-text" href="{{ url_for('login') }}">Login</a></li>
@@ -97,7 +97,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="{{ url_for('static', filename='js/script.js')}}"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     {% block scripts %}
     {% endblock %}
   </body>
