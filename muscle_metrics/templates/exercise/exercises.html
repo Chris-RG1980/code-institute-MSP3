@@ -7,6 +7,25 @@
       <div class="card card-border">
         <div class="card-content">
           <h2 class="form-title text-red"><strong>Exercise Log</strong></h2>
+          <form method="POST" action="{{ url_for('get_muscle_groups') }}">
+            {{ form.hidden_tag() }}
+            <div class="form-divider">
+              <label>Select an exercise from the muscle groups below. </label>
+              {% for muscle_group in muscle_groups %}
+                <select class="browser-default" name="{{ muscle_group.name }}">
+                  <option value="{{ muscle_group.name }}" disabled selected>{{ muscle_group.name }}</option>
+                  {% for exercise in muscle_group.exercises %}
+                    <option value="{{ exercise.id }}">{{ exercise.name }}</option>
+                  {% endfor %}
+                </select>
+              {% endfor %}
+            </div>
+            <div class="form-divider">
+              <div class="center-align">
+                <button type="submit" name="submit" class="waves-effect waves-light btn-large btn-red">Add Exercise</button>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
