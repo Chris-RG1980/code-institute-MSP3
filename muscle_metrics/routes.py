@@ -1,13 +1,29 @@
-from flask import flash, redirect, render_template, url_for
+from flask import flash, redirect, render_template, request, url_for
 from flask_login import login_required, logout_user
+from flask_wtf import FlaskForm
+from wtforms import DateField, DecimalField, IntegerField, SubmitField
+from wtforms.validators import InputRequired
 
 from muscle_metrics import app, db, login_manager, mongo
-from muscle_metrics.models import MuscleGroups, User
+from muscle_metrics.models import (
+    Exercises,
+    MuscleGroups,
+    User,
+    exercises,
+    muscle_groups,
+)
 
 from .home import routes
 from .login import routes
 from .profile import routes
 from .register import routes
+
+
+class ExerciseLogForm(FlaskForm):
+    weight = DecimalField([InputRequired()], places=2, rounding=None)
+    sets = IntegerField([InputRequired()])
+    reps = IntegerField([InputRequired()])
+    submit = SubmitField("Add Exercise")
 
 
 @login_manager.user_loader
@@ -27,8 +43,16 @@ def logout():
 @app.route("/get_muscle_groups", methods=["GET"])
 @login_required
 def get_muscle_groups():
+    form = ExerciseLogForm()
     muscle_groups = MuscleGroups.query.all()
-    return render_template("exercise/exercises.html", muscle_groups=muscle_groups)
+    exercises = Exercises.query.all()
+
+    return render_template(
+        "exercise/exercises.html",
+        form=form,
+        muscle_groups=muscle_groups,
+        exercises=exercises,
+    )
 
 
 # Error Pages
