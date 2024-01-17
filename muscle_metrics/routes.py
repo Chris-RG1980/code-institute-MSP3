@@ -20,10 +20,10 @@ from .register import routes
 
 
 class ExerciseLogForm(FlaskForm):
-    weight = DecimalField([InputRequired()], places=2, rounding=None)
-    sets = IntegerField([InputRequired()])
-    reps = IntegerField([InputRequired()])
-    notes = StringField
+    weight = DecimalField("Weight", [InputRequired()], places=2, rounding=None)
+    sets = IntegerField("Sets", [InputRequired()])
+    reps = IntegerField("Reps", [InputRequired()])
+    notes = StringField("Notes")
     submit = SubmitField("Add Exercise")
 
 
