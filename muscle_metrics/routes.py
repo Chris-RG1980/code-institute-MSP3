@@ -1,7 +1,7 @@
 from flask import flash, redirect, render_template, request, url_for
 from flask_login import login_required, logout_user
 from flask_wtf import FlaskForm
-from wtforms import DateField, DecimalField, IntegerField, SubmitField
+from wtforms import DateField, DecimalField, IntegerField, StringField, SubmitField
 from wtforms.validators import InputRequired
 
 from muscle_metrics import app, db, login_manager, mongo
@@ -23,6 +23,7 @@ class ExerciseLogForm(FlaskForm):
     weight = DecimalField([InputRequired()], places=2, rounding=None)
     sets = IntegerField([InputRequired()])
     reps = IntegerField([InputRequired()])
+    notes = StringField
     submit = SubmitField("Add Exercise")
 
 

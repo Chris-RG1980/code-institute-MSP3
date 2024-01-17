@@ -32,5 +32,6 @@ class Progress(db.Model):
             self.weight,
             self.reps,
             self.sets,
+            self.notes,
             self.date_added,
         )
