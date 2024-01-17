@@ -15,12 +15,11 @@ class Progress(db.Model):
     #     default=uuid.uuid4,
     #     nullable=False,
     # )
-    exercise_id = db.Column(
-        db.Integer(), db.ForeignKey("exercises.id", ondelete="CASCADE"), nullable=False
-    )
+    exercise_id = db.Column(db.Integer(), db.ForeignKey("exercises.id"), nullable=False)
     weight = db.Column(db.Integer(), nullable=False)
     reps = db.Column(db.Integer(), nullable=False)
     sets = db.Column(db.Integer(), nullable=False)
+    notes = db.Column(db.String(), nullable=True)
     date_added = db.Column(
         db.DateTime(timezone=True), onupdate=func.now(), nullable=False
     )
