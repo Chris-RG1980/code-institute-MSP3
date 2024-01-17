@@ -2,7 +2,7 @@ import sys
 from datetime import datetime
 
 from flask import flash, jsonify, redirect, render_template, request, url_for
-from flask_login import login_required, logout_user
+from flask_login import current_user, login_required, logout_user
 from flask_wtf import FlaskForm
 from wtforms import (
     DateField,
@@ -70,9 +70,8 @@ def log():
     form = ExerciseLogForm()
 
     if form.validate_on_submit():
-        print(request.form, file=sys.stderr)
-
         progress = Progress(
+            user_id=current_user.id,
             exercise_id=request.form.get("exercise"),
             weight=form.weight.data,
             reps=form.reps.data,
@@ -85,6 +84,7 @@ def log():
         db.session.commit()
 
         flash("Exercise added successfully!", "success")
+        return redirect(url_for("log"))
 
     muscle_groups = MuscleGroups.query.all()
     exercises = Exercises.query.all()
