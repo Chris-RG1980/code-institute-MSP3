@@ -8,6 +8,7 @@ from wtforms import (
     DateField,
     DecimalField,
     IntegerField,
+    SelectField,
     StringField,
     SubmitField,
     TextAreaField,
@@ -31,6 +32,16 @@ from .register import routes
 
 
 class ExerciseLogForm(FlaskForm):
+    muscle_group = SelectField(
+        "Muscle Group",
+        choices=[(0, "Select a muscle group")],
+        coerce=int,
+    )
+    exercises = SelectField(
+        "Exercises",
+        choices=[(0, "Select an exercise")],
+        coerce=int,
+    )
     weight = DecimalField(
         "Weight",
         [InputRequired()],
@@ -69,10 +80,25 @@ def logout():
 def log():
     form = ExerciseLogForm()
 
+    muscle_groups = MuscleGroups.query.all()
+    form.muscle_group.choices = [(0, "Select a muscle group")] + [
+        (mg.id, mg.name) for mg in muscle_groups
+    ]
+
+    if request.method == "POST":
+        selected_muscle_group = request.form.get("muscle_group")
+        exercises = Exercises.query.filter_by(
+            muscle_group_id=selected_muscle_group
+        ).all()
+        form.exercises.choices = [(0, "Select an exercise")] + [
+            (ex.id, ex.name) for ex in exercises
+        ]
+
     if form.validate_on_submit():
         progress = Progress(
             user_id=current_user.id,
-            exercise_id=request.form.get("exercise"),
+            muscle_group_id=form.muscle_group.data,
+            exercise_id=form.exercises.data,
             weight=form.weight.data,
             reps=form.reps.data,
             sets=form.sets.data,
