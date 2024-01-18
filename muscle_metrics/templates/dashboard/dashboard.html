@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <h2 class="form-title text-red center-align"><strong>My Exercise Data</strong></h2>
+  <div class="row equal-height-row">
+    {% for progress in user_progress %}
+      <div class="col s12 m6 l4 xl3"> 
+        <div class="card"> 
+          <div class="card-content teal white-text">
+            <span class="card-title">{{ progress.muscle_group.name }}</span> 
+            <p><strong>Exercise:</strong> {{ progress.exercise.name }}</p>
+            <p><strong>Weight:</strong> {{ progress.weight }} kg</p>
+            <p><strong>Reps:</strong> {{ progress.reps }}</p>
+            <p><strong>Sets:</strong> {{ progress.sets }}</p>
+            {% if progress.notes %}
+              <p><strong>Notes:</strong> {{ progress.notes }}</p>
+            {% endif %}
+            <p class="grey-text text-lighten-4">{{ progress.date_added.strftime('%d-%m-%Y') }}</p>
+          </div>
+        </div>
+      </div>
+      {% if loop.index is divisibleby 4 %}
+        </div><div class="row equal-height-row"> 
+      {% endif %}
+    {% else %}
+      <div class="col s12">
+        <p class="center-align white-text">No exercise logs found.</p>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

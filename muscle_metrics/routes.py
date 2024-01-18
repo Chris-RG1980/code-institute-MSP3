@@ -1,8 +1,8 @@
 from flask import flash, redirect, render_template, url_for
-from flask_login import login_required, logout_user
+from flask_login import current_user, login_required, logout_user
 
 from muscle_metrics import app, db, login_manager
-from muscle_metrics.models import User
+from muscle_metrics.models import Progress, User
 
 from .exercise_log import routes
 from .home import routes
@@ -42,3 +42,16 @@ def unauthorised_access(e):
 @app.errorhandler(500)
 def internal_server_error(e):
     return render_template("500.html"), 500
+
+
+@app.route("/dashboard", methods=["GET", "POST"])
+@login_required
+def dashboard():
+    user_id = current_user.id
+    user_progress = (
+        Progress.query.filter_by(user_id=user_id)
+        .order_by(Progress.date_added.desc())
+        .all()
+    )
+
+    return render_template("dashboard/dashboard.html", user_progress=user_progress)

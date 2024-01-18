@@ -30,6 +30,7 @@ class Progress(db.Model):
     )
 
     exercise = relationship("Exercises", back_populates="progress")
+    muscle_group = relationship("MuscleGroups", backref="progress")
 
     def __repr__(self):
         return (

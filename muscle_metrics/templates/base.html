@@ -29,7 +29,7 @@
             <li><a href="{{ url_for('home') }}">Home</a></li>
             {% if current_user.is_authenticated %}
               <li><a class="white-text" href="{{ url_for('log')}}">Log Exercises</a></li>
-              <li><a class="white-text" href="">Dashboard</a></li>
+              <li><a class="white-text" href="{{ url_for('dashboard')}}">Dashboard</a></li>
               <li><a href="{{ url_for('edit_profile', id=current_user.id) }}"><i class="fas fa-solid fa-user"></i></a></li>
             {% else %}
               <li><a href="{{ url_for('login') }}">Login</a></li>
@@ -42,7 +42,7 @@
         <li><a href="{{ url_for('home') }}">Home</a></li>
         {% if current_user.is_authenticated %}
           <li><a href="{{ url_for('log')}}">Log Exercises</a></li>
-          <li><a href="">Dashboard</a></li>
+          <li><a href="{{ url_for('dashboard')}}">Dashboard</a></li>
           <li><a href="{{ url_for('edit_profile', id=current_user.id) }}"><i class="fas fa-solid fa-user"></i></a></li>
         {% else %}
           <li><a href="{{ url_for('login') }}">Login</a></li>
@@ -84,7 +84,7 @@
               <li><a class="white-text" href="{{ url_for('home') }}">Home</a></li>
               {% if current_user.is_authenticated %}
                 <li><a class="white-text" href="{{ url_for('log')}}">Log Exercises</a></li>
-                <li><a class="white-text" href="">Dashboard</a></li>
+                <li><a class="white-text" href="{{ url_for('dashboard')}}">Dashboard</a></li>
               {% else %}
                 <li><a class="white-text" href="{{ url_for('login') }}">Login</a></li>
                 <li><a class="white-text" href="{{ url_for('register') }}">Register</a></li>
