@@ -10,19 +10,18 @@
           <form method="POST" action="{{ url_for('log') }}">
             {{ form.hidden_tag() }}
             <div class="form-divider">
-              <label>Select a muscle group</label>
-              <select class="browser-default" id="muscleGroups" name="muscle_group">
-                <option value="" disabled selected>Select a muscle group</option>
-                {% for muscle_group in muscle_groups %}
-                  <option value="{{ muscle_group.id }}">{{ muscle_group.name }}</option>
-                {% endfor %}
-              </select>
+              {{ form.muscle_group.label(class="custom-label") }}
+              {{ form.muscle_group(class="browser-default", id="muscleGroups") }}
+              {% if form.muscle_group.errors %}
+                {{ validationError(form.muscle_group.errors) }}
+              {% endif %}
             </div>
             <div class="form-divider">
-              <label>Select an exercise</label>
-              <select class="browser-default" id="exercises" name="exercise" disabled>
-                <option value="" disabled selected>Select an exercise</option>
-              </select>
+              {{ form.exercises.label(class="custom-label") }}
+              {{ form.exercises(class="browser-default", id="exercises", disabled=true) }}
+              {% if form.exercises.errors %}
+                {{ validationError(form.exercises.errors) }}
+              {% endif %}
             </div>
             <div class="form-divider">
               {{ form.weight.label (class="custom-label") }}

@@ -17,6 +17,9 @@ class Progress(db.Model):
         db.ForeignKey("users.id", ondelete="CASCADE"),
         nullable=False,
     )
+    muscle_group_id = db.Column(
+        db.Integer(), db.ForeignKey("muscle_groups.id"), nullable=False
+    )
     exercise_id = db.Column(db.Integer(), db.ForeignKey("exercises.id"), nullable=False)
     weight = db.Column(db.Float(), nullable=False)
     reps = db.Column(db.Integer(), nullable=False)
@@ -32,6 +35,7 @@ class Progress(db.Model):
         return (
             self.id,
             self.user_id,
+            self.muscle_group_id,
             self.exercise_id,
             self.weight,
             self.reps,
