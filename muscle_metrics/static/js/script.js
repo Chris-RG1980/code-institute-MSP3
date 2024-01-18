@@ -32,5 +32,32 @@ $("#muscleGroups").change(function() {
       exerciseSelect.prop('disabled', 'disabled');
     }
   });
+});
 
+$(document).ready(function() {
+  var maxHeight = 0;
+
+  // Find the tallest card
+  $('.card').each(function() {
+      var thisHeight = $(this).height();
+      if (thisHeight > maxHeight) {
+          maxHeight = thisHeight;
+      }
+  });
+
+  // Set all cards to the height of the tallest card
+  $('.card').height(maxHeight);
+});
+
+$(window).resize(function() {
+  // Reset the height
+  $('.card').height('auto');
+
+  // Then apply the equal height logic
+  var maxHeight = 0;
+  $('.card').each(function() {
+  var thisHeight = $(this).height();
+  if (thisHeight > maxHeight) { maxHeight = thisHeight; }
+  });
+  $('.card').height(maxHeight);
 });
