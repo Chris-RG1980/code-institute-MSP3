@@ -221,6 +221,16 @@ blockquote {
   flex-grow: 1;
 }
 
+.pencil-bg {
+  box-shadow: none;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 /* Media Queries */
 @media screen and (max-width: 1050px) {
   .heading h2 {
@@ -247,4 +257,15 @@ blockquote {
   .card-container {
     max-width: 100%;
   }
+}
+
+.card-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.card-wrapper .card {
+  padding: 0;
+  margin: 0;
 }

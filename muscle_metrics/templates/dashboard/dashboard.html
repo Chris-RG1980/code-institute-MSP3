@@ -2,31 +2,34 @@
 {% block content %}
 <div class="container">
   <h2 class="form-title text-red center-align"><strong>My Exercise Data</strong></h2>
-  <div class="row equal-height-row">
-    {% for progress in user_progress %}
-      <div class="col s12 m6 l4 xl3"> 
-        <div class="card"> 
-          <div class="card-content teal white-text">
-            <span class="card-title">{{ progress.muscle_group.name }}</span> 
-            <p><strong>Exercise:</strong> {{ progress.exercise.name }}</p>
-            <p><strong>Weight:</strong> {{ progress.weight }} kg</p>
-            <p><strong>Reps:</strong> {{ progress.reps }}</p>
-            <p><strong>Sets:</strong> {{ progress.sets }}</p>
+  <div class="row">
+    <div class="card-wrapper">
+      {% for progress in user_progress %}
+
+        <div class="card exercise-card teal">
+          <div class="card-content white-text">
+            <div class="card-header">
+              <span class="card-title muscle-group-name">{{ progress.muscle_group.name }}</span>
+              <a href="{{ url_for('log_edit', progress_id=progress.id) }}" class="btn modal-trigger pencil-bg teal"><i class="fas fa-thin fa-pencil white-text"></i></a>
+            </div>
+            <p class="exercise-name"><strong>Exercise:</strong> {{ progress.exercise.name }}</p>
+            <p class="exercise-weight"><strong>Weight:</strong> {{ progress.weight }} kg</p> 
+            <p class="exercise-reps"><strong>Reps:</strong> {{ progress.reps }}</p> 
+            <p class="exercise-sets"><strong>Sets:</strong> {{ progress.sets }}</p>
             {% if progress.notes %}
-              <p><strong>Notes:</strong> {{ progress.notes }}</p>
+              <p class="exercise-notes"><strong>Notes:</strong> {{ progress.notes }}</p> 
             {% endif %}
-            <p class="grey-text text-lighten-4">{{ progress.date_added.strftime('%d-%m-%Y') }}</p>
+            <p><strong>Date Added:</strong> {{ progress.date_added.strftime('%d-%m-%Y') }}</p>
+            <input type="hidden" class="progress-id" value="{{ progress.id }}">
           </div>
         </div>
-      </div>
-      {% if loop.index is divisibleby 4 %}
-        </div><div class="row equal-height-row"> 
-      {% endif %}
-    {% else %}
-      <div class="col s12">
-        <p class="center-align white-text">No exercise logs found.</p>
-      </div>
-    {% endfor %}
+      
+      {% else %}
+        <div class="col s12">
+          <p class="center-align white-text">No exercise logs found.</p>
+        </div>
+      {% endfor %}
+    </div>
   </div>
 </div>
 {% endblock %}

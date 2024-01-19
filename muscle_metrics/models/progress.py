@@ -26,7 +26,10 @@ class Progress(db.Model):
     sets = db.Column(db.Integer(), nullable=False)
     notes = db.Column(db.String(), nullable=True)
     date_added = db.Column(
-        db.DateTime(timezone=True), onupdate=func.now(), nullable=False
+        db.DateTime(timezone=True), default=func.now(), nullable=False
+    )
+    date_modified = db.Column(
+        db.DateTime(timezone=True), onupdate=func.now(), nullable=True
     )
 
     exercise = relationship("Exercises", back_populates="progress")
@@ -43,4 +46,5 @@ class Progress(db.Model):
             self.sets,
             self.notes,
             self.date_added,
+            self.date_modified,
         )
