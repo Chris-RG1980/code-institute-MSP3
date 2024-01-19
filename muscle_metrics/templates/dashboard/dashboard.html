@@ -7,7 +7,10 @@
       <div class="col s12 m6 l4 xl3"> 
         <div class="card"> 
           <div class="card-content teal white-text">
-            <span class="card-title">{{ progress.muscle_group.name }}</span> 
+            <div class="card-header">
+              <span class="card-title">{{ progress.muscle_group.name }}</span> 
+              <a href="#exercise-modal" class="btn modal-trigger pencil-bg teal"><i class="fas fa-thin fa-pencil white-text"></i></a>
+            </div>
             <p><strong>Exercise:</strong> {{ progress.exercise.name }}</p>
             <p><strong>Weight:</strong> {{ progress.weight }} kg</p>
             <p><strong>Reps:</strong> {{ progress.reps }}</p>

@@ -221,6 +221,16 @@ blockquote {
   flex-grow: 1;
 }
 
+.pencil-bg {
+  box-shadow: none;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 /* Media Queries */
 @media screen and (max-width: 1050px) {
   .heading h2 {
