@@ -7,18 +7,18 @@
       <div class="card card-border">
         <div class="card-content">
           <h2 class="form-title text-red"><strong>Exercise Log</strong></h2>
-          <form method="POST" action="{{ url_for('log') }}">
+          <form method="POST" action="{{ url_for('log') if isNew else url_for('log_edit', progress_id=progress_id) }}">
             {{ form.hidden_tag() }}
             <div class="form-divider">
               {{ form.muscle_group.label(class="custom-label") }}
-              {{ form.muscle_group(class="browser-default", id="muscleGroups") }}
+              {{ form.muscle_group(class="browser-default disable-first-option", id="muscleGroups", autocomplete="off") }}
               {% if form.muscle_group.errors %}
                 {{ validationError(form.muscle_group.errors) }}
               {% endif %}
             </div>
             <div class="form-divider">
               {{ form.exercises.label(class="custom-label") }}
-              {{ form.exercises(class="browser-default", id="exercises", disabled=true) }}
+              {{ form.exercises(class="browser-default disable-first-option", id="exercises", disabled=isNew, autocomplete="off") }}
               {% if form.exercises.errors %}
                 {{ validationError(form.exercises.errors) }}
               {% endif %}
@@ -44,7 +44,7 @@
             </div>
             <div class="form-divider">
               <div class="center-align">
-                <button type="submit" name="submit" class="waves-effect waves-light btn-large btn-red">Add Exercise</button>
+                <button type="submit" name="submit" class="waves-effect waves-light btn-large btn-red">{{"Add" if isNew else "Save"}} Exercise</button>
               </div>
             </div>
           </form>

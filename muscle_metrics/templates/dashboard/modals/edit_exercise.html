@@ -2,7 +2,7 @@
 <div id="exercise-modal" class="modal">
   <div class="modal-content">
     <h4>Edit Exercise Log</h4>
-    <form id="edit-exercise-form" method="POST" action="{{ url_for('edit_log_route') }}">
+    <form id="edit-exercise-form" method="POST" action="{{ url_for('edit-exercise') }}">
       {{ edit_form.hidden_tag() }}
 
       <!-- Muscle Group Field -->
@@ -13,8 +13,8 @@
 
       <!-- Exercise Field -->
       <div class="form-divider">
-        {{ edit_form.exercise.label(class="custom-label") }}
-        {{ edit_form.exercise(class="browser-default", id="edit-exercise") }}
+        {{ edit_form.exercises.label(class="custom-label") }}
+        {{ edit_form.exercises(class="browser-default", id="edit-exercise") }}
       </div>
 
       <!-- Weight Field -->

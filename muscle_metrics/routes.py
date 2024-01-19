@@ -1,5 +1,8 @@
-from flask import flash, redirect, render_template, url_for
+from flask import flash, redirect, render_template, request, url_for
 from flask_login import current_user, login_required, logout_user
+from flask_wtf import FlaskForm
+from wtforms import DecimalField, IntegerField, SelectField, SubmitField, TextAreaField
+from wtforms.validators import InputRequired
 
 from muscle_metrics import app, db, login_manager
 from muscle_metrics.models import Progress, User
@@ -44,7 +47,7 @@ def internal_server_error(e):
     return render_template("500.html"), 500
 
 
-@app.route("/dashboard", methods=["GET", "POST"])
+@app.route("/dashboard", methods=["GET"])
 @login_required
 def dashboard():
     user_id = current_user.id

@@ -1,5 +1,7 @@
+import sys
 from datetime import datetime
 
+import flask
 from flask import flash, jsonify, redirect, render_template, request, url_for
 from flask_login import current_user, login_required
 
@@ -20,9 +22,8 @@ def log():
     ]
 
     if request.method == "POST":
-        selected_muscle_group = request.form.get("muscle_group")
         exercises = Exercises.query.filter_by(
-            muscle_group_id=selected_muscle_group
+            muscle_group_id=form.muscle_group.data
         ).all()
         form.exercises.choices = [(0, "Select an exercise")] + [
             (ex.id, ex.name) for ex in exercises
@@ -46,14 +47,8 @@ def log():
         flash("Exercise added successfully!", "success")
         return redirect(url_for("log"))
 
-    muscle_groups = MuscleGroups.query.all()
-    exercises = Exercises.query.all()
-
     return render_template(
-        "exercise/exercises.html",
-        form=form,
-        muscle_groups=muscle_groups,
-        exercises=exercises,
+        "exercise/exercises.html", form=form, isNew=True, progress_id=0
     )
 
 
@@ -63,3 +58,49 @@ def get_exercises():
     muscle_group_id = request.args.get("muscle_group_id")
     muscle_group = MuscleGroups.query.get(muscle_group_id)
     return jsonify(muscle_group.exercises)
+
+
+@app.route("/log/<int:progress_id>", methods=["GET", "POST"])
+@login_required
+def log_edit(progress_id):
+    progress = Progress.query.filter_by(id=progress_id, user_id=current_user.id).first()
+
+    if not progress:
+        flash(
+            "Exercise log not found or you do not have permission to edit it.", "error"
+        )
+        return redirect(url_for("log"))
+
+    form = ExerciseLogForm(obj=progress if flask.request.method == "GET" else None)
+
+    # Create the muscle group options
+    muscle_groups = MuscleGroups.query.all()
+    form.muscle_group.choices = [(0, "Select a muscle group")] + [
+        (mg.id, mg.name) for mg in muscle_groups
+    ]
+
+    # Create the exercise options
+    exercises = Exercises.query.filter_by(
+        muscle_group_id=progress.muscle_group_id
+    ).all()
+    form.exercises.choices = [(0, "Select an exercise")] + [
+        (ex.id, ex.name) for ex in exercises
+    ]
+
+    if flask.request.method == "POST":
+        if form.validate_on_submit():
+            progress.muscle_group_id = form.muscle_group.data
+            progress.exercise_id = form.exercises.data
+            progress.weight = form.weight.data
+            progress.sets = form.sets.data
+            progress.reps = form.reps.data
+            progress.notes = form.notes.data
+            db.session.commit()
+            flash("Exercise log updated successfully!", "success")
+    else:
+        form.muscle_group.data = progress.muscle_group_id
+        form.exercises.data = progress.exercise_id
+
+    return render_template(
+        "exercise/exercises.html", form=form, isNew=False, progress_id=progress_id
+    )
