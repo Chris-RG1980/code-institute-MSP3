@@ -10,7 +10,8 @@
           <div class="card-content white-text">
             <div class="card-header">
               <span class="card-title muscle-group-name">{{ progress.muscle_group.name }}</span>
-              <a href="{{ url_for('log_edit', progress_id=progress.id) }}" class="btn modal-trigger pencil-bg teal"><i class="fas fa-thin fa-pencil white-text"></i></a>
+              <a href="{{ url_for('log_edit', progress_id=progress.id) }}" class="btn modal-trigger pencil-bg teal margin-left"><i class="fas fa-thin fa-pencil white-text"></i></a>
+              <a href="{{ url_for('log_delete', progress_id=progress.id) }}" class="btn modal-trigger pencil-bg teal"><i class="fas fa-solid fa-trash-can white-text"></i></a>
             </div>
             <p class="exercise-name"><strong>Exercise:</strong> {{ progress.exercise.name }}</p>
             <p class="exercise-weight"><strong>Weight:</strong> {{ progress.weight }} kg</p> 
