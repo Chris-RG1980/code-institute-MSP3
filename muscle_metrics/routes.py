@@ -7,6 +7,7 @@ from wtforms.validators import InputRequired
 from muscle_metrics import app, db, login_manager
 from muscle_metrics.models import Progress, User
 
+from .dashboard import routes
 from .exercise_log import routes
 from .home import routes
 from .login import routes
@@ -45,16 +46,3 @@ def unauthorised_access(e):
 @app.errorhandler(500)
 def internal_server_error(e):
     return render_template("500.html"), 500
-
-
-@app.route("/dashboard", methods=["GET"])
-@login_required
-def dashboard():
-    user_id = current_user.id
-    user_progress = (
-        Progress.query.filter_by(user_id=user_id)
-        .order_by(Progress.date_added.desc())
-        .all()
-    )
-
-    return render_template("dashboard/dashboard.html", user_progress=user_progress)

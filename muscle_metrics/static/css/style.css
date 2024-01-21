@@ -231,6 +231,20 @@ blockquote {
   align-items: center;
 }
 
+.margin-bttm {
+  margin-bottom: 10px;
+}
+
+.chart-pos {
+  max-height: 250px;
+  padding: 5px;
+}
+
+.title {
+  font-size: 2rem;
+  text-align: center;
+}
+
 /* Media Queries */
 @media screen and (max-width: 1050px) {
   .heading h2 {
