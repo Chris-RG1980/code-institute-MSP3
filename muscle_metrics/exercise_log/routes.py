@@ -104,3 +104,19 @@ def log_edit(progress_id):
     return render_template(
         "exercise/exercises.html", form=form, isNew=False, progress_id=progress_id
     )
+
+
+@app.route("/log/<int:progress_id>/delete", methods=["GET", "POST"])
+@login_required
+def log_delete(progress_id):
+    progress = Progress.query.filter_by(id=progress_id, user_id=current_user.id).first()
+
+    try:
+        db.session.delete(progress)
+        db.session.commit()
+        flash("Exercise Deleted Successfully!", "success")
+        return redirect(url_for("dashboard"))
+    except:
+        flash("There was a problem deleting the exercise, try again..", "error")
+
+    return redirect(url_for("dashboard"))
