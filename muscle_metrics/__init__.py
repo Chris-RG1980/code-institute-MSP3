@@ -12,7 +12,15 @@ if os.path.exists("env.py"):
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DB_URL")
+if os.environ.get("DEVELOPMENT") == "True":
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DB_URL")
+else:
+    Uri = os.environ.get(
+        "postgres://lxnsjloe:LGs5FtRt4zwR7htG4R0iL0o2e1lAD_LV@trumpet.db.elephantsql.com/lxnsjloe"
+    )
+if Uri.startswith("postgres://"):
+    Uri = Uri.replace("postgres://", "postgresql://", 1)
+app.config["SQLALCHEMY_DATABASE_URI"] = Uri
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 
