@@ -52,6 +52,37 @@
 {% block scripts %}
 <script type="application/javascript">
   let muscleGroupChartElement = document.getElementById("muscleGroupChart");
+
+  Chart.register({
+  id: 'NoData',
+  afterDraw: function (chart) {
+    // you can use the previous examples "if" here instead if you want.
+    // This not only checks the dataset lenght but also the data in each set.
+    // If there is no data across all datasets, the message will display
+    if (
+      chart.data.datasets
+        .map((d) => d.data.length)
+        .reduce((p, a) => p + a, 0) === 0
+    ) {
+      const ctx = chart.ctx;
+      const width = chart.width;
+      const height = chart.height;
+      chart.clear();
+
+      ctx.save();
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      // you can specify a font if you want instead, this gets the font family from the body tag
+      ctx.font = `2.5rem ${window.getComputedStyle(document.body).fontFamily}`;
+      // you can omit this or use your own logic to adjust the font color.
+      // `prefersDark` is a custom property I have
+      ctx.fillStyle = prefersDark ? 'white' : 'black';
+      ctx.fillText('No data to display', width / 2, height / 2);
+      ctx.restore();
+    }
+  },
+});
+
   const muscleGroupDoughnutChart = new Chart(muscleGroupChartElement, {
     type: 'pie',
     data: {
@@ -68,45 +99,8 @@
   ],
     hoverOffset: 4
       }]
-    options: {
-      plugins: {
-        emptyDoughnut: {
-          color: 'rgba(255, 128, 0, 0.5)',
-          width: 2,
-          radiusDecrease: 20
-        }
-      }
-    },
-    plugins: [plugin]
     }
   });
-
-  const plugin = {
-  id: 'emptyDoughnut',
-  afterDraw(chart, args, options) {
-    const {datasets} = chart.data;
-    const {color, width, radiusDecrease} = options;
-    let hasData = false;
-
-    for (let i = 0; i < datasets.length; i += 1) {
-      const dataset = datasets[i];
-      hasData |= dataset.data.length > 0;
-    }
-
-    if (!hasData) {
-      const {chartArea: {left, top, right, bottom}, ctx} = chart;
-      const centerX = (left + right) / 2;
-      const centerY = (top + bottom) / 2;
-      const r = Math.min(right - left, bottom - top) / 2;
-
-      ctx.beginPath();
-      ctx.lineWidth = width || 2;
-      ctx.strokeStyle = color || 'rgba(255, 128, 0, 0.5)';
-      ctx.arc(centerX, centerY, (r - radiusDecrease || 0), 0, 2 * Math.PI);
-      ctx.stroke();
-    }
-  }
-};
 
   let exerciseNumberChartElement = document.getElementById("exerciseNumberChart");
   const exerciseNumberChart = new Chart(exerciseNumberChartElement, {
