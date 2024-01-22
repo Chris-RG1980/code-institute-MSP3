@@ -57,7 +57,7 @@
     type: 'pie',
     data: {
       labels: {{ muscleGroupChartLabels | tojson}},
-    datasets: [{
+  datasets: [{
     data: {{ muscleGroupChartValues | tojson}},
     backgroundColor: [
     'rgb(255, 99, 132)',
@@ -69,7 +69,7 @@
   ],
     hoverOffset: 4
       }]
-    },
+    }
   });
 
   let exerciseNumberChartElement = document.getElementById("exerciseNumberChart");
@@ -114,5 +114,6 @@
       }
     },
   });
+
 </script>
 {% endblock %}
