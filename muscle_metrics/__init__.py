@@ -15,15 +15,15 @@ app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 if os.environ.get("DEVELOPMENT") == "True":
     app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DB_URL")
 else:
-    Uri = os.environ.get("DATABASE_URL")
-if Uri.startswith("postgres://"):
-    Uri = Uri.replace("postgres://", "postgresql://", 1)
-app.config["SQLALCHEMY_DATABASE_URI"] = Uri
-app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
-app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+    uri = os.environ.get("DATABASE_URL")
+if uri.startswith("postgres://"):
+    uri = uri.replace("postgres://", "postgresql://", 1)
+app.config["SQLALCHEMY_DATABASE_URI"] = uri
+# app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
+# app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 
 db = SQLAlchemy(app)
-mongo = PyMongo(app)
+# mongo = PyMongo(app)
 bcrypt = Bcrypt(app)
 # Login
 login_manager = LoginManager()
