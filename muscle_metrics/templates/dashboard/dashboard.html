@@ -53,11 +53,31 @@
 <script type="application/javascript">
   let muscleGroupChartElement = document.getElementById("muscleGroupChart");
 
+  // noData plugin block
+  const noData = {
+    id: 'noData',
+    afterDatasetsDraw: ((chart, args, plugins) => {
+      const {ctx, data, chartArea: {top, bottom, left, right, width, height } } = chart;
+
+      ctx.save();
+
+      if (muscleGroupDoughnutChart.datasets.length === 0){
+        ctx.fillStyle = 'rgba(102, 102, 102, 0.5)';
+        ctx.fillRect(left, top, width, height);
+
+        ctx.font = 'bold 20px sans-serif';
+        ctx.fillstyle = 'black';
+        ctx.textAlign = 'center';
+        ctx.fillText('No Data Available', left + width / 2, top + height / 2)
+      }
+    })
+  };
+
   const muscleGroupDoughnutChart = new Chart(muscleGroupChartElement, {
     type: 'pie',
     data: {
       labels: {{ muscleGroupChartLabels | tojson}},
-  datasets: [{
+    datasets: [{
     data: {{ muscleGroupChartValues | tojson}},
     backgroundColor: [
     'rgb(255, 99, 132)',
@@ -69,6 +89,9 @@
   ],
     hoverOffset: 4
       }]
+    },
+    options: {
+      plugins: [noData]
     }
   });
 
