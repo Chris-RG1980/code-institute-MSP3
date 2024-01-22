@@ -7,6 +7,12 @@ from . import db
 
 
 def add_muscle_group(name):
+    """
+    Add a new muscle group to the database if it doesn't already exist.
+
+    Returns:
+    The newly added or existing MuscleGroups object.
+    """
     existing_group = MuscleGroups.query.filter_by(name=name).first()
     if existing_group:
         return existing_group
@@ -17,6 +23,10 @@ def add_muscle_group(name):
 
 
 def populate_muscle_groups_from_json(file_path):
+    """
+    Populate the database with muscle groups from a JSON file.
+
+    """
     with open(file_path, "r") as file:
         muscle_groups_data = json.load(file)
 
@@ -29,6 +39,12 @@ def populate_muscle_groups_from_json(file_path):
 
 
 def add_exercises(name, muscle_group_id):
+    """
+    Add a new exercise to the database if it doesn't already exist.
+
+    Returns:
+    The newly added or existing Exercises object.
+    """
     existing_exercise = Exercises.query.filter_by(name=name).first()
     if existing_exercise:
         return existing_exercise
@@ -39,6 +55,10 @@ def add_exercises(name, muscle_group_id):
 
 
 def populate_exercises_from_json(file_path):
+    """
+    Populate the database with exercises from a JSON file.
+
+    """
     with open(file_path, "r") as file:
         exercises_data = json.load(file)
 

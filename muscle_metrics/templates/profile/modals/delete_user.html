@@ -1,17 +1,23 @@
-  <!--  Delete User Modal -->
-  <div id="delete-modal" class="modal">
-    <div class="modal-content">
-      <h2 class="form-title text-red"><strong>Delete Account</strong></h2>
-      <div>
-        <p class="center-align">Are you sure you want to delete your account?</p>
-        <p class="center-align">If you delete your account, you will permanently lose your profile and all workout data.</p>
+<!--  Delete User Modal -->
+<div id="delete-modal" class="modal">
+  <div class="modal-content">
+    <!-- Title of the modal -->
+    <h2 class="form-title text-red"><strong>Delete Account</strong></h2>
+
+    <div>
+      <!-- Warning message about account deletion -->
+      <p class="center-align">Are you sure you want to delete your account?</p>
+      <p class="center-align">If you delete your account, you will permanently lose your profile and all workout data.</p>
+    </div>
+
+    <!-- Footer of the modal -->
+    <div class="modal-footer">
+      <div class="center-align">
+        <!-- Cancel button, redirects to the edit_profile page -->
+        <a href="{{ url_for('edit_profile', id=current_user.id)}}" class="waves-effect waves-light btn-large cancel-btn black-text">Cancel</a>
+        <!-- Button to confirm account deletion, triggers the delete_user function -->
+        <a href="{{ url_for('delete_user', id=current_user.id)}}" class="waves-effect waves-light btn-large btn-red">Delete Account</a>
       </div>
-        <div class="modal-footer">
-          <div class="center-align">
-            <a href="{{ url_for('edit_profile', id=current_user.id)}}" class= "waves-effect waves-light btn-large cancel-btn black-text">Cancel</a>
-            <a href="{{ url_for('delete_user', id=current_user.id)}}"  class="waves-effect waves-light btn-large btn-red">Delete Account</a>
-          </div>
-        </div>
-      </form>
     </div>
   </div>
+</div>

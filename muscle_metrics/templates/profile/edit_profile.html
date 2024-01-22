@@ -1,61 +1,93 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} 
+{% block content %} 
+
 <div class="container">
   <div class="row">
     <div class="col s12 m12 l6 offset-l3">
       <div class="card card-border">
         <div class="card-content">
+          <!-- Profile title -->
           <h2 class="form-title text-red"><strong>Profile</strong></h2>
+
+          <!-- Displaying and editing the first name -->
           <div class="collection with-header">
             <div class="collection-header"><h6>First Name:</h6></div>
             <div class="collection-item display-item">
+              <!-- Shows current user's first name -->
               {{ current_user.first_name }}
+              <!-- Edit button for the first name, triggers a modal -->
               <a href="#fname-modal" class="btn modal-trigger remove-btn-style margin-left"><i class="fas fa-thin fa-pencil"></i></a>
             </div>
           </div>
+          <!-- Including the modal template for updating the first name -->
           {% include 'profile/modals/update_fname.html' %}
+
+          <!-- Displaying and editing the last name -->
           <div class="collection with-header">
             <div class="collection-header"><h6>Last Name:</h6></div>
             <div class="collection-item display-item">
+              <!-- Shows current user's last name -->
               {{ current_user.last_name }}
+              <!-- Edit button for the last name, triggers a modal -->
               <a href="#lname-modal" class="btn modal-trigger remove-btn-style margin-left"><i class="fas fa-thin fa-pencil"></i></a>
             </div>
           </div>
+          <!-- Including the modal template for updating the last name -->
           {% include 'profile/modals/update_lname.html' %}
+
+          <!-- Displaying and editing the email -->
           <div class="collection with-header">
             <div class="collection-header"><h6>Email:</h6></div>
             <div class="collection-item display-item">
+              <!-- Shows current user's email -->
               {{ current_user.email }}
+              <!-- Edit button for the email, triggers a modal -->
               <a href="#email-modal" class="btn modal-trigger remove-btn-style margin-left"><i class="fas fa-thin fa-pencil"></i></a>
             </div>
           </div>
+          <!-- Including the modal template for updating the email -->
           {% include 'profile/modals/update_email.html' %}
+
+          <!-- Option to change password -->
           <div class="collection with-header">
             <div class="collection-header">
               <h6 class="display-item">Change Password
+                <!-- Button to trigger change password modal -->
                 <a href="#password-modal" class="btn modal-trigger remove-btn-style margin-left">
                   <i class="fas fa-thin fa-arrow-right grey-text "></i>
                 </a>
               </h6>
             </div>
           </div>
+          <!-- Including the modal template for changing the password -->
           {% include 'profile/modals/change_password.html' %}
+
+          <!-- Displaying the date the user joined -->
           <div class="collection with-header">
             <div class="collection-header"><h6>Date Joined:</h6></div>
             <div class="collection-item">
+              <!-- Displaying the user's join date -->
               {{ current_user.created_date_time.strftime('%d %B %Y') }}
             </div>
           </div>
+
+          <!-- Logout button -->
           <div class="center-align">
-            <button class="waves-effect waves-light btn-large btn-red"><a class="white-text" href="{{ url_for('logout') }}">Logout</a></button>
+            <button class="waves-effect waves-light btn-large btn-red">
+              <a class="white-text" href="{{ url_for('logout') }}">Logout</a>
+            </button>
           </div>
+
+          <!-- Button to trigger account deletion modal -->
           <div class="center-align height-adjust">
             <a href="#delete-modal" class="modal-trigger waves-effect waves-light btn-small white-text">Delete Account</a>
           </div>
+          <!-- Including the modal template for account deletion -->
           {% include 'profile/modals/delete_user.html' %}
         </div>
       </div>
     </div>
   </div>
 </div>
+
 {% endblock %}

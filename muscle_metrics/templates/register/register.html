@@ -1,52 +1,74 @@
-{% extends "base.html" %}
+{% extends "base.html" %} 
 {% from "macros/validationError.html" import validationError %}
-{% block content %}
+{% block content %} 
+
 <div class="container">
   <div class="row">
     <div class="col s12 m12 l6 offset-l3">
       <div class="card card-border">
         <div class="card-content">
+          <!-- Title of the registration form -->
           <h2 class="form-title text-red"><strong>Register</strong></h2>
+
+          <!-- Registration form  -->
           <form method="POST" action="{{ url_for('register') }}">
+            <!-- Hidden form fields -->
             {{ form.hidden_tag() }}
+
+            <!-- First name input field -->
             <div class="form-divider">
               {{ form.first_name.label (class="custom-label") }}
               {{ form.first_name() }}
               <sub>{{ form.first_name.description }}</sub>
             </div>
+
+            <!-- Last name input field -->
             <div class="form-divider">
               {{ form.last_name.label (class="custom-label") }}
               {{ form.last_name() }}
               <sub>{{ form.last_name.description }}</sub>
             </div>
+
+            <!-- Email input field -->
             <div class="form-divider">
               {{ form.email.label (class="custom-label") }}
               {{ form.email() }}
+              <!-- Displaying validation errors for the email field -->
               {% if form.email.errors %}
                 {{ validationError(form.email.errors) }}
               {% endif %}
+              <!-- Handles flashed messages for email errors -->
               {% with errors = get_flashed_messages(category_filter=["email_error"]) %}
                 {% if errors %}
                   {{ validationError(errors) }}
                 {% endif %}
               {% endwith %}
             </div>
+
+            <!-- Password input field -->
             <div class="form-divider">
               {{ form.password.label (class="custom-label") }}
               {{ form.password() }}
             </div>
+
+            <!-- Password confirmation input field -->
             <div class="form-divider">
               {{ form.confirm.label (class="custom-label") }}
               {{ form.confirm() }}
+              <!-- Displaying validation errors for the password field -->
               {% if form.password.errors %}
                 {{ validationError(form.password.errors) }}
               {% endif %}
             </div>
+
+            <!-- Submit button for the form -->
             <div class="center-align">
               <button type="submit" name="submit" class="waves-effect waves-light btn-large btn-red">Register</button>
             </div>
           </form>
         </div>
+
+        <!-- Link for users who already have an account to log in -->
         <div class="card-action center-align">
           <p>Already Registered?</p>
           <a href="{{ url_for('home') }}" class="waves-effect waves-light btn-large btn-red">Login</a>
@@ -55,4 +77,5 @@
     </div>
   </div>
 </div>
-{% endblock %}
+
+{% endblock %} 
