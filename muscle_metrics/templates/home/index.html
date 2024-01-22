@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
+
+<!-- First section with a background image and white text -->
 <section>
   <div class="row bg-image white-text no-margin">
     <div class="col s12 m6 l4 h-full  offset-l1">
@@ -10,44 +12,54 @@
     </div>
   </div>
 </section>
+
+<!-- Second section with a white background -->
 <section class="bg-white">
   <div class="row">
     <div class="col">
       <div class="card-container">
+        <!-- First card -->
         <div class="card">
           <div class="card-image">
             <img src="/static/images/notebook.webp" alt="Image of a notebook">
           </div>
           <div class="card-content">
             <p class="card-title text-red"><strong>Manage Workouts</strong></p>
-            <p>We offer detailed workout logs, allowing you to input every workout's exercises, weights, sets, and reps efficiently. Take full control of your fitness data. It's time to track your progress like never before. Start achieving your fitness goals today!</p>
+            <p>Description about the workout log feature...</p>
           </div>
         </div>
+
+        <!-- Second card -->
         <div class="card">
           <div class="card-image">
             <img src="/static/images/atlas-balls.webp" alt="Image of Atlas Balls">
           </div>
           <div class="card-content">
             <p class="card-title text-red"><strong>Track Milestones</strong></p>
-            <p>With our Personal Best Tracker, you can effortlessly record and celebrate your weightlifting milestones. Get ready for a comprehensive display of your personal records that will fuel your motivation and keep you reaching for new heights. Join us and let's celebrate your fitness achievements together!</p>
+            <p>Description about the Personal Best Tracker feature...</p>
           </div>
         </div>
+
+        <!-- Third card with an image and content about visualizing progress -->
         <div class="card">
           <div class="card-image">
             <img src="/static/images/weight-plates.webp" alt="Image of weight plates">
           </div>
           <div class="card-content">
             <p class="card-title text-red"><strong>Visualize Progress</strong></p>
-            <p>Say goodbye to guesswork and hello to progress tracking. Our progress charts empower you to monitor your strength journey with intuitive charts that beautifully reflect your workout history and progression over time. Achieve clarity in your fitness goals and make every workout count. Join us today and visualize your way to success!</p>
+            <p>Description about progress charts and tracking feature...</p>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Row with a call-to-action button for registration -->
   <div class="row">
     <div class="col s12 m4 offset-m4 center-align">
       <a href="{{ url_for('register') }}" class="waves-effect waves-light btn-large btn-red">Register Now!</a>
     </div>
   </div>
 </section>
+
 {% endblock %}

@@ -1,14 +1,22 @@
 {% extends "base.html" %}
 {% from "macros/validationError.html" import validationError %}
 {% block content %}
+
 <div class="container">
   <div class="row">
     <div class="col s12 m12 l6 offset-l3">
       <div class="card card-border">
         <div class="card-content">
+          <!-- Heading for the exercise log form -->
           <h2 class="form-title text-red"><strong>Exercise Log</strong></h2>
+
+          <!-- Form with method POST. Action changes based on whether it's a new log or editing an existing one -->
           <form method="POST" action="{{ url_for('log') if isNew else url_for('log_edit', progress_id=progress_id) }}">
+            
+            <!-- Hidden tag for Flask-WTF CSRF protection -->
             {{ form.hidden_tag() }}
+
+            <!-- Block for selecting a muscle group with error handling -->
             <div class="form-divider">
               {{ form.muscle_group.label(class="custom-label") }}
               {{ form.muscle_group(class="browser-default disable-first-option", id="muscleGroups", autocomplete="off") }}
@@ -16,6 +24,8 @@
                 {{ validationError(form.muscle_group.errors) }}
               {% endif %}
             </div>
+
+            <!-- Block for selecting exercises with error handling -->
             <div class="form-divider">
               {{ form.exercises.label(class="custom-label") }}
               {{ form.exercises(class="browser-default disable-first-option", id="exercises", disabled=isNew, autocomplete="off") }}
@@ -23,6 +33,8 @@
                 {{ validationError(form.exercises.errors) }}
               {% endif %}
             </div>
+
+            <!-- Input fields for weight, sets, reps with descriptions -->
             <div class="form-divider">
               {{ form.weight.label (class="custom-label") }}
               {{ form.weight() }}
@@ -38,10 +50,14 @@
               {{ form.reps() }}
               <sub>{{ form.reps.description }}</sub>
             </div>
+
+            <!-- Field for additional notes -->
             <div class="form-divider">
               {{ form.notes.label (class="custom-label") }}
               {{ form.notes() }}
             </div>
+
+            <!-- Submit button, label changes based on isNew variable -->
             <div class="form-divider">
               <div class="center-align">
                 <button type="submit" name="submit" class="waves-effect waves-light btn-large btn-red">{{"Add" if isNew else "Save"}} Exercise</button>
@@ -53,4 +69,5 @@
     </div>
   </div>
 </div>
+
 {% endblock %}

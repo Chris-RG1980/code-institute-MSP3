@@ -1,39 +1,48 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} 
+
+{% block content %} 
 <div class="container">
-  <h2 class="form-title text-red center-align"><strong>My Exercise Data</strong></h2>
+  <h2 class="form-title text-red center-align"><strong>My Exercise Data</strong></h2>  <!-- Page heading -->
+
+  <!-- Section for displaying charts -->
   <div class="bg-white card-border margin-bttm">
     <div class="row">
+      <!-- Left column for muscle group chart -->
       <div class="col s12 l6">
-        <h3 class=" title text-red center-align">Exercises Per Muscle Group</h3>
+        <h3 class="title text-red center-align">Exercises Per Muscle Group</h3>
         <canvas id="muscleGroupChart" class="chart-pos"></canvas>
       </div>
+
+      <!-- Right column for exercises per day chart -->
       <div class="col s12 l6">
-        <h3 class=" title text-red center-align">Exercises Per Day</h3>
+        <h3 class="title text-red center-align">Exercises Per Day</h3>
         <P>(Last 7 Days)</P>
-        <canvas id="exerciseNumberChart" class="chart-pos"></canvas>
+        <canvas id="exerciseNumberChart" class="chart-pos"></canvas> 
       </div>
     </div>
   </div>
+
+  <!-- Section for displaying user exercise progress -->
   <div class="row">
     <div class="card-wrapper">
-      {% for progress in user_progress %}
+      {% for progress in user_progress %}  <!-- Looping through each progress item in user_progress -->
 
+      <!-- Card for displaying individual progress details -->
       <div class="card exercise-card teal">
         <div class="card-content white-text">
           <div class="card-header">
+            <!-- Muscle group name and edit/delete buttons -->
             <span class="card-title muscle-group-name">{{ progress.muscle_group.name }}</span>
-            <a href="{{ url_for('log_edit', progress_id=progress.id) }}"
-              class="btn modal-trigger pencil-bg teal margin-left"><i class="fas fa-thin fa-pencil white-text"></i></a>
-            <a href="{{ url_for('log_delete', progress_id=progress.id) }}" class="btn modal-trigger pencil-bg teal"><i
-                class="fas fa-solid fa-trash-can white-text"></i></a>
+            <a href="{{ url_for('log_edit', progress_id=progress.id) }}" class="btn modal-trigger pencil-bg teal margin-left"><i class="fas fa-thin fa-pencil white-text"></i></a>
+            <a href="{{ url_for('log_delete', progress_id=progress.id) }}" class="btn modal-trigger pencil-bg teal"><i class="fas fa-solid fa-trash-can white-text"></i></a>
           </div>
+          <!-- Displaying the exercise details -->
           <p class="exercise-name"><strong>Exercise:</strong> {{ progress.exercise.name }}</p>
           <p class="exercise-weight"><strong>Weight:</strong> {{ progress.weight }} kg</p>
           <p class="exercise-reps"><strong>Reps:</strong> {{ progress.reps }}</p>
           <p class="exercise-sets"><strong>Sets:</strong> {{ progress.sets }}</p>
           {% if progress.notes %}
-          <p class="exercise-notes"><strong>Notes:</strong> {{ progress.notes }}</p>
+          <p class="exercise-notes"><strong>Notes:</strong> {{ progress.notes }}</p>  <!-- Conditional rendering for notes -->
           {% endif %}
           <p><strong>Date Added:</strong> {{ progress.date_added.strftime('%d-%m-%Y') }}</p>
           <input type="hidden" class="progress-id" value="{{ progress.id }}">
@@ -41,6 +50,7 @@
       </div>
 
       {% else %}
+      <!-- Display when no exercise logs are found -->
       <div class="col s12">
         <p class="center-align white-text"><strong>No exercise logs found.</strong></p>
       </div>
@@ -49,29 +59,31 @@
   </div>
 </div>
 {% endblock %}
-{% block scripts %}
-<script type="application/javascript">
-  let muscleGroupChartElement = document.getElementById("muscleGroupChart");
 
+{% block scripts %}  <!-- Script block for JavaScript related to chart rendering -->
+<script type="application/javascript">
+  // JavaScript for creating the muscle group chart
+  let muscleGroupChartElement = document.getElementById("muscleGroupChart");
   const muscleGroupDoughnutChart = new Chart(muscleGroupChartElement, {
     type: 'pie',
     data: {
       labels: {{ muscleGroupChartLabels | tojson}},
-  datasets: [{
-    data: {{ muscleGroupChartValues | tojson}},
-    backgroundColor: [
-    'rgb(255, 99, 132)',
-    'rgb(54, 162, 235)',
-    'rgb(255, 99, 86)',
-    'rgb(255, 205, 55)',
-    'rgb(255, 55, 86)',
-    'rgb(55, 205, 86)',
-  ],
-    hoverOffset: 4
+      datasets: [{
+        data: {{ muscleGroupChartValues | tojson}},
+        backgroundColor: [
+          'rgb(255, 99, 132)',
+          'rgb(54, 162, 235)',
+          'rgb(255, 99, 86)',
+          'rgb(255, 205, 55)',
+          'rgb(255, 55, 86)',
+          'rgb(55, 205, 86)',
+        ],
+        hoverOffset: 4
       }]
     }
   });
 
+  // JavaScript for creating the exercises per day chart
   let exerciseNumberChartElement = document.getElementById("exerciseNumberChart");
   const exerciseNumberChart = new Chart(exerciseNumberChartElement, {
     type: 'bar',
@@ -114,6 +126,5 @@
       }
     },
   });
-
 </script>
-{% endblock %}
+{% endblock %} 
