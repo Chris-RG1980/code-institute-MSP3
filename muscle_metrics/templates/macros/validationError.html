@@ -1,0 +1,13 @@
+{% from "macros/alert.html" import alert %}
+{% macro validationError(errors) %}
+
+  {% set error_message %}
+    <ul class="browser-default">
+      {% for error in errors %}
+        <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+  {% endset %}
+
+  {{ alert('error', error_message) }}
+{% endmacro %}

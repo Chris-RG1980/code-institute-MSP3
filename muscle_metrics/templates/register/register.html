@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% from "macros/validationError.html" import validationError %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col s12 m12 l6 offset-l3">
+      <div class="card card-border">
+        <div class="card-content">
+          <h2 class="form-title text-red"><strong>Register</strong></h2>
+          <form method="POST" action="{{ url_for('register') }}">
+            {{ form.hidden_tag() }}
+            <div class="form-divider">
+              {{ form.first_name.label (class="custom-label") }}
+              {{ form.first_name() }}
+              <sub>{{ form.first_name.description }}</sub>
+            </div>
+            <div class="form-divider">
+              {{ form.last_name.label (class="custom-label") }}
+              {{ form.last_name() }}
+              <sub>{{ form.last_name.description }}</sub>
+            </div>
+            <div class="form-divider">
+              {{ form.email.label (class="custom-label") }}
+              {{ form.email() }}
+              {% if form.email.errors %}
+                {{ validationError(form.email.errors) }}
+              {% endif %}
+              {% with errors = get_flashed_messages(category_filter=["email_error"]) %}
+                {% if errors %}
+                  {{ validationError(errors) }}
+                {% endif %}
+              {% endwith %}
+            </div>
+            <div class="form-divider">
+              {{ form.password.label (class="custom-label") }}
+              {{ form.password() }}
+            </div>
+            <div class="form-divider">
+              {{ form.confirm.label (class="custom-label") }}
+              {{ form.confirm() }}
+              {% if form.password.errors %}
+                {{ validationError(form.password.errors) }}
+              {% endif %}
+            </div>
+            <div class="center-align">
+              <button type="submit" name="submit" class="waves-effect waves-light btn-large btn-red">Register</button>
+            </div>
+          </form>
+        </div>
+        <div class="card-action center-align">
+          <p>Already Registered?</p>
+          <a href="{{ url_for('home') }}" class="waves-effect waves-light btn-large btn-red">Login</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

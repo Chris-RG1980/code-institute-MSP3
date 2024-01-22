@@ -1,0 +1,285 @@
+/* Colours */
+:root {
+  --black: #010101;
+  --grey: #cccccc;
+}
+
+.color-blue {
+  color: rgb(83, 103, 103);
+}
+
+.text-red {
+  color: #B11419;
+}
+
+/* base.html */
+body {
+  display: flex;
+  min-height: 100dvh;
+  flex-direction: column;
+  font-family: roboto, sans-serif;
+}
+
+main {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  background: var(--black);
+}
+
+main > .container {
+  flex: 1;
+}
+
+/* Navbar */
+nav {
+  background-color: #B11419;
+}
+
+nav .brand-logo {
+  padding-left: 10px;
+}
+
+.logo-text {
+  font-family: Oswald, sans-serif;
+}
+
+nav .nav-wrapper {
+  overflow: hidden;
+}
+
+
+/* Flash Messages */
+.flash-bg {
+  background-color: var(--black);
+}
+
+.message {
+  background-color: #B11419;
+  font-family: roboto, sans-serif;
+  font-size: 2rem;
+  padding: 5px;
+  border-radius: 5px;
+
+}
+
+/* Footer */
+
+.footer-color {
+  background-color: #B11419;
+}
+
+blockquote {
+  border-left: 5px solid #0f0f0f;
+}
+
+/* Utility */
+.bg-white {
+  background: white;
+}
+
+.card-border {
+  border: 5px solid rgb(83, 103, 103);
+}
+
+.text-alert {
+  padding: 10px 15px;
+  margin: 5px 10px 10px 10px;
+  border-radius: 5px;
+  display: flex;
+}
+
+.text-alert ul {
+  padding-left: 15px;
+  margin: 0;
+}
+
+.text-alert.error {
+  background: #e53935;
+  color: white;
+}
+
+.text-alert.success {
+  background: #8bc34a;
+  color: black;
+}
+
+.text-alert button {
+  margin-left: auto;
+  background: none;
+  border-radius: 0;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2em;
+}
+
+/* Profile form */
+.display-item {
+  display: flex;
+  align-items: center;
+}
+
+.margin-left {
+  margin-left: auto;
+}
+
+.remove-btn-style {
+  background-color: #ffffff;
+  box-shadow: none;
+}
+
+.fa-pencil {
+  color: grey;
+}
+
+.cancel-btn {
+  background-color: var(--grey);
+  margin-right: 10px !important;
+}
+
+
+/* index.html */
+.bg-image {
+  background-image: url(/static/images/background-image.webp);
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100dvh;
+  width: 100%;
+}
+
+.height-adjust {
+  margin-top: 10%;
+}
+
+.heading {
+  color: #ffffff;
+  font-size: 4rem;
+}
+
+.heading h2 {
+  font-size: 8rem;
+}
+
+.no-margin {
+  margin-bottom: 0;
+}
+
+.card-container {
+  display: flex;
+  gap: 10px;
+}
+
+.card-container .card {
+  flex: 1;
+}
+
+.card-image img {
+  height: 300px;
+}
+
+.btn-red {
+  background-color: #B11419;
+}
+
+.btn-small {
+  background-color: #B11419;
+}
+
+.h-full {
+  height: 100vh;
+}
+
+/* register.html  */
+
+.card-content h2 {
+  margin-top: 0;
+}
+
+/* Forms */
+.form-title {
+  font-size: 2.75rem;
+  text-align: center;
+}
+.form-divider {
+  margin-top: 8px;
+}
+
+.custom-label {
+  color: var(--black);
+  font-size: 1.5rem;
+}
+
+/* Dashboard */
+
+.equal-height-row .card {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-content {
+  flex-grow: 1;
+}
+
+.pencil-bg {
+  box-shadow: none;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.margin-bttm {
+  margin-bottom: 10px;
+}
+
+.chart-pos {
+  max-height: 250px;
+  padding: 5px;
+}
+
+.title {
+  font-size: 2rem;
+  text-align: center;
+}
+
+/* Media Queries */
+@media screen and (max-width: 1050px) {
+  .heading h2 {
+    font-size: 8rem;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .heading h2 {
+    font-size: 6rem;
+  }
+  .heading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 15%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .heading {
+    margin-left: 0;
+  }
+  .card-container {
+    max-width: 100%;
+  }
+}
+
+.card-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.card-wrapper .card {
+  padding: 0;
+  margin: 0;
+}

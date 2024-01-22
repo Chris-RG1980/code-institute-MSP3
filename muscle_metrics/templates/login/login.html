@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% from "macros/validationError.html" import validationError %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col s12 m12 l6 offset-l3">
+      <div class="card card-border">
+        <div class="card-content">
+          <h2 class="form-title text-red"><strong>Login</strong></h2>
+          <form method="POST" action="{{ url_for('login') }}">
+            {{ form.hidden_tag() }}
+            <div class="form-divider">
+              {{ form.email.label (class="custom-label") }}
+              {{ form.email() }}
+            </div>
+            <div class="form-divider">
+              {{ form.password.label (class="custom-label") }}
+              {{ form.password() }}
+            </div>
+            <div class="center-align">
+              <button type="submit" name="submit" class="waves-effect waves-light btn-large btn-red">Login</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
