@@ -1,4 +1,3 @@
-import sys
 from datetime import datetime
 
 import flask
@@ -14,6 +13,16 @@ from .forms import ExerciseLogForm
 @app.route("/log", methods=["GET", "POST"])
 @login_required
 def log():
+    """
+    Handle the logging of exercises.
+
+    This route allows authenticated users to log their exercises. It handles both
+    the display of the exercise log form and the submission of new exercise logs.
+    The form includes fields like muscle group, exercises, weight, reps, and sets.
+
+    Returns:
+    Template or Redirection: Renders the exercise log form template or redirects to the log page after successful submission.
+    """
     form = ExerciseLogForm()
 
     muscle_groups = MuscleGroups.query.all()
@@ -55,6 +64,15 @@ def log():
 @app.route("/get_exercises", methods=["GET"])
 @login_required
 def get_exercises():
+    """
+    Provide a list of exercises based on the selected muscle group.
+
+    This route is called via AJAX to dynamically populate the exercise options in the
+    exercise log form based on the selected muscle group.
+
+    Returns:
+    JSON: A list of exercises corresponding to the selected muscle group.
+    """
     muscle_group_id = request.args.get("muscle_group_id")
     muscle_group = MuscleGroups.query.get(muscle_group_id)
     return jsonify(muscle_group.exercises)
@@ -63,6 +81,15 @@ def get_exercises():
 @app.route("/log/<int:progress_id>", methods=["GET", "POST"])
 @login_required
 def log_edit(progress_id):
+    """
+    Handle the editing of an existing exercise log.
+
+    This route allows users to edit their previously logged exercises. It fetches an
+    existing exercise log by its ID and allows the user to modify and update it.
+
+    Returns:
+    Template or Redirection: Renders the exercise log form for editing or redirects to the log page after successful update.
+    """
     progress = Progress.query.filter_by(id=progress_id, user_id=current_user.id).first()
 
     if not progress:
@@ -109,13 +136,28 @@ def log_edit(progress_id):
 @app.route("/log/<int:progress_id>/delete", methods=["GET", "POST"])
 @login_required
 def log_delete(progress_id):
+    """
+    Handle the deletion of an exercise log.
+
+    This route allows users to delete their exercise logs. It deletes the log identified
+    by its ID and provides feedback to the user upon successful deletion.
+
+    Returns:
+    Redirection: Redirects to the dashboard page after the exercise log is deleted.
+    """
     progress = Progress.query.filter_by(id=progress_id, user_id=current_user.id).first()
+
+    if not progress:
+        flash(
+            "Exercise log not found or you do not have permission to delete it.",
+            "error",
+        )
+        return redirect(url_for("dashboard"))
 
     try:
         db.session.delete(progress)
         db.session.commit()
         flash("Exercise Deleted Successfully!", "success")
-        return redirect(url_for("dashboard"))
     except:
         flash("There was a problem deleting the exercise, try again..", "error")
 

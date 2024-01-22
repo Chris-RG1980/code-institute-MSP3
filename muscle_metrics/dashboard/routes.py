@@ -12,6 +12,17 @@ from muscle_metrics.models.muscle_groups import MuscleGroups
 @app.route("/dashboard", methods=["GET"])
 @login_required
 def dashboard():
+    """
+    Render the user's dashboard.
+
+    This route displays the dashboard for the logged-in user. It shows the user's progress,
+    including exercise logs and a summary of activities grouped by muscle groups.
+    It also generates data for chart visualizations like the frequency of exercises
+    over the past week.
+
+    Returns:
+    Template: Renders the dashboard template with user-specific data.
+    """
     user_id = current_user.id
     user_progress = (
         Progress.query.filter_by(user_id=user_id)

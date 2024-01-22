@@ -11,6 +11,15 @@ from .forms import ChangePasswordForm, EmailForm, FirstNameForm, LastNameForm
 # User Profile Page
 @app.route("/profile/<id>", methods=["GET"])
 def edit_profile(id):
+    """
+    Render the user profile edit page.
+
+    This route displays a form allowing the user to edit their profile information,
+    including changing their first name, last name, email, and password.
+
+    Returns:
+    Template: Renders the user profile edit page template.
+    """
     form = RegistrationForm()
     passwordForm = ChangePasswordForm()
     user = User.query.get_or_404(id)
@@ -26,6 +35,14 @@ def edit_profile(id):
 # Edit User First Name
 @app.route("/profile/<id>/fname", methods=["POST"])
 def edit_profile_fname(id):
+    """
+    Handle the editing of the user's first name.
+
+    This route processes the form submission for changing the user's first name.
+
+    Returns:
+    Redirection: Redirects to the profile edit page after updating the first name.
+    """
     form = FirstNameForm()
     user: User = User.query.get_or_404(id)
 
@@ -39,6 +56,14 @@ def edit_profile_fname(id):
 # Edit User Last Name
 @app.route("/profile/<id>/lname", methods=["POST"])
 def edit_profile_lname(id):
+    """
+    Handle the editing of the user's last name.
+
+    This route processes the form submission for changing the user's last name.
+
+    Returns:
+    Redirection: Redirects to the profile edit page after updating the last name.
+    """
     form = LastNameForm()
     user: User = User.query.get_or_404(id)
 
@@ -52,6 +77,14 @@ def edit_profile_lname(id):
 # Edit User Email
 @app.route("/profile/<id>/email", methods=["POST"])
 def edit_profile_email(id):
+    """
+    Handle the editing of the user's email address.
+
+    This route processes the form submission for changing the user's email address.
+
+    Returns:
+    Redirection: Redirects to the profile edit page after updating the email.
+    """
     form = EmailForm()
     user: User = User.query.get_or_404(id)
 
@@ -84,6 +117,15 @@ def updateUser():
 # Change User Password
 @app.route("/profile/<id>/password", methods=["POST"])
 def edit_profile_password(id):
+    """
+    Handle the changing of the user's password.
+
+    This route processes the form submission for changing the user's password. It validates
+    the current password and updates it with the new password if validation is successful.
+
+    Returns:
+    Redirection: Redirects to the profile edit page after attempting to update the password.
+    """
     form = ChangePasswordForm()
     user: User = User.query.get_or_404(id)
 
@@ -120,6 +162,15 @@ def edit_profile_password(id):
 @app.route("/profile/<id>/delete", methods=["GET"])
 @login_required
 def delete_user(id):
+    """
+    Handle the deletion of a user account.
+
+    This route allows a user to delete their own account. It verifies the user's identity
+    and then proceeds to delete the account if the user is authenticated to do so.
+
+    Returns:
+    Redirection: Redirects to the home page after deleting the user account.
+    """
     if id == str(current_user.id):
         user = User.query.get_or_404(id)
 
