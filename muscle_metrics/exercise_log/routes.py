@@ -128,9 +128,10 @@ def log_edit(progress_id):
         form.muscle_group.data = progress.muscle_group_id
         form.exercises.data = progress.exercise_id
 
-    return render_template(
-        "exercise/exercises.html", form=form, isNew=False, progress_id=progress_id
-    )
+    # return render_template(
+    # "exercise/exercises.html", form=form, isNew=False, progress_id=progress_id
+    # )
+    return redirect(url_for("dashboard"))
 
 
 @app.route("/log/<int:progress_id>/delete", methods=["GET", "POST"])
