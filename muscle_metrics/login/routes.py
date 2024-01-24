@@ -13,11 +13,11 @@ def login():
     Handle the login process for a user.
 
     This route allows users to log in to the application using their email and password.
-    It validates the user's credentials, logs them in upon success, and redirects to the dashboard.
+    It validates the user's credentials, when successful logs the user in and redirects to the dashboard.
     If the login is unsuccessful, it flashes an error message and reloads the login page.
 
     Returns:
-    Template or Redirection: Renders the login page template on GET request or invalid form submission.
+    Template or Redirection: Renders the login page template on GET request or the flash message.
     Redirects to the dashboard upon successful login.
     """
     form = LoginForm()

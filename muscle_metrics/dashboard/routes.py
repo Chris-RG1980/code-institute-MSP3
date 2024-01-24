@@ -17,8 +17,7 @@ def dashboard():
 
     This route displays the dashboard for the logged-in user. It shows the user's progress,
     including exercise logs and a summary of activities grouped by muscle groups.
-    It also generates data for chart visualizations like the frequency of exercises
-    over the past week.
+    It also generates data for chart visualizations.
 
     Returns:
     Template: Renders the dashboard template with user-specific data.
@@ -30,7 +29,7 @@ def dashboard():
         .all()
     )
 
-    muscleGroupChartData = (
+    muscle_group_chart_data = (
         db.session.query(MuscleGroups.name, func.count(Progress.id))
         .join(MuscleGroups, Progress.muscle_group_id == MuscleGroups.id)
         .filter(Progress.user_id == user_id)
@@ -38,11 +37,11 @@ def dashboard():
         .all()
     )
 
-    muscleGroupChartLabels = [item[0] for item in muscleGroupChartData]
-    muscleGroupChartValues = [item[1] for item in muscleGroupChartData]
+    muscle_group_chart_labels = [item[0] for item in muscle_group_chart_data]
+    muscle_group_chart_values = [item[1] for item in muscle_group_chart_data]
 
     last_week = datetime.utcnow() - timedelta(weeks=1)
-    exerciseNumberChartData = (
+    exercise_number_chart_data = (
         db.session.query(
             func.extract("DAY", Progress.date_added), func.count(Progress.id)
         )
@@ -61,24 +60,24 @@ def dashboard():
     # Create an array of dates for the last 7 days including today
     date_range = [start_date + timedelta(days=i) for i in range(7)]
     day_numbers = [date.day for date in date_range]
-    data_dict = dict(exerciseNumberChartData)
+    data_dict = dict(exercise_number_chart_data)
 
     # Initialize a new array with default value 0
-    exerciseNumberChartValues = [0] * len(day_numbers)
+    exercise_number_chart_values = [0] * len(day_numbers)
 
     # Loop through the last 7 days and populate the new array
     for i, day in enumerate(day_numbers):
         if day in data_dict:
-            exerciseNumberChartValues[i] = data_dict[day]
+            exercise_number_chart_values[i] = data_dict[day]
 
-    exerciseNumberChartLabels = [date.strftime("%A") for date in date_range]
+    exercise_number_chart_labels = [date.strftime("%A") for date in date_range]
 
     return render_template(
         "dashboard/dashboard.html",
         user_progress=user_progress,
-        muscleGroupChartLabels=muscleGroupChartLabels,
-        muscleGroupChartValues=muscleGroupChartValues,
-        exerciseNumberChartLabels=exerciseNumberChartLabels,
-        exerciseNumberChartValues=exerciseNumberChartValues,
-        exerciseNumberChartData=exerciseNumberChartData,
+        muscle_group_chart_labels=muscle_group_chart_labels,
+        muscle_group_chart_values=muscle_group_chart_values,
+        exercise_number_chart_labels=exercise_number_chart_labels,
+        exercise_number_chart_values=exercise_number_chart_values,
+        exercise_number_chart_data=exercise_number_chart_data,
     )

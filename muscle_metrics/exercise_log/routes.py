@@ -18,7 +18,6 @@ def log():
 
     This route allows authenticated users to log their exercises. It handles both
     the display of the exercise log form and the submission of new exercise logs.
-    The form includes fields like muscle group, exercises, weight, reps, and sets.
 
     Returns:
     Template or Redirection: Renders the exercise log form template or redirects to the log page after successful submission.
