@@ -70,9 +70,9 @@
   const muscleGroupDoughnutChart = new Chart(muscleGroupChartElement, {
     type: 'pie',
     data: {
-      labels: {{ muscleGroupChartLabels | tojson}},
+      labels: {{ muscle_group_chart_labels | tojson}},
       datasets: [{
-        data: {{ muscleGroupChartValues | tojson}},
+        data: {{ muscle_group_chart_values | tojson}},
         backgroundColor: [
           'rgb(255, 99, 132)',
           'rgb(54, 162, 235)',
@@ -91,10 +91,10 @@
   const exerciseNumberChart = new Chart(exerciseNumberChartElement, {
     type: 'bar',
     data: {
-      labels: {{ exerciseNumberChartLabels | tojson }},
+      labels: {{ exercise_number_chart_labels | tojson }},
       datasets: [{
         label: 'Number of exercises in the last 7 days',
-        data: {{ exerciseNumberChartValues | tojson }},
+        data: {{ exercise_number_chart_values | tojson }},
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(255, 159, 64, 0.2)',
