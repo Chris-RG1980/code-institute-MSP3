@@ -46,7 +46,7 @@
           {% endif %}
           <p><strong>Date Added:</strong> {{ progress.date_added.strftime('%d-%m-%Y') }}</p>
           {% if progress.date_modified %}
-          <p class="exercise-notes"><strong>Date Amended:</strong> {{ progress.date_modified }}</p>  <!-- Conditional rendering for modified date -->
+          <p class="exercise-notes"><strong>Date Amended:</strong> {{ progress.date_modified.strftime('%d-%m-%Y') }}</p>  <!-- Conditional rendering for modified date -->
           {% endif %}
           <input type="hidden" class="progress-id" value="{{ progress.id }}">
         </div>
