@@ -1,8 +1,12 @@
+import uuid
+
+from flask_login import current_user
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 
 from muscle_metrics import db
+from muscle_metrics.models import exercises
 
 
 class Progress(db.Model):
