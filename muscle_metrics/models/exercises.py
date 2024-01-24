@@ -8,10 +8,13 @@ from muscle_metrics import db
 
 @dataclass
 class Exercises(db.Model):
-    id: int
-    name: str
+    """
+    Data model for exercises.
+
+    """
 
     __tablename__ = "exercises"
+
     id = db.Column(db.Integer(), autoincrement=True, primary_key=True)
     name = db.Column(db.String(), nullable=False)
     muscle_group_id = db.Column(db.Integer(), db.ForeignKey("muscle_groups.id"))
@@ -19,10 +22,17 @@ class Exercises(db.Model):
     progress = relationship("Progress", back_populates="exercise")
 
     def __repr__(self):
+        """Represent the exercise instance as a string."""
         return (self.id, self.name, self.muscle_group_id)
 
 
 def add_exercises(name, muscle_group_id):
+    """
+    Adds a new exercise to the database or retrieves it if already exists.
+
+    Returns:
+        An instance of the exercise.
+    """
     existing_exercise = Exercises.query.filter_by(name=name).first()
 
     if existing_exercise:
@@ -34,6 +44,9 @@ def add_exercises(name, muscle_group_id):
 
 
 def populate_from_json(file_path):
+    """
+    Populates the database with exercises data from a JSON file.
+    """
     with open(file_path, "r") as file:
         exercises_data = json.load(file)
 
