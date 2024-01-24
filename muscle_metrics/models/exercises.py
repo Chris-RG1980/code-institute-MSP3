@@ -10,8 +10,10 @@ from muscle_metrics import db
 class Exercises(db.Model):
     """
     Data model for exercises.
-
     """
+
+    id: int
+    name: str
 
     __tablename__ = "exercises"
 
