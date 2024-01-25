@@ -285,7 +285,7 @@ blockquote {
     max-width: 100%;
     flex-direction: column;
   }
-  .brand-logo {
+  nav .brand-logo {
     display: contents;
   }
   .card-wrapper {
