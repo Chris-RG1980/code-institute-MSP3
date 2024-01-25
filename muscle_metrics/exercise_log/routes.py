@@ -23,38 +23,45 @@ def log():
     Returns:
     Template or Redirection: Renders the exercise log form template or redirects to the log page after successful submission.
     """
-    form = ExerciseLogForm()
+    try:
+        form = ExerciseLogForm()
 
-    muscle_groups = MuscleGroups.query.all()
-    form.muscle_group.choices = [(0, "Select a muscle group")] + [
-        (mg.id, mg.name) for mg in muscle_groups
-    ]
-
-    if request.method == "POST":
-        exercises = Exercises.query.filter_by(
-            muscle_group_id=form.muscle_group.data
-        ).all()
-        form.exercises.choices = [(0, "Select an exercise")] + [
-            (ex.id, ex.name) for ex in exercises
+        muscle_groups = MuscleGroups.query.all()
+        form.muscle_group.choices = [(0, "Select a muscle group")] + [
+            (mg.id, mg.name) for mg in muscle_groups
         ]
 
-    if form.validate_on_submit():
-        progress = Progress(
-            user_id=current_user.id,
-            muscle_group_id=form.muscle_group.data,
-            exercise_id=form.exercises.data,
-            weight=form.weight.data,
-            reps=form.reps.data,
-            sets=form.sets.data,
-            notes=form.notes.data,
-            date_added=datetime.now(),
+        if request.method == "POST":
+            exercises = Exercises.query.filter_by(
+                muscle_group_id=form.muscle_group.data
+            ).all()
+            form.exercises.choices = [(0, "Select an exercise")] + [
+                (ex.id, ex.name) for ex in exercises
+            ]
+
+        if form.validate_on_submit():
+            progress = Progress(
+                user_id=current_user.id,
+                muscle_group_id=form.muscle_group.data,
+                exercise_id=form.exercises.data,
+                weight=form.weight.data,
+                reps=form.reps.data,
+                sets=form.sets.data,
+                notes=form.notes.data,
+                date_added=datetime.now(),
+            )
+
+            db.session.add(progress)
+            db.session.commit()
+
+            flash("Exercise added successfully!", "success")
+            return redirect(url_for("log"))
+
+    except:
+        flash(
+            "An error occurred while processing your request. Please try again.",
+            "error",
         )
-
-        db.session.add(progress)
-        db.session.commit()
-
-        flash("Exercise added successfully!", "success")
-        return redirect(url_for("log"))
 
     return render_template(
         "exercise/exercises.html", form=form, isNew=True, progress_id=0
@@ -73,9 +80,15 @@ def get_exercises():
     Returns:
     JSON: A list of exercises corresponding to the selected muscle group.
     """
-    muscle_group_id = request.args.get("muscle_group_id")
-    muscle_group = MuscleGroups.query.get(muscle_group_id)
-    return jsonify(muscle_group.exercises)
+    try:
+        muscle_group_id = request.args.get("muscle_group_id")
+        muscle_group = MuscleGroups.query.get(muscle_group_id)
+        return jsonify(muscle_group.exercises)
+    except:
+        flash(
+            "An error occurred while processing your request. Please try again.",
+            "error",
+        )
 
 
 @app.route("/log/<int:progress_id>", methods=["GET", "POST"])
@@ -90,43 +103,53 @@ def log_edit(progress_id):
     Returns:
     Template or Redirection: Renders the exercise log form for editing or redirects to the log page after successful update.
     """
-    progress = Progress.query.filter_by(id=progress_id, user_id=current_user.id).first()
+    try:
+        progress = Progress.query.filter_by(
+            id=progress_id, user_id=current_user.id
+        ).first()
 
-    if not progress:
+        if not progress:
+            flash(
+                "Exercise log not found or you do not have permission to edit it.",
+                "error",
+            )
+            return redirect(url_for("log"))
+
+        form = ExerciseLogForm(obj=progress if flask.request.method == "GET" else None)
+
+        # Create the muscle group options
+        muscle_groups = MuscleGroups.query.all()
+        form.muscle_group.choices = [(0, "Select a muscle group")] + [
+            (mg.id, mg.name) for mg in muscle_groups
+        ]
+
+        # Create the exercise options
+        exercises = Exercises.query.filter_by(
+            muscle_group_id=progress.muscle_group_id
+        ).all()
+        form.exercises.choices = [(0, "Select an exercise")] + [
+            (ex.id, ex.name) for ex in exercises
+        ]
+
+        if flask.request.method == "POST":
+            if form.validate_on_submit():
+                progress.muscle_group_id = form.muscle_group.data
+                progress.exercise_id = form.exercises.data
+                progress.weight = form.weight.data
+                progress.sets = form.sets.data
+                progress.reps = form.reps.data
+                progress.notes = form.notes.data
+                db.session.commit()
+                flash("Exercise log updated successfully!", "success")
+        else:
+            form.muscle_group.data = progress.muscle_group_id
+            form.exercises.data = progress.exercise_id
+
+    except:
         flash(
-            "Exercise log not found or you do not have permission to edit it.", "error"
+            "An error occurred while processing your request. Please try again.",
+            "error",
         )
-        return redirect(url_for("log"))
-
-    form = ExerciseLogForm(obj=progress if flask.request.method == "GET" else None)
-
-    # Create the muscle group options
-    muscle_groups = MuscleGroups.query.all()
-    form.muscle_group.choices = [(0, "Select a muscle group")] + [
-        (mg.id, mg.name) for mg in muscle_groups
-    ]
-
-    # Create the exercise options
-    exercises = Exercises.query.filter_by(
-        muscle_group_id=progress.muscle_group_id
-    ).all()
-    form.exercises.choices = [(0, "Select an exercise")] + [
-        (ex.id, ex.name) for ex in exercises
-    ]
-
-    if flask.request.method == "POST":
-        if form.validate_on_submit():
-            progress.muscle_group_id = form.muscle_group.data
-            progress.exercise_id = form.exercises.data
-            progress.weight = form.weight.data
-            progress.sets = form.sets.data
-            progress.reps = form.reps.data
-            progress.notes = form.notes.data
-            db.session.commit()
-            flash("Exercise log updated successfully!", "success")
-    else:
-        form.muscle_group.data = progress.muscle_group_id
-        form.exercises.data = progress.exercise_id
 
     return render_template(
         "exercise/exercises.html", form=form, isNew=False, progress_id=progress_id
@@ -145,20 +168,26 @@ def log_delete(progress_id):
     Returns:
     Redirection: Redirects to the dashboard page after the exercise log is deleted.
     """
-    progress = Progress.query.filter_by(id=progress_id, user_id=current_user.id).first()
-
-    if not progress:
-        flash(
-            "Exercise log not found or you do not have permission to delete it.",
-            "error",
-        )
-        return redirect(url_for("dashboard"))
-
     try:
+        progress = Progress.query.filter_by(
+            id=progress_id, user_id=current_user.id
+        ).first()
+
+        if not progress:
+            flash(
+                "Exercise log not found or you do not have permission to delete it.",
+                "error",
+            )
+            return redirect(url_for("dashboard"))
+
         db.session.delete(progress)
         db.session.commit()
         flash("Exercise Deleted Successfully!", "success")
+
     except:
-        flash("There was a problem deleting the exercise, try again..", "error")
+        flash(
+            "An error occurred while processing your request. Please try again.",
+            "error",
+        )
 
     return redirect(url_for("dashboard"))

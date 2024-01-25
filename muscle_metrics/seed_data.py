@@ -1,5 +1,7 @@
 import json
 
+from flask import abort
+
 from muscle_metrics.models.exercises import Exercises
 from muscle_metrics.models.muscle_groups import MuscleGroups
 
@@ -13,12 +15,20 @@ def add_muscle_group(name):
     Returns:
     The newly added or existing MuscleGroups object.
     """
-    existing_group = MuscleGroups.query.filter_by(name=name).first()
-    if existing_group:
-        return existing_group
+    try:
+        existing_group = MuscleGroups.query.filter_by(name=name).first()
+        if existing_group:
+            return existing_group
 
-    new_group = MuscleGroups(name=name)
-    db.session.add(new_group)
+        new_group = MuscleGroups(name=name)
+    except:
+        abort(500)
+
+    try:
+        db.session.add(new_group)
+    except:
+        abort(500)
+
     return new_group
 
 
@@ -35,7 +45,11 @@ def populate_muscle_groups_from_json(file_path):
             if name:
                 add_muscle_group(name)
 
-        db.session.commit()
+        try:
+            db.session.commit()
+        except:
+            db.session.rollback()
+            abort(500)
 
 
 def add_exercises(name, muscle_group_id):
@@ -45,12 +59,20 @@ def add_exercises(name, muscle_group_id):
     Returns:
     The newly added or existing Exercises object.
     """
-    existing_exercise = Exercises.query.filter_by(name=name).first()
-    if existing_exercise:
-        return existing_exercise
+    try:
+        existing_exercise = Exercises.query.filter_by(name=name).first()
+        if existing_exercise:
+            return existing_exercise
+    except:
+        abort(500)
 
     new_exercise = Exercises(name=name, muscle_group_id=muscle_group_id)
-    db.session.add(new_exercise)
+
+    try:
+        db.session.add(new_exercise)
+    except:
+        abort(500)
+
     return new_exercise
 
 
@@ -68,7 +90,11 @@ def populate_exercises_from_json(file_path):
             if name and muscle_group_id:
                 add_exercises(name, muscle_group_id)
 
-        db.session.commit()
+        try:
+            db.session.commit()
+        except:
+            db.session.rollback()
+            abort(500)
 
 
 populate_muscle_groups_from_json("muscle_metrics/static/json/muscle_groups.json")

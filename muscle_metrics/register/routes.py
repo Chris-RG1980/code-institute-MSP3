@@ -25,27 +25,33 @@ def register():
 
     # Form validation
     if form.validate_on_submit():
-        email = request.form["email"].lower()
-        existing_user = db.session.query(User).filter_by(email=email).first()
+        try:
+            email = request.form["email"].lower()
+            existing_user = db.session.query(User).filter_by(email=email).first()
 
-        if existing_user:
-            flash("Email Already Exists", "email_error")
-            return redirect(url_for("register"))
+            if existing_user:
+                flash("Email Already Exists", "email_error")
+                return redirect(url_for("register"))
 
-        hashed_password = bcrypt.generate_password_hash(
-            request.form["password"].encode("utf8")
-        ).decode("utf8")
+            hashed_password = bcrypt.generate_password_hash(
+                request.form["password"].encode("utf8")
+            ).decode("utf8")
 
-        user = User(
-            first_name=request.form["first_name"],
-            last_name=request.form["last_name"],
-            email=email,
-            password=hashed_password,
-            created_date_time=datetime.now(),
-            last_modified_date_time=datetime.now(),
-        )
-        db.session.add(user)
-        db.session.commit()
+            user = User(
+                first_name=request.form["first_name"],
+                last_name=request.form["last_name"],
+                email=email,
+                password=hashed_password,
+                created_date_time=datetime.now(),
+                last_modified_date_time=datetime.now(),
+            )
+            db.session.add(user)
+            db.session.commit()
+
+        except:
+            flash("An unexpected error occurred. Please try again.", "error")
+            return render_template("register/register.html", form=form)
+
         flash("Successfully registered, please login", "success")
         return redirect(url_for("login"))
 

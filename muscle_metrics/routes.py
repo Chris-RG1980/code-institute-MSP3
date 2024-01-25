@@ -1,5 +1,5 @@
 # Import necessary modules from Flask and its extensions
-from flask import flash, redirect, render_template, url_for
+from flask import abort, flash, redirect, render_template, url_for
 from flask_login import login_required, logout_user
 
 # Import application, database, and login manager from muscle_metrics package
@@ -24,7 +24,12 @@ def load_user(user_id):
 
     This function is used by Flask-Login to manage user sessions.
     """
-    return db.session.query(User).get(user_id)
+    try:
+        user = db.session.query(User).get(user_id)
+    except:
+        abort(401)
+
+    return user
 
 
 @app.route("/logout", methods=["GET", "POST"])
