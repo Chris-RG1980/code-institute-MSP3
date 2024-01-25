@@ -244,6 +244,17 @@ blockquote {
   text-align: center;
 }
 
+.card-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.card-wrapper .card {
+  padding: 0;
+  margin: 0;
+}
+
 /* Media Queries for responsive design */
 @media screen and (max-width: 1050px) {
   .heading h2 {
@@ -269,16 +280,15 @@ blockquote {
   }
   .card-container {
     max-width: 100%;
+    flex-direction: column;
+  }
+  .brand-logo {
+    display: contents;
+  }
+  .card-wrapper {
+    display: flex;
+    flex-direction: column;
   }
 }
 
-.card-wrapper {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
-}
 
-.card-wrapper .card {
-  padding: 0;
-  margin: 0;
-}
