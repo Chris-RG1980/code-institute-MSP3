@@ -65,6 +65,7 @@ def edit_profile_lname(id):
     Redirection: Redirects to the profile edit page after updating the last name.
     """
     form = LastNameForm()
+
     user: User = User.query.get_or_404(id)
 
     if form.validate_on_submit():
@@ -92,7 +93,12 @@ def edit_profile_email(id):
         new_email = request.form["email"].lower()
 
         if user.email != new_email:
-            existing_user = db.session.query(User).filter_by(email=new_email).first()
+            try:
+                existing_user = (
+                    db.session.query(User).filter_by(email=new_email).first()
+                )
+            except:
+                flash("Error! Looks like there was a problem...Try again", "error")
 
             if existing_user:
                 flash("Email already exists", "error")
