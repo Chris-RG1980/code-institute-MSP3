@@ -260,6 +260,9 @@ blockquote {
   .heading h2 {
     font-size: 8rem;
   }
+  .card-wrapper {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media screen and (max-width: 992px) {
@@ -282,7 +285,7 @@ blockquote {
     max-width: 100%;
     flex-direction: column;
   }
-  .brand-logo {
+  nav .brand-logo {
     display: contents;
   }
   .card-wrapper {
