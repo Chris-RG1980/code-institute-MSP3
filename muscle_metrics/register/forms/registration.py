@@ -4,6 +4,10 @@ from wtforms.validators import Email, EqualTo, InputRequired, Length
 
 
 class RegistrationForm(FlaskForm):
+    """
+    A form for user registration using Flask-WTF.
+    """
+
     # StringField for the user's first name.
     first_name = StringField(
         "First Name",

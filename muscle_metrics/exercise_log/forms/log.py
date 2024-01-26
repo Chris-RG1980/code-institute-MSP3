@@ -1,9 +1,13 @@
 from flask_wtf import FlaskForm
-from wtforms import DecimalField, IntegerField, SelectField, SubmitField, TextAreaField
+from wtforms import (DecimalField, IntegerField, SelectField, SubmitField,
+                     TextAreaField)
 from wtforms.validators import InputRequired, NumberRange
 
 
 class ExerciseLogForm(FlaskForm):
+    """
+    Form for logging exercise data.
+    """
     # SelectField for choosing a muscle group.
     muscle_group = SelectField(
         "Muscle Group",
@@ -44,7 +48,9 @@ class ExerciseLogForm(FlaskForm):
     )
 
     # TextAreaField for additional notes.
-    notes = TextAreaField("Notes", render_kw={"placeholder": "Enter your notes here!"})
+    notes = TextAreaField(
+        "Notes", render_kw={"placeholder": "Enter your notes here!"}
+    )
 
     # Submit button to submit the form.
     submit = SubmitField("Add Exercise")

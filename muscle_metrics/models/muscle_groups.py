@@ -1,5 +1,3 @@
-import json
-
 from muscle_metrics import db
 
 

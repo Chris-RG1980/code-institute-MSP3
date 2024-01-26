@@ -20,7 +20,9 @@ class Exercises(db.Model):
 
     id = db.Column(db.Integer(), autoincrement=True, primary_key=True)
     name = db.Column(db.String(), nullable=False)
-    muscle_group_id = db.Column(db.Integer(), db.ForeignKey("muscle_groups.id"))
+    muscle_group_id = db.Column(
+        db.Integer(), db.ForeignKey("muscle_groups.id")
+    )
 
     progress = relationship("Progress", back_populates="exercise")
 
@@ -45,7 +47,7 @@ def add_exercises(name, muscle_group_id):
         new_exercise = Exercises(name=name, muscle_group_id=muscle_group_id)
         db.session.add(new_exercise)
         return new_exercise
-    except:
+    except Exception as e:
         return "Error occurred while adding the exercise."
 
 
@@ -65,5 +67,5 @@ def populate_from_json(file_path):
                     add_exercises(name, muscle_group_id)
 
             db.session.commit()
-    except:
+    except Exception as e:
         return "An unexpected error occurred."

@@ -1,10 +1,8 @@
 import os
 
-from bson.objectid import ObjectId
 from flask import Flask
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
-from flask_pymongo import PyMongo
 from flask_sqlalchemy import SQLAlchemy
 
 if os.path.exists("env.py"):
@@ -19,11 +17,9 @@ else:
 if uri.startswith("postgres://"):
     uri = uri.replace("postgres://", "postgresql://", 1)
 app.config["SQLALCHEMY_DATABASE_URI"] = uri
-# app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
-# app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+
 
 db = SQLAlchemy(app)
-# mongo = PyMongo(app)
 bcrypt = Bcrypt(app)
 # Login
 login_manager = LoginManager()

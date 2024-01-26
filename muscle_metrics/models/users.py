@@ -1,7 +1,6 @@
 import uuid
 
 from flask_login import UserMixin
-from sqlalchemy import Boolean
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.sql import func
 
@@ -12,9 +11,9 @@ class User(db.Model, UserMixin):
     """
     Data model for user accounts.
 
-    This model includes personal information of the user, such as their name and email,
-    along with password. It also tracks the creation and last modification times
-    of the user's account.
+    This model includes personal information of the user, such as their
+    name and email, along with password. It also tracks the creation
+    and last modification times of the user's account.
     """
 
     __tablename__ = "users"

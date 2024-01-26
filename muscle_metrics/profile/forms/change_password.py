@@ -4,14 +4,14 @@ from wtforms.validators import EqualTo, InputRequired
 
 
 class ChangePasswordForm(FlaskForm):
-    # PasswordField for the current password.
+    """
+    This form includes fields for the current password, a new password,
+    and a confirmation field for the new password. It uses validators
+    to ensure that the new passwords are entered and match each other.
+    """
     currentPassword = PasswordField("Current Password", [InputRequired()])
-
-    # PasswordField for the new password.
     password = PasswordField(
         "Password",
         [InputRequired(), EqualTo("confirm", message="Passwords must match")],
     )
-
-    # PasswordField for confirming the new password.
     confirm = PasswordField("Confirm Password", [InputRequired()])

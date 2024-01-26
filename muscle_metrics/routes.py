@@ -26,7 +26,7 @@ def load_user(user_id):
     """
     try:
         user = db.session.query(User).get(user_id)
-    except:
+    except Exception as e:
         abort(401)
 
     return user
@@ -38,7 +38,8 @@ def logout():
     """
     Log out the current user and redirect to the home page.
 
-    This route handles the logout functionality and provides feedback to the user upon successful logout.
+    This route handles the logout functionality and provides feedback to the
+    user upon successful logout.
     """
     logout_user()
     flash("You have been logged out!", "success")
@@ -50,7 +51,8 @@ def page_not_found(e):
     """
     Custom error handler for 404 Not Found errors.
 
-    This function renders a custom 404 error page when a user tries to access a non-existent page.
+    This function renders a custom 404 error page when a user tries to
+    access a non-existent page.
     """
     return render_template("404.html"), 404
 
@@ -60,7 +62,8 @@ def unauthorised_access(e):
     """
     Custom error handler for 401 Unauthorized Access errors.
 
-    This function renders a custom 401 error page when a user tries to access a resource they are not authorized to.
+    This function renders a custom 401 error page when a user tries to
+    access a resource they are not authorized to.
     """
     return render_template("401.html"), 401
 
@@ -70,6 +73,7 @@ def internal_server_error(e):
     """
     Custom error handler for 500 Internal Server Error.
 
-    This function renders a custom 500 error page in the event of an internal server error.
+    This function renders a custom 500 error page in the event of
+    an internal server error.
     """
     return render_template("500.html"), 500

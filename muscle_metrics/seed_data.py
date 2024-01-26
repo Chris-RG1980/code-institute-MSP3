@@ -21,12 +21,12 @@ def add_muscle_group(name):
             return existing_group
 
         new_group = MuscleGroups(name=name)
-    except:
+    except Exception as e:
         abort(500)
 
     try:
         db.session.add(new_group)
-    except:
+    except Exception as e:
         abort(500)
 
     return new_group
@@ -47,7 +47,7 @@ def populate_muscle_groups_from_json(file_path):
 
         try:
             db.session.commit()
-        except:
+        except Exception as e:
             db.session.rollback()
             abort(500)
 
@@ -63,14 +63,14 @@ def add_exercises(name, muscle_group_id):
         existing_exercise = Exercises.query.filter_by(name=name).first()
         if existing_exercise:
             return existing_exercise
-    except:
+    except Exception as e:
         abort(500)
 
     new_exercise = Exercises(name=name, muscle_group_id=muscle_group_id)
 
     try:
         db.session.add(new_exercise)
-    except:
+    except Exception as e:
         abort(500)
 
     return new_exercise
@@ -92,7 +92,7 @@ def populate_exercises_from_json(file_path):
 
         try:
             db.session.commit()
-        except:
+        except Exception as e:
             db.session.rollback()
             abort(500)
 
