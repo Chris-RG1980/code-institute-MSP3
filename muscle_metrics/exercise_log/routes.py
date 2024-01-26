@@ -16,12 +16,13 @@ def log():
     """
     Handle the logging of exercises.
 
-    This route allows authenticated users to log their exercises. It handles both
-    the display of the exercise log form and the submission of new exercise logs.
-    The form includes fields like muscle group, exercises, weight, reps, and sets.
+    This route allows authenticated users to log their exercises.
+    It handles both the display of the exercise log form and the
+    submission of new exercise logs.
 
     Returns:
-    Template or Redirection: Renders the exercise log form template or redirects to the log page after successful submission.
+    Template or Redirection: Renders the exercise log form template or
+    redirects to the log page after successful submission.
     """
     try:
         form = ExerciseLogForm()
@@ -57,10 +58,10 @@ def log():
             flash("Exercise added successfully!", "success")
             return redirect(url_for("log"))
 
-    except:
+    except Exception as e:
         flash(
-            "An error occurred while processing your request. Please try again.",
-            "error",
+            "An error has occurred. Please try again.",
+            "error"
         )
 
     return render_template(
@@ -74,8 +75,8 @@ def get_exercises():
     """
     Provide a list of exercises based on the selected muscle group.
 
-    This route is called via AJAX to dynamically populate the exercise options in the
-    exercise log form based on the selected muscle group.
+    This route is called via AJAX to dynamically populate the exercise
+    options in the exercise log form based on the selected muscle group.
 
     Returns:
     JSON: A list of exercises corresponding to the selected muscle group.
@@ -84,9 +85,9 @@ def get_exercises():
         muscle_group_id = request.args.get("muscle_group_id")
         muscle_group = MuscleGroups.query.get(muscle_group_id)
         return jsonify(muscle_group.exercises)
-    except:
+    except Exception as e:
         flash(
-            "An error occurred while processing your request. Please try again.",
+            "An error has occurred. Please try again.",
             "error",
         )
 
@@ -97,11 +98,13 @@ def log_edit(progress_id):
     """
     Handle the editing of an existing exercise log.
 
-    This route allows users to edit their previously logged exercises. It fetches an
-    existing exercise log by its ID and allows the user to modify and update it.
+    This route allows users to edit their previously logged exercises.
+    It fetches an existing exercise log by its ID and allows the user
+    to modify and update it.
 
     Returns:
-    Template or Redirection: Renders the exercise log form for editing or redirects to the log page after successful update.
+    Template or Redirection: Renders the exercise log form for editing
+    or redirects to the log page after successful update.
     """
     try:
         progress = Progress.query.filter_by(
@@ -110,12 +113,14 @@ def log_edit(progress_id):
 
         if not progress:
             flash(
-                "Exercise log not found or you do not have permission to edit it.",
+                "Exercise not found or you do not have permission to edit it.",
                 "error",
             )
             return redirect(url_for("log"))
 
-        form = ExerciseLogForm(obj=progress if flask.request.method == "GET" else None)
+        form = ExerciseLogForm(
+            obj=progress if flask.request.method == "GET" else None
+        )
 
         # Create the muscle group options
         muscle_groups = MuscleGroups.query.all()
@@ -145,14 +150,15 @@ def log_edit(progress_id):
             form.muscle_group.data = progress.muscle_group_id
             form.exercises.data = progress.exercise_id
 
-    except:
+    except Exception as e:
         flash(
-            "An error occurred while processing your request. Please try again.",
+            "An error has occurred. Please try again.",
             "error",
         )
 
     return render_template(
-        "exercise/exercises.html", form=form, isNew=False, progress_id=progress_id
+        "exercise/exercises.html", form=form, isNew=False,
+        progress_id=progress_id
     )
 
 
@@ -162,11 +168,13 @@ def log_delete(progress_id):
     """
     Handle the deletion of an exercise log.
 
-    This route allows users to delete their exercise logs. It deletes the log identified
-    by its ID and provides feedback to the user upon successful deletion.
+    This route allows users to delete their exercise logs. It deletes
+    the log identified by its ID and provides feedback to the user
+    upon successful deletion.
 
     Returns:
-    Redirection: Redirects to the dashboard page after the exercise log is deleted.
+    Redirection: Redirects to the dashboard page after the exercise
+    log is deleted.
     """
     try:
         progress = Progress.query.filter_by(
@@ -175,7 +183,7 @@ def log_delete(progress_id):
 
         if not progress:
             flash(
-                "Exercise log not found or you do not have permission to delete it.",
+                "Exercise not found or deletion permission denied.",
                 "error",
             )
             return redirect(url_for("dashboard"))
@@ -184,9 +192,9 @@ def log_delete(progress_id):
         db.session.commit()
         flash("Exercise Deleted Successfully!", "success")
 
-    except:
+    except Exception as e:
         flash(
-            "An error occurred while processing your request. Please try again.",
+            "An error has occurred. Please try again.",
             "error",
         )
 

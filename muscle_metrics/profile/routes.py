@@ -14,8 +14,9 @@ def edit_profile(id):
     """
     Render the user profile edit page.
 
-    This route displays a form allowing the user to edit their profile information,
-    including changing their first name, last name, email, and password.
+    This route displays a form allowing the user to edit their profile
+    information, including changing their first name, last name,
+    email, and password.
 
     Returns:
     Template: Renders the user profile edit page template.
@@ -38,10 +39,12 @@ def edit_profile_fname(id):
     """
     Handle the editing of the user's first name.
 
-    This route processes the form submission for changing the user's first name.
+    This route processes the form submission for changing the user's
+    first name.
 
     Returns:
-    Redirection: Redirects to the profile edit page after updating the first name.
+    Redirection: Redirects to the profile edit page after updating the
+    first name.
     """
     form = FirstNameForm()
     user: User = User.query.get_or_404(id)
@@ -59,10 +62,12 @@ def edit_profile_lname(id):
     """
     Handle the editing of the user's last name.
 
-    This route processes the form submission for changing the user's last name.
+    This route processes the form submission for changing the user's
+    last name.
 
     Returns:
-    Redirection: Redirects to the profile edit page after updating the last name.
+    Redirection: Redirects to the profile edit page after updating the
+    last name.
     """
     form = LastNameForm()
 
@@ -81,10 +86,12 @@ def edit_profile_email(id):
     """
     Handle the editing of the user's email address.
 
-    This route processes the form submission for changing the user's email address.
+    This route processes the form submission for changing the user's
+    email address.
 
     Returns:
-    Redirection: Redirects to the profile edit page after updating the email.
+    Redirection: Redirects to the profile edit page after updating
+    the email.
     """
     form = EmailForm()
     user: User = User.query.get_or_404(id)
@@ -97,8 +104,11 @@ def edit_profile_email(id):
                 existing_user = (
                     db.session.query(User).filter_by(email=new_email).first()
                 )
-            except:
-                flash("Error! Looks like there was a problem...Try again", "error")
+            except Exception as e:
+                flash(
+                    "Error! Looks like there was a problem...Try again",
+                    "error"
+                )
 
             if existing_user:
                 flash("Email already exists", "error")
@@ -116,7 +126,7 @@ def updateUser():
     try:
         db.session.commit()
         flash("Updated successfully", "success")
-    except:
+    except Exception as e:
         flash("Error! Looks like there was a problem...Try again", "error")
 
 
@@ -126,11 +136,13 @@ def edit_profile_password(id):
     """
     Handle the changing of the user's password.
 
-    This route processes the form submission for changing the user's password. It validates
-    the current password and updates it with the new password if validation is successful.
+    This route processes the form submission for changing the user's password.
+    It validates the current password and updates it with the new password if
+    validation is successful.
 
     Returns:
-    Redirection: Redirects to the profile edit page after attempting to update the password.
+    Redirection: Redirects to the profile edit page after attempting to
+    update the password.
     """
     form = ChangePasswordForm()
     user: User = User.query.get_or_404(id)
@@ -138,7 +150,9 @@ def edit_profile_password(id):
     # Form Validation
     if form.validate_on_submit():
         if user:
-            if bcrypt.check_password_hash(user.password, form.currentPassword.data):
+            if bcrypt.check_password_hash(
+                user.password, form.currentPassword.data
+            ):
                 hashed_password = bcrypt.generate_password_hash(
                     form.password.data.encode("utf8")
                 ).decode("utf8")
@@ -146,8 +160,11 @@ def edit_profile_password(id):
                 try:
                     db.session.commit()
                     flash("Password updated successfully", "success")
-                except:
-                    flash("Error! Looks like there was a problem...Try again", "error")
+                except Exception as e:
+                    flash(
+                        "Error! Looks like there was a problem...Try again",
+                        "error"
+                    )
             else:
                 flash("Incorrect current password. Please try again.", "error")
                 return redirect(url_for("edit_profile", id=user.id))
@@ -171,8 +188,9 @@ def delete_user(id):
     """
     Handle the deletion of a user account.
 
-    This route allows a user to delete their own account. It verifies the user's identity
-    and then proceeds to delete the account if the user is authenticated to do so.
+    This route allows a user to delete their own account. It verifies the
+    user's identity and then proceeds to delete the account if the
+    user is authenticated to do so.
 
     Returns:
     Redirection: Redirects to the home page after deleting the user account.
@@ -185,7 +203,7 @@ def delete_user(id):
             db.session.commit()
             flash("User Deleted Successfully!", "success")
             return redirect(url_for("home"))
-        except:
+        except Exception as e:
             flash("There was a problem deleting user, try again..", "error")
     else:
         flash("Sorry, you can't delete that user!", "error")

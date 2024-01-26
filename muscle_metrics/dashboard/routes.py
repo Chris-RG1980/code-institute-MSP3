@@ -15,9 +15,8 @@ def dashboard():
     """
     Render the user's dashboard.
 
-    This route displays the dashboard for the logged-in user. It shows the user's progress,
-    including exercise logs and a summary of activities grouped by muscle groups.
-    It also generates data for chart visualizations.
+    This route displays the dashboard for the logged-in user. It shows the
+    user's exercise logs. It also generates data for the charts.
 
     Returns:
     Template: Renders the dashboard template with user-specific data.
@@ -38,13 +37,18 @@ def dashboard():
             .all()
         )
 
-        muscle_group_chart_labels = [item[0] for item in muscle_group_chart_data]
-        muscle_group_chart_values = [item[1] for item in muscle_group_chart_data]
+        muscle_group_chart_labels = [
+            item[0] for item in muscle_group_chart_data
+        ]
+        muscle_group_chart_values = [
+            item[1] for item in muscle_group_chart_data
+        ]
 
         last_week = datetime.utcnow() - timedelta(weeks=1)
         exercise_number_chart_data = (
             db.session.query(
-                func.extract("DAY", Progress.date_added), func.count(Progress.id)
+                func.extract("DAY", Progress.date_added),
+                func.count(Progress.id)
             )
             .filter(Progress.date_added >= last_week)
             .filter(Progress.user_id == user_id)
@@ -71,10 +75,15 @@ def dashboard():
             if day in data_dict:
                 exercise_number_chart_values[i] = data_dict[day]
 
-        exercise_number_chart_labels = [date.strftime("%A") for date in date_range]
+        exercise_number_chart_labels = [
+            date.strftime("%A") for date in date_range
+        ]
 
-    except:
-        flash("An error occurred while fetching data. Please try again later.", "error")
+    except Exception as e:
+        flash(
+            "An error occurred while fetching data. Please try again later.",
+            "error"
+        )
         return redirect(url_for("home"))
 
     return render_template(

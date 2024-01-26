@@ -1,20 +1,17 @@
-import uuid
-
-from flask_login import current_user
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 
 from muscle_metrics import db
-from muscle_metrics.models import exercises
 
 
 class Progress(db.Model):
     """
     Data model for the user to track their progress.
 
-    This model stores details about the exercises performed by users, including
-    the weight used, repetitions, and sets, along with any notes and timestamps.
+    This model stores details about the exercises performed by
+    users, including the weight used, repetitions, and sets, along
+    with any notes and timestamps.
 
     """
 
@@ -29,7 +26,9 @@ class Progress(db.Model):
     muscle_group_id = db.Column(
         db.Integer(), db.ForeignKey("muscle_groups.id"), nullable=False
     )
-    exercise_id = db.Column(db.Integer(), db.ForeignKey("exercises.id"), nullable=False)
+    exercise_id = db.Column(
+        db.Integer(), db.ForeignKey("exercises.id"), nullable=False
+    )
     weight = db.Column(db.Float(), nullable=False)
     reps = db.Column(db.Integer(), nullable=False)
     sets = db.Column(db.Integer(), nullable=False)

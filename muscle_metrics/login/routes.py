@@ -12,12 +12,14 @@ def login():
     """
     Handle the login process for a user.
 
-    This route allows users to log in to the application using their email and password.
-    It validates the user's credentials, when successful logs the user in and redirects to the dashboard.
-    If the login is unsuccessful, it flashes an error message and reloads the login page.
+    This route allows users to log in to the application using their email
+    and password. It validates the user's credentials, when successful logs
+    the user in and redirects to the dashboard. If the login is unsuccessful,
+    it flashes an error message and reloads the login page.
 
     Returns:
-    Template or Redirection: Renders the login page template on GET request or the flash message.
+    Template or Redirection: Renders the login page template on GET request
+    or the flash message.
     Redirects to the dashboard upon successful login.
     """
     try:
@@ -25,15 +27,23 @@ def login():
 
         # Form Validation
         if form.validate_on_submit():
-            user: User = db.session.query(User).filter_by(email=form.email.data).first()
-            if user and bcrypt.check_password_hash(user.password, form.password.data):
+            user: User = db.session.query(User).filter_by(
+                email=form.email.data
+            ).first()
+
+            if user and bcrypt.check_password_hash(
+                user.password, form.password.data
+            ):
                 login_user(user)
                 flash("Login successful", "success")
                 return redirect(url_for("dashboard"))
             else:
-                flash("Incorrect email or password. Please try again!", "error")
+                flash(
+                    "Incorrect email or password. Please try again!",
+                    "error"
+                )
 
-    except:
+    except Exception as e:
         abort(500)
 
     return render_template("login/login.html", form=form)
