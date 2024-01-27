@@ -93,7 +93,24 @@ This project is designed to provide an informative and useful resource to weight
 - Import data from other health applications to centralize all fitness and health information on one platform.
 ***
 ## Wireframes
-
+[Mobile Homepage](resources/wireframes/mobile_home.PNG)
+[Mobile Login Page](resources/wireframes/mobile_login.PNG)
+[Mobile Register Page](resources/wireframes/mobile_register.PNG)
+[Mobile Profile Page](resources/wireframes/mobile_profile.PNG)
+[Mobile Log Exercises Page](resources/wireframes/mobile_log_exercise.PNG)
+[Mobile Dashboard Page](resources/wireframes/tablet_dashboard.PNG)
+[Tablet Homepage](resources/wireframes/tablet_home.PNG)
+[Tablet Login Page](resources/wireframes/tablet_login.PNG)
+[Tablet Register Page](resources/wireframes/tablet_register.PNG)
+[Tablet Profile Page](resources/wireframes/tablet_profile.PNG)
+[Tablet Log Exercises Page](resources/wireframes/tablet_log_exercises.PNG)
+[Tablet Dashboard Page](resources/wireframes/tablet_dashboard.PNG)
+[Desktop Homepage](resources/wireframes/desktop_home.PNG)
+[Desktop Login Page](resources/wireframes/desktop_login.PNG)
+[Desktop Register Page](resources/wireframes/desktop_register.PNG)
+[Desktop Profile Page](resources/wireframes/desktop_profile.PNG)
+[Desktop Log Exercises Page](resources/wireframes/desktop_log_exercises.PNG)
+[Desktop Dashboard Page](resources/wireframes/desktop_dashboard.PNG)
 ***
 ## Design
 ### Overview
