@@ -1,5 +1,5 @@
 # Muscle Metrics
-Welcome to Muscle Metrics, designed with a user-centric philosophy to empower your strength training journey. Our platform offers a personalized dashboard that allows you to track and celebrate weightlifting milestones, visualize progress with intuitive charts, and manage workout sessions with detailed logs. Emphasizing control and privacy, our account management ensures secure access to your data. With a responsive, mobile-friendly interface, our platform keeps you engaged with your fitness goals anytime, anywhere. Along with motivational insights like displaying achievements, we provide an interactive, rewarding experience that acknowledges your hard work. As we look towards the future, anticipate advanced analytics, social integration, and personalization features that will revolutionize the way you train, track, and achieve your fitness aspirations. Whether you're a beginner or a seasoned athlete, our platform is designed to be your trusted partner in your quest for peak physical fitness.                                         
+Welcome to Muscle Metrics. This website offers a personalized dashboard that allows you to track and celebrate weightlifting milestones, visualize progress with charts, and manage workout sessions with detailed logs. With a responsive, mobile-friendly interface, this website keeps you engaged with your fitness goals anytime, anywhere.                                            
 
 ![Image](resources/mockup.png)
 ***
@@ -50,6 +50,28 @@ Welcome to Muscle Metrics, designed with a user-centric philosophy to empower yo
     - [Sign-Up Process](#sign-up-process)
     - [Logging and Viewing Exercises](#logging-and-viewing-exercises)
     - [Conclusion](#conclusion-1)
+  - [Database Design](#database-design)
+    - [Database schema](#database-schema)
+    - [Conclusion](#conclusion-2)
+  - [Technology](#technology)
+    - [Languages  Used](#languages--used)
+    - [Frameworks](#frameworks)
+    - [Libraries](#libraries)
+    - [Templating Engine](#templating-engine)
+    - [Utilities Used](#utilities-used)
+    - [Services](#services)
+  - [Testing](#testing)
+  - [Deployment](#deployment)
+    - [Initial deployment setup](#initial-deployment-setup)
+    - [Releases](#releases)
+    - [Forking the Repository](#forking-the-repository)
+    - [Cloning the Forked Repository](#cloning-the-forked-repository)
+    - [Cloning with Git](#cloning-with-git)
+    - [Setting up Jest testing environment](#setting-up-jest-testing-environment)
+  - [Credits](#credits)
+    - [Images](#images)
+    - [Other Credits](#other-credits)
+    - [Thank You](#thank-you)
 
 
 
@@ -97,18 +119,22 @@ This project is designed to provide an informative and useful resource to weight
 ##### Mobile-Friendly Interface
 - Stay connected to your goals with a design that adapts to your mobile, tablet, or desktop devices for logging workouts on-the-go. *(See Responsiveness section within the testing document)*                                    
                                                           
-- Figure 1  
+- Figure 1   
+        
 ![image](resources/features/charts_feature.PNG)             
-- Figure 2
+- Figure 2  
+          
 ![image](resources/features/log_feature.PNG)
-- Figure 3
+- Figure 3  
+                   
 ![image](resources/features/crud_feature.PNG)
-- Figure 4
+- Figure 4  
+                   
 ![image](resources/features/login_feature.PNG)
 ### Future Features:
 #### Advanced Analytics
 ##### Predictive Performance Trends
-- Leverage machine learning algorithms to predict future performance and plateaus based on past workout data.
+- Use machine learning algorithms to predict future performance and plateaus based on past workout data.
 ##### Muscle Group Analytics
 - Detailed reports on muscle group engagement and recommended workouts to optimize muscle symmetry and performance.
 #### Social Integration
@@ -202,5 +228,97 @@ This website incorporates CRUD (Create, Read, Update, Delete) functionality, to 
 ### Conclusion           
 The integration of CRUD functionality in the sign-up process and exercise log management is fundamental for a dynamic and user-friendly experience. It simplifies data management for users and enhances their interaction with the website, giving a tailored fitness tracking experience.          
 ***
-
-
+## Database Design
+Choosing a relational database for this website is based on several important benefits that match with what the websites needs.
+1. **Structured Data Organization:** The data models, MuscleGroups, Exercises, Progress, and User, stand for different sets of data that have clear connections to each other. Tables such as muscle_groups and exercises are linked using foreign keys, which makes it easy to get data quickly and accurately.                 
+2. **Data Integrity and Consistency:** The website works with important information like personal details and workout history. Relational databases have features that make sure this information is always right and up-to-date. For example, in the Progress table, special keys link each workout record to the right user and exercise.         
+3. **Scalability and Flexibility:** As the website grows to accommodate more users and more complex workout tracking, the database's schema can be modified and scaled. The addition of new tables or modification of existing ones (like adding new columns for additional exercise metrics) can be done without disrupting the existing database structure.     
+### Database schema
+![image](resources/database_schema.png)
+### Conclusion
+In summary, choosing a relational database for this website is ideal due to its organized data structure, ensuring data is connected and easily accessible. It maintains the accuracy and consistency of important user information, and is scalable and flexible to adapt as the website grows.             
+***
+## Technology
+### Languages  Used
+- HTML            
+- CSS                               
+- Javascript  
+- Python                     
+### Frameworks
+- [Flask](https://flask.palletsprojects.com/en/3.0.x/) - A Python framework
+- [Materialize](https://materializecss.com/) - A Responsive front-end framework
+### Libraries
+- [SQLAlchemy](https://www.sqlalchemy.org/) - Python SQL Toolkit and Object Relational Mapper      
+- [WTForms](https://wtforms.readthedocs.io/en/3.1.x/) - To create the forms used.
+- [jQuery](https://jquery.com/) - To connect the user interface with the javascript logic and supply functionality from Materialize.                     
+- [Google Fonts](https://fonts.google.com/) - To select and Import fonts.                                                  
+### Templating Engine     
+- [Jinja](https://jinja.palletsprojects.com/en/3.1.x/) - To create HTML templates.                             
+### Utilities Used
+- [Mockplus](https://www.mockplus.com/mockplus-rp) - To create wire-frames.
+- Git - Version Control.
+- [Github](https://github.com/) - To store repository and deploy site.
+- [Coolors](https://coolors.co/) - To create a colour palette.
+- [Cloud Convert](https://cloudconvert.com/) - To convert image files to webp and ico.
+- [Tinypng](https://tinypng.com/) - For image Optimisation.
+- [Google Chrome Dev Tools](https://developer.chrome.com/docs/devtools/) - Web Developer Tools.    
+- [Favicon](https://favicon.io/) - To create Favicon images.
+- [Creately](https://app.creately.com) - To create database schema.
+### Services
+- [ElephantSQL](https://www.elephantsql.com/) - To host and manage the PostgreSQL database.           
+- [Heroku](https://www.heroku.com/) - To build and host the website.                                                          
+***
+## Testing
+Please see [TESTING.md](/TESTING.md) for all testing performed.          
+***
+## Deployment
+### Initial deployment setup
+This website has been deployed to Github Pages using the following method:
+1. Log in to Github.
+2. Go to the repository to deploy.
+3. Select the settings section within the repository.
+4. Within settings select Pages. 
+5. From the source dropdown select deploy from a branch.
+6. From the branch dropdown select main and /(root).
+7. Click Save
+### Releases
+To release new features a pull request needs to be completed from the development branch to the main branch as the source in Heroku pages is set to the main branch. 
+### Forking the Repository
+1. On the top-right corner of the repository page, click on the button labelled "Fork."
+2. Select the owner (if there is more than one account available).
+3. Rename the repository if required.
+4. Add a description (this step is optional).
+5. Click on the green "Create Fork" button.
+### Cloning the Forked Repository
+1. After forking the repository, you will be redirected to the forked copy of the repository.
+2. On the right side of the repository page, click on the the green "Code" button.
+3. A dropdown will appear with options to clone the repository. Select the HTTPS option for a local setup.
+4. Click the clipboard icon next to the repository URL to copy it to the clipboard. You can now clone the repository onto your local machine.
+### Cloning with Git
+1. Open a terminal or command prompt on your computer.
+2. Use the `cd` command to navigate to the directory where you want to clone the repository.
+3. When in the required directory, use the `git clone` command followed by the repository URL you copied earlier.
+4. To execute the `git clone` command press enter.
+5. Git will download the repository files onto your computer, creating a new directory with the repository name.
+### Setting up Jest testing environment
+1. Within your IDE open a terminal window.
+2. Within the terminal type `npm i` and press enter.
+3. To run the tests type `npm run test` into the terminal and press enter.
+4. To see the coverage of the tests type `npm run coverage` into the terminal and press enter.
+***
+## Credits
+### Images
+ - Background Image - Photo by Anastase Maragos on Unsplash
+ - Notebook - Photo by Anne Nygård on Unsplasht
+ - Atlas balls - Photo by Samuel Girven on Unsplash
+ - Weight plates - Photo by Victor Freitas on Unsplash                               
+  
+### Other Credits
+- [freeCodeCamp](https://www.freecodecamp.org/)
+- [Web Dev Simplified](https://www.youtube.com/@WebDevSimplified)
+- [Codemy.com](https://www.youtube.com/channel/UCFB0dxMudkws1q8w5NJEAmw)
+### Thank You
+* Marko (Cohort Facilitator) for providing support and guidance within weekly stand ups.
+* Graeme Taylor (Course Mentor) for providing support and guidance throughout the project.
+* Adam Davies for help with additional testing of the website. 
+***
