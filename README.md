@@ -1,5 +1,5 @@
 # Muscle Metrics
-Welcome to Muscle Metrics, designed with a user-centric philosophy to empower your strength training journey. Our platform offers a personalized dashboard that allows you to track and celebrate weightlifting milestones, visualize progress with intuitive charts, and manage workout sessions with detailed logs. Emphasizing control and privacy, our account management ensures secure access to your data. With a responsive, mobile-friendly interface, our platform keeps you engaged with your fitness goals anytime, anywhere. Along with motivational insights like displaying achievements, we provide an interactive, rewarding experience that acknowledges your hard work. As we look towards the future, anticipate advanced analytics, social integration, and personalization features that will revolutionize the way you train, track, and achieve your fitness aspirations. Whether you're a beginner or a seasoned athlete, our platform is designed to be your trusted partner in your quest for peak physical fitness.                                         
+Welcome to Muscle Metrics. This website offers a personalized dashboard that allows you to track and celebrate weightlifting milestones, visualize progress with charts, and manage workout sessions with detailed logs. With a responsive, mobile-friendly interface, this website keeps you engaged with your fitness goals anytime, anywhere.                                            
 
 ![Image](resources/mockup.png)
 ***
@@ -50,6 +50,14 @@ Welcome to Muscle Metrics, designed with a user-centric philosophy to empower yo
     - [Sign-Up Process](#sign-up-process)
     - [Logging and Viewing Exercises](#logging-and-viewing-exercises)
     - [Conclusion](#conclusion-1)
+  - [Technology](#technology)
+    - [Languages  Used](#languages--used)
+    - [Frameworks](#frameworks)
+    - [Libraries](#libraries)
+    - [Templating Engine](#templating-engine)
+    - [Utilities Used](#utilities-used)
+    - [Services](#services)
+  - [Testing](#testing)
 
 
 
@@ -108,7 +116,7 @@ This project is designed to provide an informative and useful resource to weight
 ### Future Features:
 #### Advanced Analytics
 ##### Predictive Performance Trends
-- Leverage machine learning algorithms to predict future performance and plateaus based on past workout data.
+- Use machine learning algorithms to predict future performance and plateaus based on past workout data.
 ##### Muscle Group Analytics
 - Detailed reports on muscle group engagement and recommended workouts to optimize muscle symmetry and performance.
 #### Social Integration
@@ -202,5 +210,35 @@ This website incorporates CRUD (Create, Read, Update, Delete) functionality, to 
 ### Conclusion           
 The integration of CRUD functionality in the sign-up process and exercise log management is fundamental for a dynamic and user-friendly experience. It simplifies data management for users and enhances their interaction with the website, giving a tailored fitness tracking experience.          
 ***
-
-
+## Technology
+### Languages  Used
+- HTML            
+- CSS                               
+- Javascript  
+- Python                     
+### Frameworks
+- [Flask](https://flask.palletsprojects.com/en/3.0.x/) - A Python framework
+- [Materialize](https://materializecss.com/) - A Responsive front-end framework
+### Libraries
+- [SQLAlchemy](https://www.sqlalchemy.org/) - Python SQL Toolkit and Object Relational Mapper      
+- [WTForms](https://wtforms.readthedocs.io/en/3.1.x/) - To create the forms used.                   
+- [Google Fonts](https://fonts.google.com/) - To select and Import fonts.                                          
+- [jQuery](https://jquery.com/) - To connect the user interface with the javascript logic and supply functionality from Materialize.          
+### Templating Engine     
+- [Jinja](https://jinja.palletsprojects.com/en/3.1.x/) - To create HTML templates.                             
+### Utilities Used
+- [Mockplus](https://www.mockplus.com/mockplus-rp) - To create wire-frames.
+- Git - Version Control.
+- [Github](https://github.com/) - To store repository and deploy site.
+- [Coolors](https://coolors.co/) - To create a colour palette.
+- [Cloud Convert](https://cloudconvert.com/) - To convert image files to webp and ico.
+- [Tinypng](https://tinypng.com/) - For image Optimisation.
+- [Google Chrome Dev Tools](https://developer.chrome.com/docs/devtools/) - Web Developer Tools.    
+- [Favicon](https://favicon.io/) - To create Favicon images.
+### Services
+- [ElephantSQL](https://www.elephantsql.com/) - To host and manage the PostgreSQL database.           
+- [Heroku](https://www.heroku.com/) - To build and host the website.                                                          
+***
+## Testing
+Please see [TESTING.md](/TESTING.md) for all testing performed.          
+***
