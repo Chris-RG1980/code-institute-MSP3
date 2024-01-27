@@ -1,24 +1,55 @@
 # Muscle Metrics
-Welcome to Muscle Metrics, designed with a user-centric philosophy to empower your strength training journey. Our platform offers a personalized dashboard that allows you to track and celebrate weightlifting milestones, visualize progress with intuitive charts, and manage workout sessions with detailed logs. Emphasizing control and privacy, our account management ensures secure access to your data. With a responsive, mobile-friendly interface, our platform keeps you engaged with your fitness goals anytime, anywhere. Along with motivational insights like displaying achievements, we provide an interactive, rewarding experience that acknowledges your hard work. As we look towards the future, anticipate advanced analytics, social integration, and personalization features that will revolutionize the way you train, track, and achieve your fitness aspirations. Whether you're a beginner or a seasoned athlete, our platform is designed to be your trusted partner in your quest for peak physical fitness.
+Welcome to Muscle Metrics, designed with a user-centric philosophy to empower your strength training journey. Our platform offers a personalized dashboard that allows you to track and celebrate weightlifting milestones, visualize progress with intuitive charts, and manage workout sessions with detailed logs. Emphasizing control and privacy, our account management ensures secure access to your data. With a responsive, mobile-friendly interface, our platform keeps you engaged with your fitness goals anytime, anywhere. Along with motivational insights like displaying achievements, we provide an interactive, rewarding experience that acknowledges your hard work. As we look towards the future, anticipate advanced analytics, social integration, and personalization features that will revolutionize the way you train, track, and achieve your fitness aspirations. Whether you're a beginner or a seasoned athlete, our platform is designed to be your trusted partner in your quest for peak physical fitness.                                         
+
+![Image](resources/mockup.png)
 ***
 **Contents**
-- [User Stories](#user-stories)
-  - [New User](#as-a-new-user)
-  - [Returning User](#as-a-returning-user)
-  - [Returning User - Future Functionality](#as-a-returning-user---future-functionality)
-- [Features](#features)
-  - [Existing Features](#existing-features)
-  - [Future Features](#future-features)
-- [Wireframes](#wireframes)
-- [Design](#design)
-  - [Overview](#overview)
-  - [Typography](#typography)
-  - [Color Palette](#color-palette)
-  - [Framework](#framework)
-  - [Features and Design Correspondence](#features-and-design-correspondence)
-  - [Usage of Design Elements](#usage-of-design-elements)
-  - [Accessibility](#accessibility)
-  - [Conclusion](#conclusion)
+- [Muscle Metrics](#muscle-metrics)
+  - [User Stories](#user-stories)
+      - [As A New User:](#as-a-new-user)
+      - [As A Returning User:](#as-a-returning-user)
+      - [As A Returning User - Future Functionality:](#as-a-returning-user---future-functionality)
+  - [Features](#features)
+    - [Existing Features:](#existing-features)
+      - [User-Centric Dashboard](#user-centric-dashboard)
+        - [Exercise Chart Visualization  *(See figure 1 below)*](#exercise-chart-visualization--see-figure-1-below)
+      - [Workout Session Management](#workout-session-management)
+        - [Detailed Workout Logs *(See figure 2 below)*](#detailed-workout-logs-see-figure-2-below)
+        - [Exercise Record *(See figure 2 \& 3 below)*](#exercise-record-see-figure-2--3-below)
+      - [Account Management](#account-management)
+        - [Secure Login System *(See figure 4 below)*](#secure-login-system-see-figure-4-below)
+      - [Responsive Design](#responsive-design)
+        - [Mobile-Friendly Interface](#mobile-friendly-interface)
+    - [Future Features:](#future-features)
+      - [Advanced Analytics](#advanced-analytics)
+        - [Predictive Performance Trends](#predictive-performance-trends)
+        - [Muscle Group Analytics](#muscle-group-analytics)
+      - [Social Integration](#social-integration)
+        - [Community Challenges](#community-challenges)
+        - [Workout Partner Matching](#workout-partner-matching)
+      - [Personalization](#personalization)
+        - [Customizable Workout Plans](#customizable-workout-plans)
+        - [Virtual Personal Trainer](#virtual-personal-trainer)
+      - [Health Ecosystem Integration](#health-ecosystem-integration)
+        - [Wearable Device Syncing](#wearable-device-syncing)
+        - [Health App Data Import](#health-app-data-import)
+      - [Motivational Insights](#motivational-insights)
+        - [Achievement Notifications](#achievement-notifications)
+  - [Wireframes](#wireframes)
+  - [Design](#design)
+    - [Overview](#overview)
+    - [Typography](#typography)
+    - [Color Palette](#color-palette)
+    - [Framework](#framework)
+    - [Features and Design](#features-and-design)
+    - [Usage of Design Elements](#usage-of-design-elements)
+    - [Accessibility](#accessibility)
+    - [Conclusion](#conclusion)
+  - [CRUD Functionality](#crud-functionality)
+    - [Overview](#overview-1)
+    - [Sign-Up Process](#sign-up-process)
+    - [Logging and Viewing Exercises](#logging-and-viewing-exercises)
+    - [Conclusion](#conclusion-1)
 
 
 
@@ -52,24 +83,28 @@ Welcome to Muscle Metrics, designed with a user-centric philosophy to empower yo
 This project is designed to provide an informative and useful resource to weight lifters and gym goers.
 ### Existing Features:
 #### User-Centric Dashboard
-##### Personal Best Tracker
-- Record and celebrate your weightlifting milestones with a comprehensive display of your personal records.
-##### Progress Chart Visualization
-- Monitor your strength journey with intuitive charts that reflect your workout history and progression over time.
+##### Exercise Chart Visualization  *(See figure 1 below)* 
+- Monitor your strength journey with intuitive charts that reflect your workout history over time. 
 #### Workout Session Management
-##### Detailed Workout Logs
-- Input the data of every workout: exercises, weights, sets, and reps in an organized and efficient manner.
-##### Exercise Record
-- Full control over your fitness data through Create, Read, Update, and Delete (CRUD) functionalities for your exercise records.
+##### Detailed Workout Logs *(See figure 2 below)*
+- Input the data of every workout: exercises, weights, sets, and reps in an organized and efficient manner. 
+##### Exercise Record *(See figure 2 & 3 below)*
+- Full control over your fitness data through Create, Read, Update, and Delete (CRUD) functionalities for your exercise records. 
 #### Account Management
-##### Secure Login System
-- Access your personal dashboard securely with a dedicated login page, ensuring your fitness data is personal and private.
+##### Secure Login System *(See figure 4 below)*
+- Access your personal dashboard securely with a dedicated login page, ensuring your fitness data is personal and private. 
 #### Responsive Design
 ##### Mobile-Friendly Interface
-- Stay connected to your goals with a design that adapts to your mobile, tablet, or desktop devices for logging workouts on-the-go.
-#### Motivational Insights
-##### Achievement Notifications
-- Get instant gratification with alerts and badges when you hit new achievements or surpass your personal bests.
+- Stay connected to your goals with a design that adapts to your mobile, tablet, or desktop devices for logging workouts on-the-go. *(See Responsiveness section within the testing document)*                                    
+                                                          
+- Figure 1  
+![image](resources/features/charts_feature.PNG)             
+- Figure 2
+![image](resources/features/log_feature.PNG)
+- Figure 3
+![image](resources/features/crud_feature.PNG)
+- Figure 4
+![image](resources/features/login_feature.PNG)
 ### Future Features:
 #### Advanced Analytics
 ##### Predictive Performance Trends
@@ -91,6 +126,9 @@ This project is designed to provide an informative and useful resource to weight
 - Sync with various wearable devices to include heart rate, calories burned, and activity levels for a holistic health view.
 ##### Health App Data Import
 - Import data from other health applications to centralize all fitness and health information on one platform.
+#### Motivational Insights
+##### Achievement Notifications
+- Get instant gratification with alerts and badges when you hit new achievements or surpass your personal bests.
 ***
 ## Wireframes
 [Mobile Homepage](resources/wireframes/mobile_home.PNG)                 
@@ -114,33 +152,55 @@ This project is designed to provide an informative and useful resource to weight
 ***
 ## Design
 ### Overview
-Muscle Metrics offers a sleek, user-focused interface designed for fitness enthusiasts to track their workout progress. The design combines aesthetics with functionality, ensuring an engaging and effective user experience.     
+Muscle Metrics is designed to offer a user-friendly and visually appealing website tailored for fitness enthusiasts to effectively track and manage their workout progress. The design blends modern aesthetics with practical functionality, creating an engaging and efficient user experience.                                                
 ### Typography
 - **Headings**: Oswald, sourced from Google Fonts, gives a modern and strong character to headings, capturing the user's attention and guiding them through different sections.
-- **Text**: Roboto, with sans-serif as the fallback, provides excellent readability for detailed information, ensuring that text is legible across devices and resolutions.       
+- **Text**: Roboto, with sans-serif as the fallback, provides excellent readability for detailed information, ensuring that text is legible across devices and resolutions.                                              
+
+![image](resources/oswald_font.PNG)                   
+![image](resources/roboto_font.PNG)               
 ### Color Palette
-- **Primary Background**: `#0F0F0F` - A deep black for a powerful and elegant backdrop that highlights content.
-- **Secondary Background**: `#C0C0C0` - A light grey for card backgrounds or secondary elements, providing a soft contrast.
-- **Accent Color**: `#B11419` - A strong red to call attention to critical elements like alerts or buttons.
-- **Text Color**: `#FFFFFF` - Pure white for primary content, offering maximum contrast for readability.
-- **Highlight Color**: `#14B3AE` - A vibrant teal for interactive elements, invoking a sense of activity and progress.
+- **Primary Background**: `#010101` - A deep black for a powerful and elegant backdrop that highlights content.
+- **Secondary Background**: `#CCCCCC` - A light grey for card backgrounds or secondary elements, providing a soft contrast.
+- **Accent Colour**: `#B11419` - A strong red to call attention to critical elements like alerts or buttons.
+- **Text Colour**: `#FFFFFF` - Pure white for primary content, offering maximum contrast for readability.
+- **Modal Colour**: `#8BC34A` - A vibrant green for pop up elements, invoking a sense of activity and progress.                                        
+- **Modal Colour**:`#E53935` - A vibrant red for error pop up elements, giving a sense of danger.
 ![Image](resources/colour-palette.png)
 ### Framework
-- **Materialize**: A modern responsive front-end framework based on Material Design principles, enabling me to create a coherent visual and interactive experience.
-### Features and Design Correspondence
-- **User-Centric Dashboard**: A dark-themed dashboard with cards outlined in `#14B3AE` to categorize different sections like Personal Bests and Progress Charts.
-- **Personal Best Tracker**: Highlighted with the accent red `#B11419` to symbolize personal records and achievements.
-- **Progress Chart Visualization**: Interactive charts with a blend of accent colors to differentiate between workout metrics visually.
-- **Workout Session Management**: Neatly organized input forms with Roboto font for clear text entry and Oswald for section headings.
-- **Exercise Record**: CRUD functionalities are represented by intuitive icons and buttons, coloured with `#14B3AE` for recognition and ease of use.
+- **Materialize**: A modern responsive front-end framework based on Material Design principles, enabling me to create a consistent visual and interactive user experience.
+### Features and Design         
+- **User-Centric Dashboard**: A dark-themed dashboard with cards outlined in `#536767` to categorize the different sections.     
+- **Progress Chart Visualization**: Pie and bar charts with a blend of accent colors to differentiate between workout metrics visually.
+- **Workout Session Management**: Organized forms with clear text entry in Roboto and section headings in Oswald.
+- **Exercise Record**: CRUD functionalities are represented by intuitive icons and buttons, coloured with `#B11419` for recognition and ease of use.
 - **Account Management**: A secure login system with input fields and buttons that stand out against the dark background for a focus on security.
 - **Responsive Design**: Adaptable layouts that look and function seamlessly on mobile, tablet, or desktop, ensuring accessibility anywhere.
 ### Usage of Design Elements
-1. **Navigation Bar**: Oswald for the logo and main navigation links, with a hover effect in `#14B3AE`.
+1. **Navigation Bar**: Oswald for the logo and main navigation links in white text, with a background colour of `#B11419`.
 2. **Buttons**: Materialize-styled buttons with shadows and `#B11419` for primary actions.
-3. **Cards**: For sections like Workout Logs, cards with `#C0C0C0` backgrounds to segment the information cleanly.
-4. **Forms**: Input fields with subtle `#C0C0C0` outlines against the `#0F0F0F` background, with placeholder text in Roboto for uniformity.
+3. **Workout Cards**: The workout logs use cards with the Materialize Teal background colour to segment the information cleanly.
+4. **Forms**: Input fields with subtle `#CCCCCC` outlines against the `#FFFFFF` background, with placeholder text in Roboto for uniformity.
+5. **Modals**: Modals create communication with the user. Along with a message the background colour is used to display success `#8BC34A` and error `#E53935`. These also display a dismissal `x` to dismiss the modal once read. A timer has not been used to dismiss the modals as the user can dismiss the modal once it has been read, ensuring enough time for those with accessibility issues. 
 ### Accessibility
-Careful consideration has been given to ensure that the design is not only visually appealing but also accessible to users with different needs, with high contrast and legible font choices.
+High contrast colors and legible font choices ensure the design is accessible to users with various needs.
 ### Conclusion
-The design strategy prioritizes user experience with a focus on functionality, aesthetics, and accessibility, creating an environment that motivates and supports the fitness journey of our users.
+The design strategy prioritizes user experience with a focus on functionality, aesthetics, and accessibility, creating an environment that motivates and supports the fitness journey of our users.                           
+***
+## CRUD Functionality
+### Overview                
+This website incorporates CRUD (Create, Read, Update, Delete) functionality, to enhance user interaction and data management. This functionality is evident and crucial in two key areas of the website: the sign-up process and the management of exercise logs.     
+### Sign-Up Process
+1. **Create:** During registration, users create their account by entering personal information.                 
+2. **Read:** Once registered, users can view their profile information, demonstrating the 'Read' functionality. This step doesn't play a major role during sign-up but is essential in overall user account management.    
+3. **Update and Delete:** Although not directly part of the initial sign-up, the ability to update personal information or delete the account is important to the user experience. These features give users control over their data.                
+### Logging and Viewing Exercises                   
+1. **Create:** Users can log new exercises, adding details such as weight, sets, reps, etc. This process involves creating new records in the user's exercise log.    
+2. **Read:** The dashboard enables users to view their logged exercises, providing an  overview of their workout history and progress.        
+3. **Update:** Users have the flexibility to update their exercise logs. This could include changing the weight, sets, or other details of their workouts.
+4. **Delete:** If necessary, users can delete specific entries in their exercise log through the dashboard, offering control and accuracy in tracking their workout progress.   
+### Conclusion           
+The integration of CRUD functionality in the sign-up process and exercise log management is fundamental for a dynamic and user-friendly experience. It simplifies data management for users and enhances their interaction with the website, giving a tailored fitness tracking experience.          
+***
+
+
