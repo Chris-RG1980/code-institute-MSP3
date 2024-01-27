@@ -1,18 +1,52 @@
 /* Colours */
 :root {
+  --white: #FFFFFF;
   --black: #010101;
   --grey: #cccccc;
+  --red: #B11419;
+  --blue: #536767;
+  --cinnabar: #e53935;
+  --mantis: #8bc34a;
 }
 
+/* Utility classes */
 .color-blue {
-  color: rgb(83, 103, 103);
+  color: var(--blue);
 }
 
 .text-red {
-  color: #B11419;
+  color: var(--red);
 }
 
-/* base.html */
+.bg-white {
+  background: var(--white);
+}
+
+.card-border {
+  border: 5px solid var(--blue);
+}
+
+.height-adjust {
+  margin-top: 10%;
+}
+
+.no-margin {
+  margin-bottom: 0;
+}
+
+.btn-red {
+  background-color: var(--red);
+}
+
+.btn-small {
+  background-color: var(--red);
+}
+
+.h-full {
+  height: 100vh;
+}
+
+/* Styling for the base layout of the page */
 body {
   display: flex;
   min-height: 100dvh;
@@ -31,9 +65,9 @@ main > .container {
   flex: 1;
 }
 
-/* Navbar */
+/* Navbar styles */
 nav {
-  background-color: #B11419;
+  background-color: var(--red);
 }
 
 nav .brand-logo {
@@ -48,38 +82,17 @@ nav .nav-wrapper {
   overflow: hidden;
 }
 
-
-/* Flash Messages */
+/* Styles for flash messages */
 .flash-bg {
   background-color: var(--black);
 }
 
 .message {
-  background-color: #B11419;
+  background-color: var(--red);
   font-family: roboto, sans-serif;
   font-size: 2rem;
   padding: 5px;
   border-radius: 5px;
-
-}
-
-/* Footer */
-
-.footer-color {
-  background-color: #B11419;
-}
-
-blockquote {
-  border-left: 5px solid #0f0f0f;
-}
-
-/* Utility */
-.bg-white {
-  background: white;
-}
-
-.card-border {
-  border: 5px solid rgb(83, 103, 103);
 }
 
 .text-alert {
@@ -95,13 +108,13 @@ blockquote {
 }
 
 .text-alert.error {
-  background: #e53935;
-  color: white;
+  background: var(--cinnabar);
+  color: var(--white);
 }
 
 .text-alert.success {
-  background: #8bc34a;
-  color: black;
+  background: var(--mantis);
+  color: var(--black);
 }
 
 .text-alert button {
@@ -113,7 +126,16 @@ blockquote {
   font-size: 1.2em;
 }
 
-/* Profile form */
+/* Footer styling */
+.footer-color {
+  background-color: var(--red);
+}
+
+blockquote {
+  border-left: 5px solid var(--black);
+}
+
+/* Profile form styles */
 .display-item {
   display: flex;
   align-items: center;
@@ -124,12 +146,12 @@ blockquote {
 }
 
 .remove-btn-style {
-  background-color: #ffffff;
+  background-color: var(--white);
   box-shadow: none;
 }
 
 .fa-pencil {
-  color: grey;
+  color: var(--grey);
 }
 
 .cancel-btn {
@@ -137,8 +159,7 @@ blockquote {
   margin-right: 10px !important;
 }
 
-
-/* index.html */
+/* Styles specific to index.html */
 .bg-image {
   background-image: url(/static/images/background-image.webp);
   background-position: center;
@@ -147,21 +168,13 @@ blockquote {
   width: 100%;
 }
 
-.height-adjust {
-  margin-top: 10%;
-}
-
 .heading {
-  color: #ffffff;
+  color: var(--white);
   font-size: 4rem;
 }
 
 .heading h2 {
   font-size: 8rem;
-}
-
-.no-margin {
-  margin-bottom: 0;
 }
 
 .card-container {
@@ -177,25 +190,12 @@ blockquote {
   height: 300px;
 }
 
-.btn-red {
-  background-color: #B11419;
-}
-
-.btn-small {
-  background-color: #B11419;
-}
-
-.h-full {
-  height: 100vh;
-}
-
-/* register.html  */
-
+/* Styles specific to register.html */
 .card-content h2 {
   margin-top: 0;
 }
 
-/* Forms */
+/* Form related styles */
 .form-title {
   font-size: 2.75rem;
   text-align: center;
@@ -209,8 +209,7 @@ blockquote {
   font-size: 1.5rem;
 }
 
-/* Dashboard */
-
+/* Dashboard styles */
 .equal-height-row .card {
   display: flex;
   flex-direction: column;
@@ -245,10 +244,24 @@ blockquote {
   text-align: center;
 }
 
-/* Media Queries */
+.card-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.card-wrapper .card {
+  padding: 0;
+  margin: 0;
+}
+
+/* Media Queries for responsive design */
 @media screen and (max-width: 1050px) {
   .heading h2 {
     font-size: 8rem;
+  }
+  .card-wrapper {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -270,16 +283,15 @@ blockquote {
   }
   .card-container {
     max-width: 100%;
+    flex-direction: column;
+  }
+  nav .brand-logo {
+    display: contents;
+  }
+  .card-wrapper {
+    display: flex;
+    flex-direction: column;
   }
 }
 
-.card-wrapper {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
-}
 
-.card-wrapper .card {
-  padding: 0;
-  margin: 0;
-}

@@ -1,6 +1,13 @@
 {% macro alert(type, message) %}
+
   <div class="text-alert {{ type }}">
+
+    <!-- Displays the message passed to the macro -->
     {{ message }}
+
+    <!-- Button with an icon for closing the alert -->
     <button><i class="fas fa-solid fa-xmark"></i></button>
+
   </div>
+
 {% endmacro %}

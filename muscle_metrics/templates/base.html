@@ -1,56 +1,75 @@
 <!DOCTYPE html>
 {% from "macros/alert.html" import alert %}
+
 <html lang="en">
   <head>
+    <!-- Meta tags for character set, viewport settings -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- External font links -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+
+    <!-- External CSS and icon links -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+
+    <!-- Favicon links -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='favicon/apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon/favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon/favicon-16x16.png') }}">
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
+
     {% block styles %}
     {% endblock %}
+
+    <!-- Website title -->
     <title>Muscle Metrics</title>
   </head>
   <body>
     <header>
-      <!-- Navbar-->
+      <!-- Navbar section -->
       <nav>
         <div class="nav-wrapper">
-          <a href="#!" class="brand-logo logo-text">Muscle Metrics</a>
+          <a href="/" class="brand-logo logo-text">Muscle Metrics</a>
           <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-solid fa-bars" ></i></a>
+
+          <!-- Navbar links, visible on medium and larger screens -->
           <ul class="right hide-on-med-and-down">
             <li><a href="{{ url_for('home') }}">Home</a></li>
             {% if current_user.is_authenticated %}
+              <!-- Links available only to authenticated users -->
               <li><a class="white-text" href="{{ url_for('log')}}">Log Exercises</a></li>
               <li><a class="white-text" href="{{ url_for('dashboard')}}">Dashboard</a></li>
               <li><a href="{{ url_for('edit_profile', id=current_user.id) }}"><i class="fas fa-solid fa-user"></i></a></li>
             {% else %}
+              <!-- Links available to non-authenticated users -->
               <li><a href="{{ url_for('login') }}">Login</a></li>
               <li><a class="white-text" href="{{ url_for('register') }}">Register</a></li>
             {% endif %}
         </div>
       </nav>
-      <!--Mobile Navbar-->
+
+      <!-- Mobile Navbar -->
       <ul class="sidenav" id="mobile-demo">
         <li><a href="{{ url_for('home') }}">Home</a></li>
         {% if current_user.is_authenticated %}
+          <!-- Mobile links for authenticated users -->
           <li><a href="{{ url_for('log')}}">Log Exercises</a></li>
           <li><a href="{{ url_for('dashboard')}}">Dashboard</a></li>
           <li><a href="{{ url_for('edit_profile', id=current_user.id) }}"><i class="fas fa-solid fa-user"></i></a></li>
         {% else %}
+          <!-- Mobile links for non-authenticated users -->
           <li><a href="{{ url_for('login') }}">Login</a></li>
           <li><a href="{{ url_for('register') }}">Register</a></li>
         {% endif %}
     </header>
+
+    <!-- Section for displaying flash messages -->
     <section class="flash-bg">
-      <!--Flash Messages-->
       {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
           {% for category, message in messages %}
@@ -59,15 +78,19 @@
         {% endif %}
       {% endwith %}
     </section>
+
+    <!-- Main content block -->
     <main>
       {% block content %}
       {% endblock %}
     </main>
-    <!-- Footer-->
+
+    <!-- Footer section -->
     <footer class="page-footer footer-color">
       <div class="container">
         <div class="row">
           <div class="col l6 s12">
+            <!-- Footer content -->
             <h4 class="white-text logo-text">Muscle Metrics</h4>
             <figure class="grey-text text-lighten-4">
               <blockquote>
@@ -79,13 +102,16 @@
             </figure>
           </div>
           <div class="col l4 offset-l2 s12">
+            <!-- Footer links -->
             <h5 class="white-text">Links</h5>
             <ul>
               <li><a class="white-text" href="{{ url_for('home') }}">Home</a></li>
               {% if current_user.is_authenticated %}
+              <!-- Footer links for authenticated users -->
                 <li><a class="white-text" href="{{ url_for('log')}}">Log Exercises</a></li>
                 <li><a class="white-text" href="{{ url_for('dashboard')}}">Dashboard</a></li>
               {% else %}
+              <!-- Footer links for non-authenticated users -->
                 <li><a class="white-text" href="{{ url_for('login') }}">Login</a></li>
                 <li><a class="white-text" href="{{ url_for('register') }}">Register</a></li>
               {% endif %}
@@ -94,10 +120,13 @@
         </div>
       </div>
     </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- JavaScript and library scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="{{ url_for('static', filename='js/script.js')}}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" integrity="sha512-CQBWl4fJHWbryGE+Pc7UAxWMUMNMWzWxF4SQo9CgkJIN1kx6djDQZjh3Y8SZ1d+6I+1zze6Z7kHXO7q3UyZAWw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     {% block scripts %}
     {% endblock %}
   </body>

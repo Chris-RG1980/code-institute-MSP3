@@ -1,20 +1,33 @@
-  <!--  First Name Modal -->
-  <div id="fname-modal" class="modal">
-    <div class="modal-content">
-      <h2 class="form-title text-red"><strong>Edit Profile</strong></h2>
-      <form method="POST" action="{{ url_for('edit_profile_fname', id=current_user.id) }}">
-        {{ form.hidden_tag() }}
-        <div class="form-divider">
-          {{ form.first_name.label (class="custom-label") }}
-          {{ form.first_name() }}
-          <sub>{{ form.first_name.description }}</sub>
+<!--  First Name Modal -->
+<div id="fname-modal" class="modal">
+  <div class="modal-content">
+    <!-- Title of the form within the modal -->
+    <h2 class="form-title text-red"><strong>Edit Profile</strong></h2>
+
+    <!-- Form for editing the user's first name.-->
+    <form method="POST" action="{{ url_for('edit_profile_fname', id=current_user.id) }}">
+      <!-- Hidden form fields -->
+      {{ form.hidden_tag() }}
+
+      <!-- Section for first name input -->
+      <div class="form-divider">
+        <!-- Label for the first name input field -->
+        {{ form.first_name.label (class="custom-label") }}
+        <!-- First name input field -->
+        {{ form.first_name() }}
+        <!-- Description for the first name field -->
+        <sub>{{ form.first_name.description }}</sub>
+      </div>
+
+      <!-- Footer of the modal -->
+      <div class="modal-footer">
+        <div class="center-align">
+          <!-- Cancel button, redirects to the edit_profile page -->
+          <a href="{{ url_for('edit_profile', id=current_user.id)}}" class="waves-effect waves-light btn-large cancel-btn black-text">Cancel</a>
+          <!-- Submit button for the form -->
+          <button type="submit" class="waves-effect waves-light btn-large btn-red">Submit</button>
         </div>
-        <div class="modal-footer">
-          <div class="center-align">
-            <a href="{{ url_for('edit_profile', id=current_user.id)}}" class= "waves-effect waves-light btn-large cancel-btn black-text">Cancel</a>
-            <button type="submit" class="waves-effect waves-light btn-large btn-red">Submit</button>
-          </div>
-        </div>
-      </form>
-    </div>
+      </div>
+    </form>
   </div>
+</div>
