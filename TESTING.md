@@ -10,6 +10,7 @@
     - [Summary](#summary)
   - [Automated Testing](#automated-testing)
     - [W3C Validator](#w3c-validator)
+    - [JSHint](#jshint)
 
 
 ***
@@ -51,3 +52,11 @@ Testing has been completed using the W3C code validators to ensure that the code
 [Dashboard Validation](resources/validation/dashboard.PNG)                                    
 [Profile Page](resources/validation/profile.PNG) *(Profile Page could not be validated)*                                
 [CSS Validation](resources/validation/css.PNG)
+
+### JSHint   
+Quality testing of the JavaScript code has been carried out using [JSHint](https://jshint.com/). Before testing please ensure the checkboxes next to "New JavaScript features (ES6)" and "jQuery" have been turned on. To do this please click "CONFIGURE" and if needed click "New JavaScript features (ES6)" and "jQuery".                             
+
+**_script.js_**    
+![image](resources/validation/js.PNG)
+
+
