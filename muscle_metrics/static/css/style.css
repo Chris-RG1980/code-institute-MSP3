@@ -4,6 +4,7 @@
   --black: #010101;
   --grey: #cccccc;
   --red: #B11419;
+  --red-contrast: #ca2126;
   --blue: #536767;
   --cinnabar: #e53935;
   --mantis: #8bc34a;
@@ -16,6 +17,10 @@
 
 .text-red {
   color: var(--red);
+}
+
+.text-red.hero-text {
+  color: var(--red-contrast);
 }
 
 .bg-white {
@@ -46,6 +51,10 @@
   height: 100vh;
 }
 
+.logo-text {
+  font-family: Oswald, sans-serif;
+}
+
 /* Styling for the base layout of the page */
 body {
   display: flex;
@@ -74,12 +83,18 @@ nav .brand-logo {
   padding-left: 10px;
 }
 
-.logo-text {
-  font-family: Oswald, sans-serif;
-}
-
 nav .nav-wrapper {
   overflow: hidden;
+}
+
+nav button.sidenav-trigger {
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
 }
 
 /* Styles for flash messages */
@@ -265,6 +280,13 @@ blockquote {
   }
 }
 
+@media only screen and (min-width: 993px)
+{
+  nav button.sidenav-trigger {
+      display: none;
+  }
+}
+
 @media screen and (max-width: 992px) {
   .heading h2 {
     font-size: 6rem;
@@ -293,5 +315,3 @@ blockquote {
     flex-direction: column;
   }
 }
-
-
