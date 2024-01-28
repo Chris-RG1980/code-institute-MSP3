@@ -42,4 +42,12 @@ Desktop 1080p: 1920 x 1080
 
 
 ### W3C Validator
-Testing has been completed using the W3C code validators to ensure that the code used is clean, consistent and adheres to best practices. No warnings or error were found and the results can be found below.           
+Testing has been completed using the W3C code validators to ensure that the code used is clean, consistent and adheres to best practices. No warnings or errors were found and the results can be found below. The W3C Markup Validation Service is unable to validate the profile page as it contains content that is only accessible after logging in.          
+
+[Home Page Validation](resources/validation/home%20_page.PNG)    
+[Login Page Validation](resources/validation/login.PNG)                
+[Registration Page Validation](resources/validation/register.PNG)             
+[Exercise Log Validation](resources/validation/log_exercise.PNG)            
+[Dashboard Validation](resources/validation/dashboard.PNG)                                    
+[Profile Page](resources/validation/profile.PNG) *(Profile Page could not be validated)*                                
+[CSS Validation](resources/validation/css.PNG)
