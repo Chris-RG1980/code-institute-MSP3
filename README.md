@@ -62,12 +62,14 @@ Welcome to Muscle Metrics. This website offers a personalized dashboard that all
     - [Services](#services)
   - [Testing](#testing)
   - [Deployment](#deployment)
-    - [Initial deployment setup](#initial-deployment-setup)
-    - [Releases](#releases)
     - [Forking the Repository](#forking-the-repository)
     - [Cloning the Forked Repository](#cloning-the-forked-repository)
     - [Cloning with Git](#cloning-with-git)
-    - [Setting up Jest testing environment](#setting-up-jest-testing-environment)
+    - [Initial deployment setup](#initial-deployment-setup)
+      - [Setting up the ElephantSQL Database](#setting-up-the-elephantsql-database)
+    - [Preparing the Code for Deployment](#preparing-the-code-for-deployment)
+    - [Deploy on Heroku](#deploy-on-heroku)
+    - [Releases](#releases)
   - [Credits](#credits)
     - [Images](#images)
     - [Other Credits](#other-credits)
@@ -207,7 +209,7 @@ Muscle Metrics is designed to offer a user-friendly and visually appealing websi
 2. **Buttons**: Materialize-styled buttons with shadows and `#B11419` for primary actions.
 3. **Workout Cards**: The workout logs use cards with the Materialize Teal background colour to segment the information cleanly.
 4. **Forms**: Input fields with subtle `#CCCCCC` outlines against the `#FFFFFF` background, with placeholder text in Roboto for uniformity.
-5. **Modals**: Modals create communication with the user. Along with a message the background colour is used to display success `#8BC34A` and error `#E53935`. These also display a dismissal `x` to dismiss the modal once read. A timer has not been used to dismiss the modals as the user can dismiss the modal once it has been read, ensuring enough time for those with accessibility issues. 
+5. **Macros**: Macros create communication with the user. Along with a message the background colour is used to display success `#8BC34A` and error `#E53935`. These also display a dismissal `x` to dismiss the modal once read. A timer has not been used to dismiss the modals as the user can dismiss the modal once it has been read, ensuring enough time for those with accessibility issues. 
 ### Accessibility
 High contrast colors and legible font choices ensure the design is accessible to users with various needs.
 ### Conclusion
@@ -272,17 +274,6 @@ In summary, choosing a relational database for this website is ideal due to its 
 Please see [TESTING.md](/TESTING.md) for all testing performed.          
 ***
 ## Deployment
-### Initial deployment setup
-This website has been deployed to Github Pages using the following method:
-1. Log in to Github.
-2. Go to the repository to deploy.
-3. Select the settings section within the repository.
-4. Within settings select Pages. 
-5. From the source dropdown select deploy from a branch.
-6. From the branch dropdown select main and /(root).
-7. Click Save
-### Releases
-To release new features a pull request needs to be completed from the development branch to the main branch as the source in Heroku pages is set to the main branch. 
 ### Forking the Repository
 1. On the top-right corner of the repository page, click on the button labelled "Fork."
 2. Select the owner (if there is more than one account available).
@@ -300,11 +291,53 @@ To release new features a pull request needs to be completed from the developmen
 3. When in the required directory, use the `git clone` command followed by the repository URL you copied earlier.
 4. To execute the `git clone` command press enter.
 5. Git will download the repository files onto your computer, creating a new directory with the repository name.
-### Setting up Jest testing environment
-1. Within your IDE open a terminal window.
-2. Within the terminal type `npm i` and press enter.
-3. To run the tests type `npm run test` into the terminal and press enter.
-4. To see the coverage of the tests type `npm run coverage` into the terminal and press enter.
+### Initial deployment setup
+This website has been deployed to Heroku with ElephantSQL hosting the PostgreSQL database using the following method:
+#### Setting up the ElephantSQL Database
+Log into ElephantSQL and create database instance.
+1. Click on "Create New Instance".
+2. Input an instance name (this is usually the name of your project).
+3. Select the free Tiny Turtle plan.
+4. Leave the tags field blank.
+5. Select a region closest to you for the data center.
+6. Review your instance details and confirm by creating the instance.
+7. Copy the URL of the newly created database instance for later use.
+### Preparing the Code for Deployment
+1. **Set Up Configurations in Your IDE**
+   - Generate `requirements.txt` using `pip freeze --local > requirements.txt`.
+   - Create a `Procfile` with the web server start command: `web: python app.py`.
+   - Configure your database URI in the application to use the environment variable `DATABASE_URL`.
+   - Commit and push changes to your GitHub repository.
+### Deploy on Heroku
+1. **Create New App on Heroku**
+   - Log into [Heroku](https://heroku.com/) and create a new app with a unique name.
+   - Set the region that is closest to your location.
+
+2. **Configure Environment Variables**
+   - Navigate to the "Settings" tab in your Heroku app.
+   - Reveal "Config Vars" and add `DATABASE_URL` with the value you copied from ElephantSQL.
+   - Add the other environment variables as shown below.                           
+
+| Key | Value
+|:-------:|:--------|
+| Debug  |    |
+| IP  |    |
+|  PORT |    |
+|  SECRET_KEY   |     |
+
+1. **Connect to GitHub and Deploy**
+   - Go to the "Deploy" tab and choose "Connect to GitHub".
+   - Find your repository and connect it.
+   - Use "Manual Deploy" to deploy your main branch.
+
+2. **Finalize Database Setup**
+   - After deployment, use the "Run console" feature on Heroku to access the Python terminal.
+
+3. **Open and Verify Your App**
+   - Click the "Open app" button in Heroku to launch your app.
+
+### Releases
+To release new features a pull request needs to be completed from the development branch to the main branch as the source in Heroku is set to the main branch. 
 ***
 ## Credits
 ### Images
