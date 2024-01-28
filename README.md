@@ -209,7 +209,7 @@ Muscle Metrics is designed to offer a user-friendly and visually appealing websi
 2. **Buttons**: Materialize-styled buttons with shadows and `#B11419` for primary actions.
 3. **Workout Cards**: The workout logs use cards with the Materialize Teal background colour to segment the information cleanly.
 4. **Forms**: Input fields with subtle `#CCCCCC` outlines against the `#FFFFFF` background, with placeholder text in Roboto for uniformity.
-5. **Macros**: Macros create communication with the user. Along with a message the background colour is used to display success `#8BC34A` and error `#E53935`. These also display a dismissal `x` to dismiss the modal once read. A timer has not been used to dismiss the modals as the user can dismiss the modal once it has been read, ensuring enough time for those with accessibility issues. 
+5. **Macros**: Macros create communication with the user. Along with a message the background colour is used to display success `#8BC34A` and error `#E53935`. These also display a dismissal `x` to dismiss the macros once read. A timer has not been used to dismiss the macros, ensuring enough time for those with accessibility issues to read the messages. 
 ### Accessibility
 High contrast colors and legible font choices ensure the design is accessible to users with various needs.
 ### Conclusion
