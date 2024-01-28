@@ -8,6 +8,8 @@
     - [Tablet Screenshots](#tablet-screenshots)
     - [Desktop Screenshots](#desktop-screenshots)
     - [Summary](#summary)
+  - [Automated Testing](#automated-testing)
+    - [W3C Validator](#w3c-validator)
 
 
 ***
@@ -36,3 +38,8 @@ Desktop 1080p: 1920 x 1080
 ![image](resources/responsive/summary.PNG)                 
 
 ***
+## Automated Testing
+
+
+### W3C Validator
+Testing has been completed using the W3C code validators to ensure that the code used is clean, consistent and adheres to best practices. No warnings or error were found and the results can be found below.           
