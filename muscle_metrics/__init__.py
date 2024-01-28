@@ -5,8 +5,6 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 
-from muscle_metrics import routes
-
 if os.path.exists("env.py"):
     import env
 
@@ -28,6 +26,15 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = "login"
 
+
+def import_routes():
+    """
+    Import the 'routes' module from the 'muscle_metrics' package.
+    """
+    from muscle_metrics import routes
+
+
+import_routes()
 
 with app.app_context():
     db.create_all()
