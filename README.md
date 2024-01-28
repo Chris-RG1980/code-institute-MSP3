@@ -305,7 +305,7 @@ Log into ElephantSQL and create database instance.
 ### Preparing the Code for Deployment
 1. **Set Up Configurations in Your IDE**
    - Generate `requirements.txt` using `pip freeze --local > requirements.txt`.
-   - Create a `Procfile` with the web server start command: `web: python run.py`.
+   - Create a `Procfile` with the web server start command: `web: python app.py`.
    - Configure your database URI in the application to use the environment variable `DATABASE_URL`.
    - Commit and push changes to your GitHub repository.
 ### Deploy on Heroku
