@@ -13,13 +13,15 @@ def register():
     """
     Handle the user registration process.
 
-    This route displays a registration form and processes its submission. It includes
-    validation to check if the email already exists in the database. If validation passes,
-    it creates a new User object, hashes the password for security, and saves the user to
-    the database. After successful registration, it redirects the user to the login page.
+    This route displays a registration form and processes its submission.
+    It includes validation to check if the email already exists in the
+    database. If validation passes, it creates a new User object, hashes
+    the password for security, and saves the user to the database. After
+    successful registration, it redirects the user to the login page.
 
     Returns:
-    Template or Redirection: Renders the registration form template or redirects to the login page after successful registration.
+    Template or Redirection: Renders the registration form template or
+    redirects to the login page after successful registration.
     """
     form = RegistrationForm()
 
@@ -27,7 +29,8 @@ def register():
     if form.validate_on_submit():
         try:
             email = request.form["email"].lower()
-            existing_user = db.session.query(User).filter_by(email=email).first()
+            existing_user = db.session.query(User).filter_by(
+                email=email).first()
 
             if existing_user:
                 flash("Email Already Exists", "email_error")
@@ -48,7 +51,7 @@ def register():
             db.session.add(user)
             db.session.commit()
 
-        except:
+        except Exception as e:
             flash("An unexpected error occurred. Please try again.", "error")
             return render_template("register/register.html", form=form)
 
