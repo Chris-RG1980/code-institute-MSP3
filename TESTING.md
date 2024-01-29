@@ -20,6 +20,8 @@
     - [Testing User Stories](#testing-user-stories)
       - [New User](#new-user)
       - [Returning User](#returning-user)
+    - [Full Testing](#full-testing)
+      - [Interactive Elements](#interactive-elements)
 
 
 ***
@@ -145,4 +147,73 @@ Testing has been carried out on the browsers within the below table as these bro
 ![image](resources/responsive/desktop_screenshots1.PNG)
 ![image](resources/responsive/desktop_screenshots2.PNG)
 ![image](resources/responsive/desktop_screenshots3.PNG)
+***
+### Full Testing
+#### Interactive Elements
+**Navbar**
+| Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
+| :-----: | :--------------: | :---------------: | :----: | :-------: |
+| Logo | When clicked the user will be returned to the homepage. | Clicked on logo. | Returned to homepage. | Pass | 
+| Homepage Link | When clicked the user will be returned to the homepage. | Clicked on home link. | Returned to homepage. | Pass |
+| Login Link | When clicked the user will be taken to the login page. | Clicked on login link. | Taken to the login page. | Pass | 
+| Register Link | When clicked the user will be taken to the register page. | Clicked on register link. | Taken to the register page. | Pass |
+| Log exercises link | When clicked the user will be taken to the exercise log. | Clicked on log exercises link. | Taken to the exercise log. | Pass |
+| Dashboard link | When clicked the user will be taken to the dashboard. | Clicked on dashboard link. | Taken to the dashboard. | Pass |
+| Profile icon | When clicked the user will be taken to the profile page. | Clicked on profile icon. | Taken to the profile page. | Pass |
+
+**Footer**
+| Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
+| :-----: | :--------------: | :---------------: | :----: | :-------: |
+| Homepage Link | When clicked the user will be returned to the homepage. | Clicked on home link. | Returned to homepage. | Pass |
+| Login Link | When clicked the user will be taken to the login page. | Clicked on login link. | Taken to the login page. | Pass | 
+| Register Link | When clicked the user will be taken to the register page. | Clicked on register link. | Taken to the register page. | Pass |
+| Log exercises link | When clicked the user will be taken to the exercise log. | Clicked on log exercises link. | Taken to the exercise log. | Pass |
+| Dashboard link | When clicked the user will be taken to the dashboard. | Clicked on dashboard link. | Taken to the dashboard. | Pass |
+
+**Homepage**
+| Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
+| :-----: | :--------------: | :---------------: | :----: | :-------: |
+| Register now button | When clicked the user will be taken to the register page. | Clicked on the register now button. | Taken to the register page. | Pass |
+
+**Login Page**
+| Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
+| :-----: | :--------------: | :---------------: | :----: | :-------: |
+| Login Form | If email and password are valid the user will be logged in with a success macro shown. If not valid an error macro will be displayed asking the user to try again.  | Entered both invalid and valid credentials. | Error macro displayed when invalid and when valid credentials used the user was logged in and a success macro displayed. | Pass |
+
+**Register Page**
+| Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
+| :-----: | :--------------: | :---------------: | :----: | :-------: |
+| When all required fields are completed, validated and the user clicks register, the user will the be registered. | The user is registered and assigned a UUID. The user will be redirected to the login page. | Entered all fields and clicked register. | Registration was complete with a UUID being assigned in the database. Redirected to login page. | Pass |
+| When the fields are not validated an error message will be displayed. | Error messages will not be displayed and the user will not be registered. | Entered information that could not be validated and fields were left blank. | Error messages were displayed and the user was not registered. | Pass |
+| Login button | When clicked the user will be taken to the login page. | Clicked on login button. |  Taken to the login page. | Pass | 
+
+**Log Exercises**
+| Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
+| :-----: | :--------------: | :---------------: | :----: | :-------: |
+| When a muscle group is selected the appropriate set of exercises will be shown in the exercises dropdown. | Exercises related to the selected muscle group can only be selected. | Clicked on each muscle group. | Only the related exercises can be selected in the exercises dropdown. | Pass |
+| When all required fields are completed, validated and the user clicks add exercise, the users exercise will be added to the dashboard and a success message displayed. | The exercise is added to the dashboard displaying the entered information and a success message displayed. | Entered all fields and clicked add exercise. | The exercise was added to the dashboard displaying all entered information and a success message displayed. | Pass |
+| When fields are not validated. | Error messages will not be displayed and the exercise is not added. | Entered information that could not be validated and fields were left blank. | Error messages were displayed and the exercise was not added. | Pass |
+
+**Dashboard**
+| Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
+| :-----: | :--------------: | :---------------: | :----: | :-------: |
+| When an exercise is added the charts are automatically updated. | Charts update automatically. | Added an exercise. | The charts updated automatically. | Pass |
+| Edit icon | Exercise log displayed with the exercise data pre populated ready for editing. | Clicked on edit icon. | The exercise log displays with the exercise data pre populated. | Pass |
+| Save exercise button | When edits have been made, validated and the save exercise button has been clicked the data within the corresponding exercise on the dashboard will be updated and a success message displayed. | Edits made and save exercise button clicked. | The data has been updated on the dashboard and a success message was displayed. | Pass |
+| Delete icon | When the delete icon is clicked the exercise will be deleted from the dashboard and a success message displayed. The charts will also be amended.  | Clicked the delete icon. | The exercise was deleted and the success message displayed. The charts also reflected the change. | Pass |
+
+**Profile Page**
+| Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
+| :-----: | :--------------: | :---------------: | :----: | :-------: |
+| Edit icon | When click a modal will be displayed with a form to edit the data. | Click on all edit icons. | All modals were displayed correctly. | Pass |
+| Cancel buttons within modals | When clicked the modal will be dismissed and no changes made. | Clicked cancel buttons on all modals. | Modals were dismissed and no changes to the user data were made. | Pass |
+| Submit button within modals | Once the user has made a change which has been validated the submit button will submit the change to the database and the profile page displayed with the data updated. A success message will be displayed. | Made changes and clicked on submit button in all modals. | All changes were made and all success messages displayed. | Pass |
+| Logout button | When clicked the user will be logged out and redirected to the homepage. | Logout button clicked. | User logged out and redirected to homepage. | Pass |
+| Delete account button | When clicked a modal will be displayed to gain confirmation of account deletion. | Clicked delete account button. | Modal was displayed. | Pass |
+| Modal delete account button | When clicked the user will be deleted. | Clicked on delete account button. | User account deleted. | Pass |
+
+**Macros**
+| Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
+| :-----: | :--------------: | :---------------: | :----: | :-------: |
+| Dismissal `X` | When clicked the macro will be dismissed. | `X` clicked within macros. | Macros were dismissed. | Pass |
 ***
