@@ -13,6 +13,13 @@
     - [JSHint](#jshint)
     - [Python Linter](#python-linter)
     - [Validation Summary](#validation-summary)
+    - [Lighthouse](#lighthouse)
+    - [Wave](#wave)
+  - [Browser Compatibility](#browser-compatibility)
+  - [Manual Testing](#manual-testing)
+    - [Testing User Stories](#testing-user-stories)
+      - [New User](#new-user)
+      - [Returning User](#returning-user)
 
 
 ***
@@ -94,4 +101,39 @@ The Code Institute Python Linter has been used to validate the python code. No e
 ### Validation Summary
 ![image](resources/validation/summary.PNG)
 
+***
+### Lighthouse
+The lighthouse results can be found for each page below.    
+
+![image](resources/validation/lighthouse_summary.PNG)   
+***
+### Wave
+***
+## Browser Compatibility
+Testing has been carried out on the browsers within the below table as these browsers are most used, but in addition to this Firefox uses Gecko rendering engine while the others use WebKit. This helps identify any inconsistencies or rendering discrepancies that may arise due to variations in the rendering engines.        
+
+![image](resources/validation/browser_testing.PNG)
+***
+## Manual Testing
+### Testing User Stories
+#### New User
+| Goals | How they are achieved | Reference |
+| :-----| :--------------------:| :-------: |
+|I would like to be able to easily record my weightlifting achievements, so that I can see a comprehensive display of my personal records and feel a sense of progress and accomplishment.| The exercise log has drop down menus to easily select muscle groups and exercises along with input fields to record weight, sets, reps and notes. | _Please see the exercise log image below._|
+| I would like an intuitive way to visualize my strength training journey, so that I can monitor my progress over time through charts that reflect my workout history. | After recording the exercise in the exercise log the user can view this information in the dashboard along with graphs for visualization. | _Please see the dashboard image below._ |
+| I would like full control over my exercise records with the ability to create, read, update, and delete entries, so I can manage my fitness data effectively. | The website uses CRUD functionality. A user can create an exercise in the exercise log and then read, edit and delete the exercise in the dashboard. | _Please see both the exercise log image and the dashboard below._ |
+| I would like a secure login system for my fitness app, so that I can be assured my personal fitness data remains private and secure. | The user is required to register and login in order to use the website. The website uses flask login functionality supplied from the flask framework which ensures the security of the login process and it is also used to display only the current users information. | _Please see the register and login images below._ |
+|I would like a mobile-friendly interface for my fitness app that adapts to various devices, allowing me to log workouts whether I’m at home or on-the-go. | The website is fully responsive and has been tested across types of display. | _Please see the responsiveness section of this document._ |
+
+#### Returning User
+| Goals | How they are achieved | Reference |
+| :---- | :--------------------:| :-------: |
+| I would like to see the number of completed exercises through updated charts each time I log in, allowing me to adjust my training program based on past performance and future goals. | Within the dashboard there is a pie chart to display the number of exercises completed by muscle group and bar graph showing the number of exercises completed per day over the last severn days. | _Please see the dashboard image below._ |
+|I would like to efficiently enter and review my workout logs from previous sessions, ensuring consistency is maintained. | The workout logs from previous sessions can be viewed on the dashboard displaying all of the entered data. | _Please see the dashboard image below._ |
+| I would like to access my dashboard quickly, utilizing the secure login system that protects my privacy. | The user can quickly log in using an email address and password and then select the dashboard from the nav bar. | _Please see the register and login images below._ |
+|I would like seamless integration across my devices when using the fitness app, so I can transition from logging workouts on my phone to reviewing progress on my tablet or desktop without any inconvenience. | The website is fully responsive and has been tested across types of display. | _Please see the responsiveness section of this document._  |
+
+![image](resources/responsive/desktop_screenshots1.PNG)
+![image](resources/responsive/desktop_screenshots2.PNG)
+![image](resources/responsive/desktop_screenshots3.PNG)
 ***

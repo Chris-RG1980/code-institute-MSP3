@@ -35,9 +35,10 @@
       <nav>
         <div class="nav-wrapper">
           <a href="/" class="brand-logo logo-text">Muscle Metrics</a>
-          <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+          <button data-target="mobile-demo" class="sidenav-trigger">
+            <span class="sr-only">View Navigation</span>
             <i class="fas fa-solid fa-bars"></i>
-          </a>
+          </button>
 
           <!-- Navbar links, visible on medium and larger screens -->
           <ul class="right hide-on-med-and-down">
@@ -53,7 +54,10 @@
                 <a class="white-text" href="{{ url_for('dashboard')}}">Dashboard</a>
               </li>
               <li>
-                <a href="{{ url_for('edit_profile', id=current_user.id) }}"><i class="fas fa-solid fa-user"></i></a>
+                <a href="{{ url_for('edit_profile', id=current_user.id) }}">
+                  <span class="sr-only">Profile</span>
+                  <i class="fas fa-solid fa-user"></i>
+                </a>
               </li>
             {% else %}
               <!-- Links available to non-authenticated users -->
@@ -75,7 +79,8 @@
           <!-- Mobile links for authenticated users -->
           <li><a href="{{ url_for('log')}}">Log Exercises</a></li>
           <li><a href="{{ url_for('dashboard')}}">Dashboard</a></li>
-          <li><a href="{{ url_for('edit_profile', id=current_user.id) }}"><i class="fas fa-solid fa-user"></i></a></li>
+          <li><a href="{{ url_for('edit_profile', id=current_user.id) }}">
+            <i class="fas fa-solid fa-user"></i>Profile</a></li>
         {% else %}
           <!-- Mobile links for non-authenticated users -->
           <li><a href="{{ url_for('login') }}">Login</a></li>

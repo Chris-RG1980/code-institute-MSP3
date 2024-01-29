@@ -4,6 +4,7 @@
   --black: #010101;
   --grey: #cccccc;
   --red: #B11419;
+  --red-contrast: #ca2126;
   --blue: #536767;
   --cinnabar: #e53935;
   --mantis: #8bc34a;
@@ -16,6 +17,10 @@
 
 .text-red {
   color: var(--red);
+}
+
+.text-red-contrast{
+  color: var(--red-contrast);
 }
 
 .bg-white {
@@ -46,6 +51,15 @@
   height: 100vh;
 }
 
+.logo-text {
+  font-family: Oswald, sans-serif;
+}
+
+
+.black {
+  color: var(--black);
+}
+
 /* Styling for the base layout of the page */
 body {
   display: flex;
@@ -74,12 +88,18 @@ nav .brand-logo {
   padding-left: 10px;
 }
 
-.logo-text {
-  font-family: Oswald, sans-serif;
-}
-
 nav .nav-wrapper {
   overflow: hidden;
+}
+
+nav button.sidenav-trigger {
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
 }
 
 /* Styles for flash messages */
@@ -145,18 +165,14 @@ blockquote {
   margin-left: auto;
 }
 
-.remove-btn-style {
-  background-color: var(--white);
-  box-shadow: none;
-}
-
-.fa-pencil {
-  color: var(--grey);
-}
-
 .cancel-btn {
   background-color: var(--grey);
   margin-right: 10px !important;
+}
+
+.no-bg {
+  background-color: transparent;
+  box-shadow: none;
 }
 
 /* Styles specific to index.html */
@@ -255,6 +271,18 @@ blockquote {
   margin: 0;
 }
 
+.card-header .modal-trigger:not(:last-child) {
+  margin-right: 10px;
+}
+
+.btn .sr-only {
+  color: black;
+}
+
+.exercise-card  {
+  background-color: #006d63;
+}
+
 /* Media Queries for responsive design */
 @media screen and (max-width: 1050px) {
   .heading h2 {
@@ -262,6 +290,13 @@ blockquote {
   }
   .card-wrapper {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media only screen and (min-width: 993px)
+{
+  nav button.sidenav-trigger {
+      display: none;
   }
 }
 
@@ -293,5 +328,3 @@ blockquote {
     flex-direction: column;
   }
 }
-
-
