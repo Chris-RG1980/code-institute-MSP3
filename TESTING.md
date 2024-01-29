@@ -108,6 +108,15 @@ The lighthouse results can be found for each page below.
 ![image](resources/validation/lighthouse_summary.PNG)   
 ***
 ### Wave
+The Wave tool identified issues with color contrast and the use of Font Awesome icons without associated text; these errors have been addressed, fixed and are documented in the Bugs section.
+
+[Homepage](resources/validation/wave_tool/homepage.PNG)         
+[Login Page](resources/validation/wave_tool/login.PNG)           
+[Registration Page](resources/validation/wave_tool/register.PNG)     
+[Profile Page](resources/validation/wave_tool/profile.PNG)        
+[Exercise Log](resources/validation/wave_tool/exercise_log.PNG)          
+[Dashboard](resources/validation/wave_tool/dashboard.PNG)
+
 ***
 ## Browser Compatibility
 Testing has been carried out on the browsers within the below table as these browsers are most used, but in addition to this Firefox uses Gecko rendering engine while the others use WebKit. This helps identify any inconsistencies or rendering discrepancies that may arise due to variations in the rendering engines.        
