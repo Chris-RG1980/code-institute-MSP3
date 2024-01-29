@@ -16,7 +16,10 @@
               <!-- Shows current user's first name -->
               {{ current_user.first_name }}
               <!-- Edit button for the first name, triggers a modal -->
-              <a href="#fname-modal" class="btn modal-trigger remove-btn-style margin-left"><i class="fas fa-thin fa-pencil"></i></a>
+              <a href="#fname-modal" class="btn modal-trigger margin-left">
+                <span class="sr-only">Edit</span>
+                <i class="fas fa-thin fa-pencil"></i>
+              </a>
             </div>
           </div>
           <!-- Including the modal template for updating the first name -->
@@ -29,7 +32,10 @@
               <!-- Shows current user's last name -->
               {{ current_user.last_name }}
               <!-- Edit button for the last name, triggers a modal -->
-              <a href="#lname-modal" class="btn modal-trigger remove-btn-style margin-left"><i class="fas fa-thin fa-pencil"></i></a>
+              <a href="#lname-modal" class="btn modal-trigger margin-left">
+                <span class="sr-only">Edit</span>
+                <i class="fas fa-thin fa-pencil"></i>
+              </a>
             </div>
           </div>
           <!-- Including the modal template for updating the last name -->
@@ -42,7 +48,10 @@
               <!-- Shows current user's email -->
               {{ current_user.email }}
               <!-- Edit button for the email, triggers a modal -->
-              <a href="#email-modal" class="btn modal-trigger remove-btn-style margin-left"><i class="fas fa-thin fa-pencil"></i></a>
+              <a href="#email-modal" class="btn modal-trigger margin-left">
+                <span class="sr-only">Edit</span>
+                <i class="fas fa-thin fa-pencil"></i>
+              </a>
             </div>
           </div>
           <!-- Including the modal template for updating the email -->
@@ -53,8 +62,9 @@
             <div class="collection-header">
               <h6 class="display-item">Change Password
                 <!-- Button to trigger change password modal -->
-                <a href="#password-modal" class="btn modal-trigger remove-btn-style margin-left">
-                  <i class="fas fa-thin fa-arrow-right grey-text "></i>
+                <a href="#password-modal" class="btn modal-trigger margin-left">
+                  <span class="sr-only">Edit</span>
+                  <i class="fas fa-thin fa-arrow-right"></i>
                 </a>
               </h6>
             </div>

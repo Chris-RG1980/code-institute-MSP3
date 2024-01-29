@@ -2,7 +2,7 @@
 
 {% block content %} 
 <div class="container">
-  <h2 class="form-title text-red center-align"><strong>My Exercise Data</strong></h2>  <!-- Page heading -->
+  <h2 class="form-title text-red-contrast center-align"><strong>My Exercise Data</strong></h2>  <!-- Page heading -->
 
   <!-- Section for displaying charts -->
   <div class="bg-white card-border margin-bttm">
@@ -28,13 +28,19 @@
       {% for progress in user_progress %}  <!-- Looping through each progress item in user_progress -->
 
       <!-- Card for displaying individual progress details -->
-      <div class="card exercise-card teal">
+      <div class="card exercise-card">
         <div class="card-content white-text">
           <div class="card-header">
             <!-- Muscle group name and edit/delete buttons -->
             <span class="card-title muscle-group-name">{{ progress.muscle_group.name }}</span>
-            <a href="{{ url_for('log_edit', progress_id=progress.id) }}" class="btn modal-trigger pencil-bg teal margin-left"><i class="fas fa-thin fa-pencil white-text"></i></a>
-            <a href="{{ url_for('log_delete', progress_id=progress.id) }}" class="btn modal-trigger pencil-bg teal"><i class="fas fa-solid fa-trash-can white-text"></i></a>
+            <a href="{{ url_for('log_edit', progress_id=progress.id) }}" class="btn modal-trigger margin-left">
+              <span class="sr-only">Edit</span>
+              <i class="fas fa-thin fa-pencil white-text"></i>
+            </a>
+            <a href="{{ url_for('log_delete', progress_id=progress.id) }}" class="btn modal-trigger">
+              <span class="sr-only">Delete</span>
+              <i class="fas fa-solid fa-trash-can white-text"></i>
+            </a>
           </div>
           <!-- Displaying the exercise details -->
           <p class="exercise-name"><strong>Exercise:</strong> {{ progress.exercise.name }}</p>

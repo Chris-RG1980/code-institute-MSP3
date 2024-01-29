@@ -54,7 +54,10 @@
                 <a class="white-text" href="{{ url_for('dashboard')}}">Dashboard</a>
               </li>
               <li>
-                <a href="{{ url_for('edit_profile', id=current_user.id) }}"><i class="fas fa-solid fa-user"></i></a>
+                <a href="{{ url_for('edit_profile', id=current_user.id) }}">
+                  <span class="sr-only">Profile</span>
+                  <i class="fas fa-solid fa-user"></i>
+                </a>
               </li>
             {% else %}
               <!-- Links available to non-authenticated users -->
@@ -76,7 +79,8 @@
           <!-- Mobile links for authenticated users -->
           <li><a href="{{ url_for('log')}}">Log Exercises</a></li>
           <li><a href="{{ url_for('dashboard')}}">Dashboard</a></li>
-          <li><a href="{{ url_for('edit_profile', id=current_user.id) }}"><i class="fas fa-solid fa-user"></i></a></li>
+          <li><a href="{{ url_for('edit_profile', id=current_user.id) }}">
+            <i class="fas fa-solid fa-user"></i>Profile</a></li>
         {% else %}
           <!-- Mobile links for non-authenticated users -->
           <li><a href="{{ url_for('login') }}">Login</a></li>
