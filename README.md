@@ -83,17 +83,14 @@ Welcome to Muscle Metrics. This website offers a personalized dashboard that all
 #### As A New User:
 1. I would like to be able to easily record my weightlifting achievements, so that I can see a comprehensive display of my personal records and feel a sense of progress and accomplishment.
 2. I would like an intuitive way to visualize my strength training journey, so that I can monitor my progress over time through charts that reflect my workout history.
-3. I would like a systematic approach to manage my workout sessions, where I can log exercises, weight lifted, sets, and reps in an organized manner to keep track of my daily fitness routine.
-4. I would like full control over my exercise records with the ability to create, read, update, and delete entries, so I can manage my fitness data effectively.
-5. I would like a secure login system for my fitness app, so that I can be assured my personal fitness data remains private and secure.
-6. I would like a mobile-friendly interface for my fitness app that adapts to various devices, allowing me to log workouts whether I’m at home or on-the-go.
+3. I would like full control over my exercise records with the ability to create, read, update, and delete entries, so I can manage my fitness data effectively.
+4. I would like a secure login system for my fitness app, so that I can be assured my personal fitness data remains private and secure.
+5. I would like a mobile-friendly interface for my fitness app that adapts to various devices, allowing me to log workouts whether I’m at home or on-the-go.
 #### As A Returning User:
-1. I would like to quickly access my Personal Best Tracker to update new milestones, reinforcing my long-term commitment to weightlifting and celebrating my progress.
-2. I would like to see my strength progression through updated charts each time I log in, allowing me to adjust my training program based on past performance and future goals.
-3. I would like to efficiently enter and review my workout logs from previous sessions, ensuring consistency is maintained.
-4. I would like the ability to edit and refine my exercise records over time, utilizing the CRUD functionalities to reflect changes in my fitness routine and ensure my data remains accurate.
-5. I would like to access my dashboard quickly, utilizing the secure login system that protects my privacy.
-6. I would like seamless integration across my devices when using the fitness app, so I can transition from logging workouts on my phone to reviewing progress on my tablet or desktop without any inconvenience.
+1. I would like to see the number of completed exercises through updated charts each time I log in, allowing me to adjust my training program based on past performance and future goals.
+2. I would like to efficiently enter and review my workout logs from previous sessions, ensuring consistency is maintained.
+3. I would like to access my dashboard quickly, utilizing the secure login system that protects my privacy.
+4. I would like seamless integration across my devices when using the fitness app, so I can transition from logging workouts on my phone to reviewing progress on my tablet or desktop without any inconvenience.
 #### As A Returning User - Future Functionality:
 1. I would like the app to analyze my past workout performance and provide predictions on when I might hit a plateau, so that I can adjust my workout routine in advance to avoid stagnation.
 2. I would like to to participate in community challenges and compare my progress on leader boards, so I can stay motivated and socially engaged with the Muscle Metrics community.

@@ -19,7 +19,7 @@
   color: var(--red);
 }
 
-.text-red.hero-text {
+.text-red-contrast{
   color: var(--red-contrast);
 }
 
@@ -53,6 +53,11 @@
 
 .logo-text {
   font-family: Oswald, sans-serif;
+}
+
+
+.black {
+  color: var(--black);
 }
 
 /* Styling for the base layout of the page */
@@ -160,18 +165,14 @@ blockquote {
   margin-left: auto;
 }
 
-.remove-btn-style {
-  background-color: var(--white);
-  box-shadow: none;
-}
-
-.fa-pencil {
-  color: var(--grey);
-}
-
 .cancel-btn {
   background-color: var(--grey);
   margin-right: 10px !important;
+}
+
+.no-bg {
+  background-color: transparent;
+  box-shadow: none;
 }
 
 /* Styles specific to index.html */
@@ -268,6 +269,18 @@ blockquote {
 .card-wrapper .card {
   padding: 0;
   margin: 0;
+}
+
+.card-header .modal-trigger:not(:last-child) {
+  margin-right: 10px;
+}
+
+.btn .sr-only {
+  color: black;
+}
+
+.exercise-card  {
+  background-color: #006d63;
 }
 
 /* Media Queries for responsive design */
