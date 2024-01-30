@@ -76,7 +76,10 @@ Welcome to Muscle Metrics. This website offers a personalized dashboard that all
     - [Forking the Repository](#forking-the-repository)
     - [Cloning the Forked Repository](#cloning-the-forked-repository)
     - [Cloning with Git](#cloning-with-git)
-    - [Initial deployment setup](#initial-deployment-setup)
+    - [Creating a local environment](#creating-a-local-environment)
+      - [Precursors](#precursors)
+      - [Setup](#setup)
+    - [Initial production deployment setup](#initial-production-deployment-setup)
       - [Setting up the ElephantSQL Database](#setting-up-the-elephantsql-database)
     - [Preparing the Code for Deployment](#preparing-the-code-for-deployment)
     - [Deploy on Heroku](#deploy-on-heroku)
@@ -300,7 +303,22 @@ Please see [TESTING.md](/TESTING.md) for all testing performed.
 3. When in the required directory, use the `git clone` command followed by the repository URL you copied earlier.
 4. To execute the `git clone` command press enter.
 5. Git will download the repository files onto your computer, creating a new directory with the repository name.
-### Initial deployment setup
+### Creating a local environment
+#### Precursors
+- Ensure PostgreSQL is installed, see [download page here.](https://www.postgresql.org/download/)
+- Ensure Python >=3.8 is installed.
+#### Setup
+1. Open a powershell terminal and enter `psql`.
+2. Enter your password when prompted.
+3. Enter `CREATE DATABASE muscle_metrics`.
+   1. Enter `\l` to obtain a list of your databases. Check muscle_metrics is included.
+4. Change filename from `env.template.py` to `env.py` and open.
+5. Enter a secret key where indicated, this is a random string for your environment.
+6. Enter your PostgreSQL username, password, hostname and port to the `DB_URL` where indicated.
+7. Save the `env.py` file.
+   1. Open the `.gitignore` file and ensure the `env.py` file is displayed in the list. If not add `env.py` to the list of files and save.
+8.  In the powershell terminal enter `python app.py` to run a development server. 
+### Initial production deployment setup
 This website has been deployed to Heroku with ElephantSQL hosting the PostgreSQL database using the following method:
 #### Setting up the ElephantSQL Database
 Log into ElephantSQL and create database instance.
@@ -313,7 +331,7 @@ Log into ElephantSQL and create database instance.
 7. Copy the URL of the newly created database instance for later use.
 ### Preparing the Code for Deployment
 1. **Set Up Configurations in Your IDE**
-   - Generate `requirements.txt` using `pip freeze --local > requirements.txt`.
+   - Generate `requirements.txt` using `pip freeze requirements.txt`.
    - Create a `Procfile` with the web server start command: `web: python app.py`.
    - Configure your database URI in the application to use the environment variable `DATABASE_URL`.
    - Commit and push changes to your GitHub repository.
