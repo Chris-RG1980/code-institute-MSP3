@@ -22,6 +22,8 @@
       - [Returning User](#returning-user)
     - [Full Testing](#full-testing)
       - [Interactive Elements](#interactive-elements)
+  - [Bugs](#bugs)
+    - [Solved Bugs](#solved-bugs)
 
 
 ***
@@ -217,3 +219,9 @@ Testing has been carried out on the browsers within the below table as these bro
 | :-----: | :--------------: | :---------------: | :----: | :-------: |
 | Dismissal `X` | When clicked the macro will be dismissed. | `X` clicked within macros. | Macros were dismissed. | Pass |
 ***
+## Bugs
+### Solved Bugs
+| Bug | Solution |
+|:----| :------: |
+| During testing with the wave tool, an error was identified where the icons were missing text. | The solution involved converting these icons into buttons and adding a span element with the 'sr-only' class. This was done to include appropriate text for each icon. |
+| The wave tool detected contrast issues involving red headings on black backgrounds and teal button elements. | To address this, I brightened the red for the headings and darkened the teal in the buttons.|
