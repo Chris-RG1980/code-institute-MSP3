@@ -8,6 +8,9 @@ Welcome to Muscle Metrics. This website offers a personalized dashboard that all
 ![Static Badge](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 ![Static Badge](https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white)
 ![Static Badge](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue)
+![Static Badge](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
+![Static Badge](https://img.shields.io/badge/Chart%20js-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white)
+
 
 [Click here to view live website](https://code-institute-msp3-6fa0ee60ea2e.herokuapp.com/)
 ***
@@ -237,8 +240,8 @@ The integration of CRUD functionality in the sign-up process and exercise log ma
 ***
 ## Database Design
 Choosing a relational database for this website is based on several important benefits that match with what the websites needs.
-1. **Structured Data Organization:** The data models, MuscleGroups, Exercises, Progress, and User, stand for different sets of data that have clear connections to each other. Tables such as muscle_groups and exercises are linked using foreign keys, which makes it easy to get data quickly and accurately.                 
-2. **Data Integrity and Consistency:** The website works with important information like personal details and workout history. Relational databases have features that make sure this information is always right and up-to-date. For example, in the Progress table, special keys link each workout record to the right user and exercise.         
+1. **Structured Data Organization:** The data models, MuscleGroups, Exercises, Progress, and User, stand for different sets of data that have clear connections to each other. Tables such as muscle_groups and exercises are linked using foreign keys, which allows for relational and constrained data ensuring its integrity.                 
+2. **Data Integrity and Consistency:** The website works with important information like personal details and workout history. Relational databases have features that make sure this information is always right and up-to-date. For example, in the Progress table, foreign keys link each workout record to the right user and exercise.         
 3. **Scalability and Flexibility:** As the website grows to accommodate more users and more complex workout tracking, the database's schema can be modified and scaled. The addition of new tables or modification of existing ones (like adding new columns for additional exercise metrics) can be done without disrupting the existing database structure.     
 ### Database schema
 ![image](resources/database_schema.png)
@@ -258,7 +261,8 @@ In summary, choosing a relational database for this website is ideal due to its 
 - [SQLAlchemy](https://www.sqlalchemy.org/) - Python SQL Toolkit and Object Relational Mapper      
 - [WTForms](https://wtforms.readthedocs.io/en/3.1.x/) - To create the forms used.
 - [jQuery](https://jquery.com/) - To connect the user interface with the javascript logic and supply functionality from Materialize.                     
-- [Google Fonts](https://fonts.google.com/) - To select and Import fonts.                                                  
+- [Google Fonts](https://fonts.google.com/) - To select and Import fonts.   
+- [Chart.js](https://www.chartjs.org/) -  JavaScript library for creating interactive charts and graphs.                                           
 ### Templating Engine     
 - [Jinja](https://jinja.palletsprojects.com/en/3.1.x/) - To create HTML templates.                             
 ### Utilities Used
@@ -352,6 +356,7 @@ To release new features a pull request needs to be completed from the developmen
  - Weight plates - Photo by Victor Freitas on Unsplash                               
   
 ### Other Credits
+- [Real Python](https://realpython.com/)
 - [freeCodeCamp](https://www.freecodecamp.org/)
 - [Web Dev Simplified](https://www.youtube.com/@WebDevSimplified)
 - [Codemy.com](https://www.youtube.com/channel/UCFB0dxMudkws1q8w5NJEAmw)
