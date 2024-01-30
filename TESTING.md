@@ -9,6 +9,7 @@
     - [Desktop Screenshots](#desktop-screenshots)
     - [Summary](#summary)
   - [Automated Testing](#automated-testing)
+    - [Flask Testing](#flask-testing)
     - [W3C Validator](#w3c-validator)
     - [JSHint](#jshint)
     - [Python Linter](#python-linter)
@@ -53,7 +54,10 @@ Desktop 1080p: 1920 x 1080
 
 ***
 ## Automated Testing
+### Flask Testing
+Flask unit testing has been used to validate the proper rendering of templates and ensure the receipt of a 200 response for the home, login, and register pages. This testing process ensures the accurate functionality and user experience of these essential website pages.
 
+![image](resources/python_unit_tests.PNG)
 
 ### W3C Validator
 Testing has been completed using the W3C code validators to ensure that the code used is clean, consistent and adheres to best practices. No warnings or errors were found and the results can be found below. The W3C Markup Validation Service is unable to validate the profile page as it contains content that is only accessible after logging in.          
